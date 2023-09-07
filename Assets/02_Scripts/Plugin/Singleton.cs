@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace farm
+namespace whale
 {
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
