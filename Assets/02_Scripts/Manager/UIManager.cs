@@ -5,7 +5,23 @@ using UnityEngine;
 namespace whale{
     public class UIManager : MonoBehaviour
     {
-        //여기에는 모든 canvas 하위에 상위 프리팹들을 가져오는 스크립트
+        [Header("TitleScene")]
+        public UI_TitleButton ui_TitleButton;
+        public UI_Option ui_option;
 
+
+        private void Awake()
+        {
+            switch (MainManager.Instance.gameSceneState)
+            {
+                case GameSceneState.Title :
+                    ui_TitleButton = GameObject.Find("UI_TitleButton").GetComponent<UI_TitleButton>();
+                    ui_option = GameObject.Find("UI_Option").GetComponent<UI_Option>();
+                    break;
+                case GameSceneState.GameScene:
+                    
+                    break;
+            }
+        }
     }
 }

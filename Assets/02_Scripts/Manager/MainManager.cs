@@ -15,5 +15,14 @@ namespace whale
         public ImageContainer imageContainer;
         public StatusContainer statusContainer;
         public AudioContainer audioContainer;
+
+        [Header("Other")]
+        public GameSceneState gameSceneState;
+    }
+
+    public enum GameSceneState
+    {
+        Title,
+        GameScene
     }
 }
