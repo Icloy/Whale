@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     Vector3 moveVec;
 
+
     // Start is called before the first frame update
     void Start()
     {
