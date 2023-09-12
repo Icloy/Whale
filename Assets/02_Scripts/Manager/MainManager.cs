@@ -11,6 +11,7 @@ namespace whale
 
 
         [Header("GameScene")]
+        public PlayerAnim playerAnim;
         [Header("Container")]
         public ImageContainer imageContainer;
         public StatusContainer statusContainer;
