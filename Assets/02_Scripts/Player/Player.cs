@@ -36,7 +36,6 @@ public class Player : MonoBehaviour
     {
         float hAxis = Input.GetAxisRaw("Horizontal");
         float vAxis = Input.GetAxisRaw("Vertical");
-        float yValue = transform.position.y;
 
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward.y = 0f;
@@ -55,6 +54,14 @@ public class Player : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 1000f * Time.deltaTime);
         }
 
+        if (hAxis != 0 || vAxis != 0)
+        {
+            PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Walk);
+        }
+        else
+        {
+            PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
+        }
     }
 
     void PlayerJump()
@@ -68,6 +75,7 @@ public class Player : MonoBehaviour
         if (isJump)
         {
             rigid.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Impulse);
+            PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Jump);
         }
     }
 
