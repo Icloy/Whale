@@ -4,22 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public CharacterController controller;
-    public Transform cam;
-
-    Rigidbody rigid;
+    private Rigidbody rigid;
 
     [Header("Move")]
     public float speed;
-    public float turnSmoothTime = 0.1f;
-    float turnSmoothVelocity;
 
-    Vector3 moveVec;
 
     [Header("Jump")]
     public float jumpPower;
+    public float gravity;
     bool isJump;
-
 
 
 
@@ -35,44 +29,46 @@ public class Player : MonoBehaviour
     {
         PlayerMove();
         PlayerJump();
+
     }
 
     void PlayerMove()
     {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        float hAxis = Input.GetAxisRaw("Horizontal");
+        float vAxis = Input.GetAxisRaw("Vertical");
+        float yValue = transform.position.y;
 
-        if(direction.magnitude >= 0.1f)
+        Vector3 cameraForward = Camera.main.transform.forward;
+        cameraForward.y = 0f;
+        cameraForward.Normalize();
+
+
+        Vector3 moveDirection = (cameraForward * vAxis + Camera.main.transform.right * hAxis).normalized;
+
+
+        Vector3 newPosition = transform.position + moveDirection * speed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, newPosition, speed * Time.deltaTime);
+
+        if (moveDirection != Vector3.zero)
         {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, 1000f * Time.deltaTime);
         }
 
-        if (horizontal != 0 || vertical != 0)
-        {
-            PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Walk);
-        }
-        else
-        {
-            PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
-        }
     }
 
     void PlayerJump()
     {
-
         if (Input.GetKeyDown(KeyCode.Space) && !isJump)
         {
             rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
             isJump = true;
         }
 
-
+        if (isJump)
+        {
+            rigid.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Impulse);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -82,7 +78,6 @@ public class Player : MonoBehaviour
             isJump = false;
         }
     }
-
 
     public void unLock() //마우스커서 보이게
     {
