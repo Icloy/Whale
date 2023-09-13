@@ -9,7 +9,7 @@ namespace whale
         [Header("All")]
         public GameObject allTitleButton;
 
-        #region Trigger
+        #region Click
         public void GameStartButtonClick()
         {
             //æ¿¿¸»Ø

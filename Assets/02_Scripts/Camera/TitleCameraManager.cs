@@ -12,7 +12,7 @@ namespace whale
         [SerializeField] float yPos;    // 카메라 높이
         [SerializeField] float zPos;    // 중심점과의 거리
 
-        [Header("OT")]
+        [Header("OT&Caching")]
         private float angle;
         Vector3 target;
         float x;
