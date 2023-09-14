@@ -1,38 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 namespace whale
 {
     public class LoadingManager : MonoBehaviour
     {
-        public static string nextScene;
-        [SerializeField] Image progressBar;
+        public string nextScene;
 
-        public GameObject img;
-        public float speed;
-
-        private void Start()
+        public void LoadScene(string sceneName)
         {
-            StartCoroutine(LoadScene());
-            StartCoroutine(TurnImage());
-        }
-
-        public static void LoadScene(string sceneName)
-        {
-            nextScene = sceneName;
-            SceneManager.LoadScene("LoadingScene");
-        }
-
-        IEnumerator TurnImage()
-        {
-            while (true)
-            {
-                img.transform.Rotate(0f, speed * Time.deltaTime, 0f);
-                yield return null;
-            }
+            SceneManager.LoadScene(sceneName);
+            /*nextScene = sceneName;
+            StartCoroutine(LoadScene());*/
         }
 
         IEnumerator LoadScene()
@@ -45,24 +26,9 @@ namespace whale
             {
                 yield return null;
                 timer += Time.deltaTime;
-                if (op.progress < 0.9f)
-                {
-                    progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, op.progress, timer);
-                    if (progressBar.fillAmount >= op.progress)
-                    {
-                        timer = 0f;
-                    }
-                }
-                else
-                {
-                    progressBar.fillAmount = Mathf.Lerp(progressBar.fillAmount, 1f, timer);
-                    if (progressBar.fillAmount == 1.0f)
-                    {
-                        op.allowSceneActivation = true;
-                        yield break;
-                    }
-                }
+                
             }
+            op.allowSceneActivation = true;
         }
     }
 }
