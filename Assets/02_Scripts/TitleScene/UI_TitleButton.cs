@@ -12,8 +12,9 @@ namespace whale
         #region Click
         public void GameStartButtonClick()
         {
-            MainManager.Instance.uiManager.ui_GameRoom.allGameRoom.SetActive(true);
             allTitleButton.SetActive(false);
+            MainManager.Instance.uiManager.ui_GameRoom.allGameRoom.SetActive(true);
+            MainManager.Instance.uiManager.ui_GameRoom.popUP.SetActive(true);
         }
 
         public void OptionButtonClick()

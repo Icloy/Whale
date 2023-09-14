@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using MNF;
 using MNF.Message;
-
 using System.IO;
 
 public	class _SendDummy

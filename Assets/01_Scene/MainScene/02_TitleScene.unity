@@ -191,6 +191,7 @@ MonoBehaviour:
   imageContainer: {fileID: 11400000, guid: e9d87cfb3707d0c4facd66a7031c98b5, type: 2}
   statusContainer: {fileID: 11400000, guid: 84b95cb3a3aa8944ba367df7925b5c61, type: 2}
   audioContainer: {fileID: 11400000, guid: 8ee07dfddc1836248858b8fe2488870e, type: 2}
+  languageContainer: {fileID: 11400000, guid: 993fc052c5e095b4c9f0e2df5004be3f, type: 2}
   gameSceneState: 0
 --- !u!4 &116718627
 Transform:

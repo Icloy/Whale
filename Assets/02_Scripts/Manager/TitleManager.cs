@@ -15,6 +15,7 @@ namespace whale
         public GameObject gameStartBtn;
         public GameObject[] playerPrefab;
         public InputField inputUserID;
+        
         void Start()
         {
             s = this;
@@ -175,8 +176,6 @@ namespace whale
                     {
                         Destroy(playerObj, 0);
                     }
-
-
                     return;
                 }
             }

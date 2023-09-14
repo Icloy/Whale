@@ -18,6 +18,7 @@ namespace whale
         public ImageContainer imageContainer;
         public StatusContainer statusContainer;
         public AudioContainer audioContainer;
+        public LanguageContainer languageContainer;
 
         [Header("Other")]
         public GameSceneState gameSceneState;
