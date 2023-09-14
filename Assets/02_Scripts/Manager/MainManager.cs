@@ -8,10 +8,12 @@ namespace whale
     {
         [Header("TitleScene")]
         public UIManager uiManager;
-
+        public NetworkManager networkManager;
+        public NetGameManager netGameManager;
 
         [Header("GameScene")]
         public PlayerAnim playerAnim;
+
         [Header("Container")]
         public ImageContainer imageContainer;
         public StatusContainer statusContainer;
