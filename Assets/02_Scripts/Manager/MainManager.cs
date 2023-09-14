@@ -6,10 +6,11 @@ namespace whale
 {
     public class MainManager : Singleton<MainManager>
     {
-        [Header("TitleScene")]
+        [Header("Manager")]
         public UIManager uiManager;
         public NetworkManager networkManager;
         public NetGameManager netGameManager;
+        public LoadingManager loadingManager;
 
         [Header("GameScene")]
         public PlayerAnim playerAnim;
