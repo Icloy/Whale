@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MNF
+namespace whale
 {
     public enum ENUM_LOG_TYPE
     {

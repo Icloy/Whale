@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MNF
+namespace whale
 {
 #if !NETFX_CORE
     public class DataUpperBound<T>

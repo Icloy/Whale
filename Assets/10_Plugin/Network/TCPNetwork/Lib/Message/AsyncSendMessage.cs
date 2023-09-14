@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MNF.Message
+namespace whale.Message
 {
     class AsyncSendMessage : IMessage
     {

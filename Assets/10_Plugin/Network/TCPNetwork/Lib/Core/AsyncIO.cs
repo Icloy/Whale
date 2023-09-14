@@ -2,7 +2,7 @@
 using System.Net;
 using System.Net.Sockets;
 
-namespace MNF
+namespace whale
 {
     public struct ParsingResult
     {

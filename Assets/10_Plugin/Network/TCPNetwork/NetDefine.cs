@@ -1,4 +1,4 @@
-﻿namespace MNF
+﻿namespace whale
 {
     public class NetSetting
     {

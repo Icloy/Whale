@@ -14,7 +14,7 @@ using Windows.Networking.Sockets;
 using Windows.Storage.Streams;
 #endif
 
-namespace MNF
+namespace whale
 {
 	public class SendMessage
 	{

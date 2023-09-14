@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace MNF.Message
+namespace whale.Message
 {
 	static class BinaryMessageBuffer
 	{

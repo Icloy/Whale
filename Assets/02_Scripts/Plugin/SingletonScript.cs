@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace whale
 {
-    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+    public class SingletonScript<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
 

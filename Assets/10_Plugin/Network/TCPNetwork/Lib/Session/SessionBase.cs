@@ -3,9 +3,9 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
-using MNF.Message;
+using whale.Message;
 
-namespace MNF
+namespace whale
 {
     public enum SessionType
     {

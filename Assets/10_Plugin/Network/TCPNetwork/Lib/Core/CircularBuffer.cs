@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace MNF
+namespace whale
 {
     public class CircularBuffer
     {

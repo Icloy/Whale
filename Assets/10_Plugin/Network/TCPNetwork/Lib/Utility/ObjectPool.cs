@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace MNF
+namespace whale
 {
     public class TObjectPool<TObject> where TObject : class, new()
     {

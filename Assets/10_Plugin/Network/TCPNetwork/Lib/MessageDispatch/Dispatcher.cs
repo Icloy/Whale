@@ -1,6 +1,6 @@
 ﻿using System.Diagnostics;
 
-namespace MNF
+namespace whale
 {
     internal class Dispatcher
     {

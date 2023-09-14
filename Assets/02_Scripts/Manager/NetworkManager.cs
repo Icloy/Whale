@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using MNF.Message;
-using MNF;
+using whale.Message;
+using whale;
 using System.IO;
 using System.Net;
 

@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System;
 
-namespace MNF
+namespace whale
 {
     public class AESRef
     {

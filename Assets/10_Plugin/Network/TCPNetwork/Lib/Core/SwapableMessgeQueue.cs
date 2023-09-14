@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Text;
 
-namespace MNF
+namespace whale
 {
     public class SwapableMessgeQueue<T>
     {

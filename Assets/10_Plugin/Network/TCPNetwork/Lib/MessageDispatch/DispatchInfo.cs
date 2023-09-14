@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MNF
+namespace whale
 {
     public delegate int onDispatch<T>(T session, object message) where T : new();
     public delegate int onCustomDispatch<T>(T message) where T : new();

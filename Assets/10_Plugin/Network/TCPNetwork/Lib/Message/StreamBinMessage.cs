@@ -51,7 +51,7 @@ public	class StreamBin
 }
 
 
-namespace MNF.Message
+namespace whale.Message
 {
 	[System.Serializable]
 	public	class	StreamBinData

@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Windows.System.Diagnostics;
 #endif
 
-namespace MNF
+namespace whale
 {
     public static class JsonSupport
     {

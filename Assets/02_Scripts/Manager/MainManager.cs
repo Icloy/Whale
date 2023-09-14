@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace whale
 {
-    public class MainManager : Singleton<MainManager>
+    public class MainManager : SingletonScript<MainManager>
     {
         [Header("Manager")]
         public UIManager uiManager;

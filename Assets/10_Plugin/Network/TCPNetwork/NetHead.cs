@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 
-namespace MNF
+namespace whale
 {
 	public class NetHead
 	{

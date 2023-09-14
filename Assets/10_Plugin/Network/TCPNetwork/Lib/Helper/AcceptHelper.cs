@@ -3,7 +3,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 
-namespace MNF
+namespace whale
 {
 	/**
      * @brief Helps the client connect to the server.

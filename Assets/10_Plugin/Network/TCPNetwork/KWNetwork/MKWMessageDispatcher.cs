@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using MNF;
-using MNF.Message;
+using whale;
+using whale.Message;
 using System.IO;
 
 public class MKWMessageDispatcher : DefaultDispatchHelper<MKWSession, MKWMessageDefine, MKWMessageDefine.SC>

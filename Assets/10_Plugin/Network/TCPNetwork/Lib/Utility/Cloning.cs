@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Reflection.Emit;
 
-namespace MNF
+namespace  whale
 {
     public class Cloning
     {

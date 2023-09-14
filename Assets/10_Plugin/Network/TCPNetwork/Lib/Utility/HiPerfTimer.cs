@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Threading;
 
-namespace MNF
+namespace whale
 {
     public class HiPerfTimer
     {
