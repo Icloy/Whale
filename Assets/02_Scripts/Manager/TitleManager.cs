@@ -136,7 +136,7 @@ namespace whale
             if (dataID == 1)//게임시작
             {
                 gameStartBtn.SetActive(false);
-                InvokeRepeating("UserMove", 0, 0.05f);
+                InvokeRepeating("UserMove", 0, 0.1f);
             }
             else if (dataID == 2)//총알발사
             {
