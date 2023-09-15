@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace whale
 {
-    [CreateAssetMenu]
     public class AudioContainer : ScriptableObject
     {
         public AudioClip a; //exÆÄÀÏ

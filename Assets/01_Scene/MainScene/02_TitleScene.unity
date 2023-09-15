@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1156,9 +1156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 611bab085c02299478fc3b311f3e390b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressBar: {fileID: 0}
-  img: {fileID: 0}
-  speed: 0
+  nextScene: 
 --- !u!4 &1847883201
 Transform:
   m_ObjectHideFlags: 0
@@ -1498,11 +1496,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7105610811706825747, guid: 2e2fe294a812ea847afb5d259cba109f,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5715141082364711710}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e2fe294a812ea847afb5d259cba109f, type: 3}
 --- !u!224 &5715141082364711707 stripped
 RectTransform:
@@ -1510,34 +1504,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 5715141082364711706}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5715141082364711708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6733595476519733963, guid: 2e2fe294a812ea847afb5d259cba109f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5715141082364711706}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &5715141082364711709 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7105610811706825747, guid: 2e2fe294a812ea847afb5d259cba109f,
-    type: 3}
-  m_PrefabInstance: {fileID: 5715141082364711706}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5715141082364711710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5715141082364711709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6aaae4c2f641a84082d97f736fb43a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  allOption: {fileID: 5715141082364711708}
-  gameTab: {fileID: 0}
-  soundTab: {fileID: 0}
-  elseTab: {fileID: 0}
 --- !u!1001 &6419380677571909490
 PrefabInstance:
   m_ObjectHideFlags: 0

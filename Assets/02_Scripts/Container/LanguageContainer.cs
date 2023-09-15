@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace whale
 {
-    [CreateAssetMenu]
     public class LanguageContainer : ScriptableObject
     {
+        [TextArea]
         public List<string> titleUIText = new List<string>();  //title UI
     }
 }

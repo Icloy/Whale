@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace whale
 {
-    [CreateAssetMenu]
     public class StatusContainer : ScriptableObject
     {
+        public string userName;
         public float moveSpeed;
     }
 }
