@@ -4,104 +4,54 @@ using UnityEngine;
 
 public class Test : MonoBehaviour
 {
-    public float speed;
-    float hAxis;
-    float vAxis;
-    public float jumpPower;
-    public float gravity;
+    public CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float playerSpeed = 2.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
 
-    private Rigidbody rigid;
-    bool isJump;
-    Vector3 moveVec;
+    private LayerMask _fieldLayer;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Lock();
-        rigid = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
+        if (controller == null)
+        {
+            controller = gameObject.AddComponent<CharacterController>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        PlayerMove();
-        PlayerJump();
-    }
-
-    void PlayerMove()
-    {
-        float hAxis = Input.GetAxisRaw("Horizontal");
-        float vAxis = Input.GetAxisRaw("Vertical");
-
-        Vector3 cameraForward = Camera.main.transform.forward;
-        cameraForward.y = 0f;
-        cameraForward.Normalize();
-
-        Vector3 moveInput = new Vector3(hAxis, 0, vAxis).normalized;
-        Vector3 moveDirection = cameraForward * moveInput.z + Camera.main.transform.right * moveInput.x;
-
-        transform.position += moveDirection * (speed * 0.1f);
-
-        if (CheckHitWall(moveInput))
-            moveInput = Vector3.zero;
-
-        if (moveDirection != Vector3.zero)
+        if (controller == null)
         {
-            transform.rotation = Quaternion.LookRotation(moveDirection);
-        }
-    }
-
-
-    void PlayerJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && !isJump)
-        {
-            rigid.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
-            isJump = true;
+            return; // controller가 아직 초기화되지 않은 경우 Update를 종료
         }
 
-        if (isJump)
+        groundedPlayer = controller.isGrounded;
+        if (groundedPlayer && playerVelocity.y < 0)
         {
-            rigid.AddForce(Vector3.down * gravity * Time.deltaTime, ForceMode.Impulse);
-            PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Jump);
-        }
-    }
-
-    bool CheckHitWall(Vector3 movement)
-    {
-        // 움직임에 대한 로컬 벡터를 월드 벡터로 변환해준다.
-        movement = transform.TransformDirection(movement);
-        // scope로 ray 충돌을 확인할 범위를 지정할 수 있다.
-        float scope = 1f;
-
-        // 플레이어의 머리, 가슴, 발 총 3군데에서 ray를 쏜다.
-        List<Vector3> rayPositions = new List<Vector3>();
-        rayPositions.Add(transform.position + Vector3.up * 0.1f);
-
-        // 디버깅을 위해 ray를 화면에 그린다.
-        foreach (Vector3 pos in rayPositions)
-        {
-            Debug.DrawRay(pos, movement * scope, Color.red);
+            playerVelocity.y = 0f;
         }
 
-        // ray와 벽의 충돌을 확인한다.
-        foreach (Vector3 pos in rayPositions)
-        {
-            if (Physics.Raycast(pos, movement, out RaycastHit hit, scope))
-            {
-                if (hit.collider.CompareTag("Wall"))
-                    return true;
-            }
-        }
-        return false;
-    }
+        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        controller.Move(move * Time.deltaTime * playerSpeed);
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (move != Vector3.zero)
         {
-            isJump = false;
+            gameObject.transform.forward = move;
         }
+
+        // Changes the height position of the player..
+        if (Input.GetButtonDown("Jump") && groundedPlayer)
+        {
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+        }
+
+        playerVelocity.y += gravityValue * Time.deltaTime;
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 
 
@@ -115,5 +65,21 @@ public class Test : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+
+    private bool IsCheckGrounded()
+    {
+        // CharacterController.IsGrounded가 true라면 Raycast를 사용하지 않고 판정 종료
+        if (controller.isGrounded) return true;
+        // 발사하는 광선의 초기 위치와 방향
+        // 약간 신체에 박혀 있는 위치로부터 발사하지 않으면 제대로 판정할 수 없을 때가 있다.
+        var ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
+        // 탐색 거리
+        var maxDistance = 1.5f;
+        // 광선 디버그 용도
+        Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * maxDistance, Color.red);
+        // Raycast의 hit 여부로 판정
+        // 지상에만 충돌로 레이어를 지정
+        return Physics.Raycast(ray, maxDistance, _fieldLayer);
     }
 }
