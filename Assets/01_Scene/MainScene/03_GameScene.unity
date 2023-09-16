@@ -461,7 +461,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862947729}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.21119876, y: 0.000000021111877, z: -0.0000000045616995, w: 0.97744316}
+  m_LocalRotation: {x: 0.21119873, y: 0.000000014565036, z: -0.0000000031471061, w: 0.97744316}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1319,7 +1319,7 @@ MonoBehaviour:
   cam: {fileID: 1288525272}
   speed: 20
   jumpPower: 2
-  gravity: -30
+  gravity: -40
 --- !u!4 &1774544132
 Transform:
   m_ObjectHideFlags: 0

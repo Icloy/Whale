@@ -21,7 +21,6 @@ namespace whale
         private Vector3 playerVelocity;
         private bool groundedPlayer;
 
-
         // Start is called before the first frame update
         void Start()
         {
@@ -70,7 +69,9 @@ namespace whale
 
         void PlayerJump()
         {
-            groundedPlayer = controller.isGrounded;
+            RaycastHit hit;
+            groundedPlayer = Physics.Raycast(transform.position, Vector3.down, out hit, 1.1f) && hit.collider.CompareTag("Ground");
+
             if (groundedPlayer && playerVelocity.y < 0)
             {
                 playerVelocity.y = 0f;
