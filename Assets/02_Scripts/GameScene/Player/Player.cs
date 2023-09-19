@@ -6,8 +6,8 @@ namespace whale
 {
     public class Player : MonoBehaviour
     {
-        public CharacterController controller;
-        public Transform cam;
+        [SerializeField] private CharacterController controller;
+        [SerializeField] private Transform cam;
 
         [Header("Move")]
         [SerializeField] private float speed;
