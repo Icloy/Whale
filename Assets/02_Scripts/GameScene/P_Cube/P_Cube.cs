@@ -2,40 +2,73 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class P_Cube : MonoBehaviour
+namespace whale
 {
-    [Header("All")]
-    public GameObject allP_Cube;
 
-    [Header("Cube")]
-    [SerializeField] GameObject cube;
-    int cubeNum = 3;
-    List<GameObject> LubiksCube = new List<GameObject>();
-    List<GameObject> HorinzontalLineCube = new List<GameObject>();
-    List<GameObject> VerticalLineCube = new List<GameObject>();
-
-    [Header("Caching")]
-    GameObject obj;
-    void InitCubeProcess()
+    public class P_Cube : MonoBehaviour
     {
-        for (int i = 0; i < cubeNum; i++)
+        [Header("All")]
+        public GameObject allP_Cube;
+
+        [Header("Cube")]
+        [SerializeField] GameObject cube;
+        int cubeNum = 3;
+        List<GameObject> LubiksCubeObj = new List<GameObject>();
+        List<Cube> LubiksCubeScript = new List<Cube>();
+
+        List<GameObject> HorinzontalLineCube = new List<GameObject>();
+        List<GameObject> VerticalLineCube = new List<GameObject>();
+
+
+        [Header("Caching")]
+        GameObject obj;
+
+        void InitCubeProcess()
         {
-            for (int x = 0; x < cubeNum; x++)
+            int cubeKey = 1;
+            for (int i = 0; i < cubeNum; i++)
             {
-                for (int y = 0; y < cubeNum; y++)
+                for (int x = 0; x < cubeNum; x++)
                 {
-                    obj = Instantiate(cube);
-                    obj.transform.position = new Vector3(x, y, i);
-                    obj.SetActive(true);
-                    obj.transform.SetParent(cube.transform.parent, false);
-                    LubiksCube.Add(obj);
+                    for (int y = 0; y < cubeNum; y++)
+                    {
+                        obj = Instantiate(cube);
+                        Cube cubeScript = GetComponent<Cube>();
+                        cubeScript.cubeKey = cubeKey;
+                        cubeKey++;
+                        obj.transform.position = new Vector3(x, y, i);
+                        obj.SetActive(true);
+                        obj.transform.SetParent(cube.transform.parent, false);
+                        LubiksCubeObj.Add(obj);
+                        LubiksCubeScript.Add(cubeScript);
+                    }
                 }
             }
         }
+
+        private void Start()
+        {
+            InitCubeProcess();
+        }
+
+        #region Click
+        public void Click_RotateVertical()
+        {
+            foreach (var item in VerticalLineCube)
+            {
+
+            }
+        }
+
+        public void Click_RotateHorizontal()
+        {
+            foreach (var item in HorinzontalLineCube)
+            {
+
+            }
+
+        }
+        #endregion
     }
 
-    private void Start()
-    {
-        InitCubeProcess();
-    }
 }
