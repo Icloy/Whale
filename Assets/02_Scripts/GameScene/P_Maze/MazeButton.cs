@@ -9,17 +9,11 @@ namespace whale
     {
         [SerializeField] private float moveDistance = 2.0f; // 움직일 거리
         [SerializeField] private float moveSpeed = 1.0f;    // 움직이는 속도
+        [SerializeField] private GameObject buttonObject;   // 발판에 연결된 버튼 오브젝트
+
         private Vector3 initialPosition;  // 초기 위치
         private Vector3 targetPosition;   // 목표 위치
-        private bool isMoving = false;    // 발판이 움직이는 중인지 여부
-
-        [SerializeField] private GameObject RedBtn;
-        [SerializeField] private GameObject GreenBtn;
-        [SerializeField] private GameObject BlueBtn;
-
-        bool isRed = false;
-        bool isGreen = false;
-        bool isBlue = false;
+        [SerializeField] private bool isMoving = false;    // 발판이 움직이는 중인지 여부
 
         private void Start()
         {
@@ -29,112 +23,48 @@ namespace whale
 
         private void Update()
         {
-            if (isRed)
+            if (isMoving)
             {
-                RedMove();
+                MovePlatform(buttonObject);
             }
-            else if(isGreen)
+            else
             {
-                GreenMove();
-            }
-            else if (isBlue)
-            {
-                BlueMove();
+                ResetPlatform(buttonObject);
             }
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.CompareTag("Player"))
             {
                 isMoving = true;
-                switch (gameObject.name)
-                {
-                    case "RedCol":
-                        isRed = true;
-                        break;
-                    case "GreenCol":
-                        isGreen = true;
-                        break;
-                    case "BlueCol":
-                        isBlue = true;
-                        break;
-                }
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            isRed = false;
-            isGreen = false;
-            isBlue = false;
-
-            // 발판을 원래 위치로 되돌림
-            if (isMoving)
-            {
-                isMoving = false;
-                ResetPlatformPosition();
-            }
+            isMoving = false;
         }
 
-        void RedMove()
+        private void MovePlatform(GameObject button)
         {
-            if (isMoving)
-            {
-                // 발판을 아래로 움직이는 코드
-                float step = moveSpeed * Time.deltaTime;
-                RedBtn.transform.position = Vector3.MoveTowards(RedBtn.transform.position, targetPosition, step);
-
-                // 목표 위치에 도달하면 움직임을 멈춤
-                if (RedBtn.transform.position == targetPosition)
-                {
-                    isMoving = false;
-                }
-            }
-        }
-
-        void GreenMove()
-        {
-            if (isMoving)
-            {
-                // 발판을 아래로 움직이는 코드
-                float step = moveSpeed * Time.deltaTime;
-                GreenBtn.transform.position = Vector3.MoveTowards(GreenBtn.transform.position, targetPosition, step);
-
-                // 목표 위치에 도달하면 움직임을 멈춤
-                if (GreenBtn.transform.position == targetPosition)
-                {
-                    isMoving = false;
-                }
-            }
-        }
-
-        void BlueMove()
-        {
-            if (isMoving)
-            {
-                // 발판을 아래로 움직이는 코드
-                float step = moveSpeed * Time.deltaTime;
-                BlueBtn.transform.position = Vector3.MoveTowards(BlueBtn.transform.position, targetPosition, step);
-
-                // 목표 위치에 도달하면 움직임을 멈춤
-                if (BlueBtn.transform.position == targetPosition)
-                {
-                    isMoving = false;
-                }
-            }
-        }
-
-        void ResetPlatformPosition()
-        {
-            // 발판을 초기 위치로 되돌림
             float step = moveSpeed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, initialPosition, step);
+            button.transform.position = Vector3.MoveTowards(button.transform.position, targetPosition, step);
 
-            // 초기 위치에 도달하면 움직임을 멈춤
-            if (transform.position == initialPosition)
+            if (button.transform.position == targetPosition)
             {
-                // 여기에 초기 위치에 도달했을 때 실행할 코드를 추가할 수 있습니다.
+                //눌렀을 때 코드
+            }
+        }
+
+        private void ResetPlatform(GameObject button)
+        {
+            float step = moveSpeed * Time.deltaTime;
+            button.transform.position = Vector3.MoveTowards(button.transform.position, initialPosition, step);
+
+            if (button.transform.position == initialPosition)
+            {
+                // 다시 돌아왔을때 코드
             }
         }
 
