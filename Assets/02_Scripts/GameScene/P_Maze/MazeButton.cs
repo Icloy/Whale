@@ -7,13 +7,15 @@ namespace whale
 {
     public class MazeButton : MonoBehaviour
     {
+        public Maze maze;
+
         [SerializeField] private float moveDistance = 2.0f; // 움직일 거리
         [SerializeField] private float moveSpeed = 1.0f;    // 움직이는 속도
         [SerializeField] private GameObject buttonObject;   // 발판에 연결된 버튼 오브젝트
 
         private Vector3 initialPosition;  // 초기 위치
         private Vector3 targetPosition;   // 목표 위치
-        [SerializeField] private bool isMoving = false;    // 발판이 움직이는 중인지 여부
+        private bool isMoving = false;    // 발판이 움직이는 중인지 여부
 
         private void Start()
         {
@@ -53,7 +55,19 @@ namespace whale
 
             if (button.transform.position == targetPosition)
             {
-                //눌렀을 때 코드
+                name = button.name;
+                switch (name)
+                {
+                    case "Red":
+                        maze.isRed = true;
+                        break;
+                    case "Green":
+                        maze.isGreen = true;
+                        break;
+                    case "Blue":
+                        maze.isBlue = true;
+                        break;
+                }
             }
         }
 
@@ -64,7 +78,19 @@ namespace whale
 
             if (button.transform.position == initialPosition)
             {
-                // 다시 돌아왔을때 코드
+                name = button.name;
+                switch (name)
+                {
+                    case "Red":
+                        maze.isRed = false;
+                        break;
+                    case "Green":
+                        maze.isGreen = false;
+                        break;
+                    case "Blue":
+                        maze.isBlue = false;
+                        break;
+                }
             }
         }
 
