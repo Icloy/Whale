@@ -6,6 +6,8 @@ namespace whale
 {
     public class Cube : MonoBehaviour
     {
-        [HideInInspector] public int cubeKey;
+        //[HideInInspector] public int cubeKey;
+        public int cubeKey;
+
     }
 }
