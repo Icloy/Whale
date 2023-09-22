@@ -16,7 +16,6 @@ public class PickUp : MonoBehaviour
 
 
     public GameObject item = null;  // 바라보고 있는 아이템
-    public GameObject obj = null;   // 바라보고 있는 오브젝트 ex) 문,서랍
     public GameObject heldItem = null;  // 들고 있는 아이템
     public Transform hand;
     private KeyCode pickupKey = KeyCode.E;
@@ -71,27 +70,24 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    void OnDrawGizmos()
+    {
+        Vector3 rayStart = transform.position;
+        Vector3 rayDirection = transform.TransformDirection(Vector3.forward);
+        Gizmos.DrawRay(rayStart, rayDirection * range);
+    }
+
     void CheckItem()
     {
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hitInfo, range, layerMask)) //시야에 닿은 것 파악
         {
-            //기즈모 써라
-            Debug.Log("2");
-
             if (hitInfo.transform.tag == "Item" && heldItem == null)
             {
-                Debug.Log("!");
                 ItemInfoAppear();
             }
             else
             {
                 item = null;
-                obj = null;
-            }
-
-            if (hitInfo.transform.tag == "Object")
-            {
-                ObjectInfoApper();
             }
 
         }
@@ -103,37 +99,14 @@ public class PickUp : MonoBehaviour
 
     void ItemInfoAppear()
     {
-        obj = null;
         pickupActivated = true; //false 에서 true로 변경
-        //item = hitInfo.transform.GetComponent<ItemPickUp>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
+        item = hitInfo.transform.GetComponent<Item>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
 
-    }
-
-    void ObjectInfoApper()
-    {
-        item = null;
-        pickupActivated = false;
-        //obj = hitInfo.transform.GetComponent<ItemPickUp>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
-
-        if (heldItem != null)
-        {
-            if (Input.GetKeyDown(dropKey))
-            {
-                Debug.Log("아이템 내려놓기");
-
-                heldItem.GetComponent<Rigidbody>().isKinematic = false;
-                heldItem.transform.parent = null;
-                heldItem = null;
-            }
-
-            pickupActivated = false;
-        }
     }
 
     void InfoDisappear()
     {
         item = null;
-        obj = null;
         pickupActivated = false;
         if (heldItem != null)
         {
