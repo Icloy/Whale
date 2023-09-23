@@ -12,3 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae5caeece75f6db4ca173bd2978154c2, type: 3}
   m_Name: Cube
   m_EditorClassIdentifier: 
+  itemPrefab: {fileID: 8623388180451384979, guid: f9ada82d8d66a8f4783298c6bcdee814,
+    type: 3}
+  itemName: Cube
+  key: 1
