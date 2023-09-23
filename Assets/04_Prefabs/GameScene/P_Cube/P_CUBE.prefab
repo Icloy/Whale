@@ -87,6 +87,7 @@ MonoBehaviour:
   cube: {fileID: 7003574238530998470}
   HorinzontalLineCube: []
   VerticalLineCube: []
+  cubeLoc: {fileID: 99946312197207739}
   ver: {fileID: 3566892386626866003}
   hor: {fileID: 6266095589703323350}
   vText: {fileID: 0}

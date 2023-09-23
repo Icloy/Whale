@@ -19,18 +19,21 @@ namespace whale
 
         [SerializeField] List<GameObject> HorinzontalLineCube = new List<GameObject>();
         [SerializeField] List<GameObject> VerticalLineCube = new List<GameObject>();
+        [SerializeField] GameObject cubeLoc;
         [SerializeField] GameObject ver;
         [SerializeField] GameObject hor;
 
 
         [Header("Caching")]
+        Coroutine rotateCoroutine = null;
         Color selColor;
         GameObject obj;
         bool isRotate;
         int v, h;
         [SerializeField] TextMeshProUGUI vText;
         [SerializeField] TextMeshProUGUI hText;
-        float rotationSpeed = 5f;
+        float rotationSpeed = 90f;
+        int rotationCount;
 
 
         private void Start()
@@ -86,35 +89,37 @@ namespace whale
                 }
             }
         }
-        IEnumerator RotateCubes()
+        IEnumerator RotateCubes(GameObject vh, Quaternion goalRot)
         {
-            Quaternion startRotation = transform.rotation;
-
-            // 목표 회전값 (90도 회전)
-            Quaternion targetRotation = Quaternion.Euler(90, 0, 0);
-
-            // 회전 속도
-            float rotationSpeed = 90.0f; // 90도/초
-
-            // 회전 방향
+            Quaternion startRotation = vh.transform.rotation;
+            Quaternion targetRotation = goalRot;
             Vector3 rotationAxis = Vector3.right;
 
-            while (true)
+            float totalAngle = 90.0f;
+            float rotatedAngle = 0.0f;
+
+            while (rotatedAngle < totalAngle)
             {
-                // 시간당 회전 각도를 계산합니다.
                 float step = rotationSpeed * Time.deltaTime;
+                vh.transform.rotation *= Quaternion.AngleAxis(step, rotationAxis);
+                rotatedAngle += step;
+                yield return null;
+            }
 
-                // 현재 회전값을 step 만큼 회전합니다.
-                ver.transform.rotation *= Quaternion.AngleAxis(step, rotationAxis);
+            vh.transform.rotation = targetRotation;
+            rotationCount++;
 
-                // 회전이 목표치에 도달했는지 확인
-                if (Quaternion.Angle(ver.transform.rotation, targetRotation) < 1.0f)
-                {
-                    ver.transform.rotation = targetRotation; // 정확히 목표 회전값으로 설정
-                    yield break; // 코루틴 종료
-                }
+            if (rotationCount >= 4)
+            {
+                rotationCount = 0;
+            }
+        }
 
-                yield return null; // 다음 프레임까지 대기
+        void ResetCubeRotations()
+        {
+            foreach (var obj in LubiksCubeObj)
+            {
+                obj.transform.rotation = Quaternion.identity;
             }
         }
 
@@ -125,7 +130,7 @@ namespace whale
             {
                 obj.transform.SetParent(ver.transform);
             }
-            StartCoroutine(RotateCubes());
+            StartCoroutine(RotateCubes(ver, Quaternion.Euler(90, 0, 0)));
         }
 
         public void Click_RotateHorizontal()
@@ -143,10 +148,14 @@ namespace whale
             {
                 v = 0;
             }
-            foreach (GameObject obj in VerticalLineCube)
+            if(VerticalLineCube.Count > 0)
             {
-                Renderer renderer = obj.GetComponent<Renderer>();
-                renderer.material.color = Color.gray;
+                foreach (GameObject obj in VerticalLineCube)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;
+                    obj.transform.SetParent(cubeLoc.transform);
+                }
             }
             VerticalLineCube.Clear();
             vText.text = "V : " + v;
