@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using static UnityEditor.Rendering.InspectorCurveEditor;
 
 namespace whale
 {
@@ -17,7 +18,7 @@ namespace whale
         List<GameObject> LubiksCubeObj = new List<GameObject>();
         List<Cube> LubiksCubeScript = new List<Cube>();
 
-        [SerializeField] List<GameObject> HorinzontalLineCube = new List<GameObject>();
+        [SerializeField] List<GameObject> HorizontalLineCube = new List<GameObject>();
         [SerializeField] List<GameObject> VerticalLineCube = new List<GameObject>();
         [SerializeField] GameObject cubeLoc;
         [SerializeField] GameObject ver;
@@ -25,24 +26,27 @@ namespace whale
 
 
         [Header("Caching")]
-        Coroutine rotateCoroutine = null;
-        Color selColor;
+        CubeState cubeState;
+        Color selVerColor;
+        Color selHorColor;
         GameObject obj;
-        bool isRotate;
         int v, h;
+        float rotationSpeed = 90f;
+
+        [Header("TestUI")]
         [SerializeField] TextMeshProUGUI vText;
         [SerializeField] TextMeshProUGUI hText;
-        float rotationSpeed = 90f;
-        int rotationCount;
-
 
         private void Start()
         {
             InitCubeProcess();
-            selColor = Color.yellow;
+
+            //선택시 색상
+            selVerColor = Color.yellow;
+            selHorColor = Color.green;
         }
 
-        void InitCubeProcess()
+        void InitCubeProcess() //큐브 생성  무작위 추가해야함
         {
             int cubeKey = 1;
             for (int i = 0; i < cubeNum; i++)
@@ -63,37 +67,68 @@ namespace whale
                     }
                 }
             }
+            cubeState = CubeState.None;
         }
 
 
-        public void SelVertical(int val)
+        public void SelVertical(int val) // 수직 선택
         {
+            if(cubeState.Equals(CubeState.Hor)) //수평이 이미 선택이 되어있다면
+            {
+                foreach (GameObject obj in HorizontalLineCube)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;
+                    obj.transform.SetParent(cubeLoc.transform);
+                }
+                HorizontalLineCube.Clear();
+            }
+            cubeState = CubeState.Ver;
             foreach (GameObject obj in LubiksCubeObj)
             {
                 if (obj.transform.position.x.Equals(val))
                 {
                     VerticalLineCube.Add(obj);
                     Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = selColor;
+                    renderer.material.color = selVerColor;
                 }
             }
         }
 
-        public void SelHorizontal(int val)
+        public void SelHorizontal(int val) //수평 선택
         {
+            if (cubeState.Equals(CubeState.Ver)) //수직이 이미 선택이 되어있다면
+            {
+                foreach (GameObject obj in VerticalLineCube)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;
+                    obj.transform.SetParent(cubeLoc.transform);
+                }
+                VerticalLineCube.Clear();
+            }
+            cubeState = CubeState.Hor;
             foreach (GameObject obj in LubiksCubeObj)
             {
                 if (obj.transform.position.z.Equals(val))
                 {
-                    HorinzontalLineCube.Add(obj);
+                    HorizontalLineCube.Add(obj);
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = selHorColor;
                 }
             }
         }
+
         IEnumerator RotateCubes(GameObject vh, Quaternion goalRot)
         {
             Quaternion startRotation = vh.transform.rotation;
             Quaternion targetRotation = goalRot;
-            Vector3 rotationAxis = Vector3.right;
+
+            Vector3 rotationAxis = cubeState switch
+            {
+                CubeState.Ver => Vector3.left,
+                CubeState.Hor => Vector3.back,
+            };
 
             float totalAngle = 90.0f;
             float rotatedAngle = 0.0f;
@@ -107,48 +142,17 @@ namespace whale
             }
 
             vh.transform.rotation = targetRotation;
-            rotationCount++;
-
-            if (rotationCount >= 4)
-            {
-                rotationCount = 0;
-            }
-        }
-
-        void ResetCubeRotations()
-        {
-            foreach (var obj in LubiksCubeObj)
-            {
-                obj.transform.rotation = Quaternion.identity;
-            }
+  
         }
 
         #region Click
-        public void Click_RotateVertical()
+        public void Click_ChangeVerLine() //수직 라인 선택
         {
-            foreach (GameObject obj in VerticalLineCube)
-            {
-                obj.transform.SetParent(ver.transform);
-            }
-            StartCoroutine(RotateCubes(ver, Quaternion.Euler(90, 0, 0)));
-        }
-
-        public void Click_RotateHorizontal()
-        {
-            foreach (var item in HorinzontalLineCube)
-            {
-
-            }
-
-        }
-
-        public void Click_ChangeVerLine()
-        {
-            if(v > 2)
+            if (v > 2)
             {
                 v = 0;
             }
-            if(VerticalLineCube.Count > 0)
+            if (VerticalLineCube.Count > 0)
             {
                 foreach (GameObject obj in VerticalLineCube)
                 {
@@ -162,11 +166,54 @@ namespace whale
             SelVertical(v);
             v++;
         }
-        public void Click_ChangeHorLine()
-        {
 
+        public void Click_ChangeHorLine() //수평 라인 선택
+        {
+            if (h > 2)
+            {
+                h = 0;
+            }
+            if (HorizontalLineCube.Count > 0)
+            {
+                foreach (GameObject obj in HorizontalLineCube)
+                {
+                    Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;
+                    obj.transform.SetParent(cubeLoc.transform);
+                }
+            }
+            HorizontalLineCube.Clear();
+            hText.text = "H : " + h;
+            SelHorizontal(h);
+            h++;
+        }
+
+        public void Click_RotateVertical() //수직 회전
+        {
+            if (!cubeState.Equals(CubeState.Ver)) return;
+            foreach (GameObject obj in VerticalLineCube)
+            {
+                obj.transform.SetParent(ver.transform);
+            }
+            StartCoroutine(RotateCubes(ver, Quaternion.Euler(90, 0, 0)));
+        }
+
+        public void Click_RotateHorizontal() //수평 회전
+        {
+            if (!cubeState.Equals(CubeState.Hor)) return;
+            foreach (GameObject obj in HorizontalLineCube)
+            {
+                obj.transform.SetParent(hor.transform);
+            }
+            StartCoroutine(RotateCubes(hor, Quaternion.Euler(0, 0, 90)));
         }
         #endregion
-    }
 
+        private enum CubeState
+        {
+            None,
+            Hor,
+            Ver
+        }
+    }
 }
