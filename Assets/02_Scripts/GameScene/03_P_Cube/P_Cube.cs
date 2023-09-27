@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 namespace whale
 {
@@ -15,8 +14,8 @@ namespace whale
         [Header("Cube")]
         [SerializeField] GameObject cube;
         int cubeNum = 3;
-        List<GameObject> LubiksCubeObj = new List<GameObject>();
-        List<Cube> LubiksCubeScript = new List<Cube>();
+        [SerializeField] List<GameObject> LubiksCubeObj = new List<GameObject>();
+        [SerializeField] List<Cube> LubiksCubeScript = new List<Cube>();
 
         [SerializeField] List<GameObject> HorizontalLineCube = new List<GameObject>();
         [SerializeField] List<GameObject> VerticalLineCube = new List<GameObject>();
@@ -32,6 +31,7 @@ namespace whale
         GameObject obj;
         int v, h;
         float rotationSpeed = 90f;
+        bool isRotate;
 
         [Header("TestUI")]
         [SerializeField] TextMeshProUGUI vText;
@@ -84,6 +84,7 @@ namespace whale
                 HorizontalLineCube.Clear();
             }
             cubeState = CubeState.Ver;
+            RoundTransform();
             foreach (GameObject obj in LubiksCubeObj)
             {
                 if (obj.transform.position.x.Equals(val))
@@ -108,6 +109,7 @@ namespace whale
                 VerticalLineCube.Clear();
             }
             cubeState = CubeState.Hor;
+            RoundTransform();
             foreach (GameObject obj in LubiksCubeObj)
             {
                 if (obj.transform.position.z.Equals(val))
@@ -121,7 +123,7 @@ namespace whale
 
         IEnumerator RotateCubes(GameObject vh, Quaternion goalRot)
         {
-            Quaternion startRotation = vh.transform.rotation;
+            isRotate = true;
             Quaternion targetRotation = goalRot;
 
             Vector3 rotationAxis = cubeState switch
@@ -142,7 +144,24 @@ namespace whale
             }
 
             vh.transform.rotation = targetRotation;
-  
+        }
+
+        void RoundTransform()
+        {
+            foreach (GameObject obj in LubiksCubeObj)
+            {
+                Vector3 v3 = obj.transform.position;
+
+                v3.x = Mathf.Round(v3.x);
+                v3.y = Mathf.Round(v3.y);
+                v3.z = Mathf.Round(v3.z);
+
+                obj.transform.position = v3;
+
+                /*Cube cube = obj.GetComponent<Cube>();
+                cube.RoundTransform();*/
+            }
+
         }
 
         #region Click
