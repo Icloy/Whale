@@ -122,3 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe4978cb4f9c62479b278564507624b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cubeKey: 0
+  normal: {fileID: 2100000, guid: e382cb701724e7a41b651bc7a12d43e9, type: 2}
+  answer: {fileID: 2100000, guid: b84c88fef8a0dc344abbd7afcb70dd46, type: 2}

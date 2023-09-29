@@ -9,5 +9,9 @@ namespace whale
         //[HideInInspector] public int cubeKey;
         public int cubeKey;
 
+        [Header("Cube_Material")]
+        [SerializeField] Material normal;
+        public Material answer;
+        public MeshRenderer Meshrenderer;
     }
 }

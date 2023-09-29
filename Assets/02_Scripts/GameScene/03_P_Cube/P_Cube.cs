@@ -5,7 +5,6 @@ using TMPro;
 
 namespace whale
 {
-
     public class P_Cube : MonoBehaviour
     {
         [Header("All")]
@@ -14,16 +13,16 @@ namespace whale
         [Header("Cube")]
         [SerializeField] GameObject cube;
         int cubeNum = 3;
-        [SerializeField] List<GameObject> LubiksCubeObj = new List<GameObject>();
-        [SerializeField] List<Cube> LubiksCubeScript = new List<Cube>();
 
-        [SerializeField] List<GameObject> HorizontalLineCube = new List<GameObject>();
-        [SerializeField] List<GameObject> VerticalLineCube = new List<GameObject>();
+        List<GameObject> LubiksCubeObj = new List<GameObject>();
+        List<Cube> LubiksCubeScript = new List<Cube>();
+        List<GameObject> HorizontalLineCube = new List<GameObject>();
+        List<GameObject> VerticalLineCube = new List<GameObject>();
+
         [SerializeField] GameObject cubeLoc;
         [SerializeField] GameObject ver;
         [SerializeField] GameObject hor;
-
-
+        
         [Header("Caching")]
         CubeState cubeState;
         Color selVerColor;
@@ -67,9 +66,29 @@ namespace whale
                     }
                 }
             }
+            PickRandomCube();
             cubeState = CubeState.None;
         }
 
+        void PickRandomCube()
+        {
+            List<Cube> availableCubes = new List<Cube>(LubiksCubeScript);
+            availableCubes.RemoveAll(cube => cube.cubeKey == 14); // 14번 큐브는 제외
+
+            for (int i = 0; i < 9; i++)
+            {
+                if (availableCubes.Count > 0)
+                {
+                    int randomIndex = Random.Range(0, availableCubes.Count);
+                    Cube randomCube = availableCubes[randomIndex];
+
+                    randomCube.Meshrenderer = randomCube.GetComponent<MeshRenderer>();
+                    randomCube.Meshrenderer.material = randomCube.answer;
+
+                    availableCubes.RemoveAt(randomIndex);
+                }
+            }
+        }
 
         public void SelVertical(int val) // 수직 선택
         {
