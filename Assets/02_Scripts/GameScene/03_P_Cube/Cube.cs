@@ -6,8 +6,10 @@ namespace whale
 {
     public class Cube : MonoBehaviour
     {
-        //[HideInInspector] public int cubeKey;
-        public int cubeKey;
+        [Header("CubeKey")]
+        [HideInInspector] public int cubeKey;
+        [HideInInspector] public bool isSel;
+        [HideInInspector] public bool isKey;
 
         [Header("Cube_Material")]
         [SerializeField] Material normal;

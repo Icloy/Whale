@@ -30,7 +30,6 @@ namespace whale
         GameObject obj;
         int v, h;
         float rotationSpeed = 90f;
-        bool isRotate;
 
         [Header("TestUI")]
         [SerializeField] TextMeshProUGUI vText;
@@ -45,7 +44,7 @@ namespace whale
             selHorColor = Color.green;
         }
 
-        void InitCubeProcess() //큐브 생성  무작위 추가해야함
+        void InitCubeProcess() //큐브 생성
         {
             int cubeKey = 1;
             for (int i = 0; i < cubeNum; i++)
@@ -70,7 +69,7 @@ namespace whale
             cubeState = CubeState.None;
         }
 
-        void PickRandomCube()
+        void PickRandomCube() //초기 큐브 랜덤 선택 
         {
             List<Cube> availableCubes = new List<Cube>(LubiksCubeScript);
             availableCubes.RemoveAll(cube => cube.cubeKey == 14); // 14번 큐브는 제외
@@ -82,6 +81,7 @@ namespace whale
                     int randomIndex = Random.Range(0, availableCubes.Count);
                     Cube randomCube = availableCubes[randomIndex];
 
+                    randomCube.isKey = true;
                     randomCube.Meshrenderer = randomCube.GetComponent<MeshRenderer>();
                     randomCube.Meshrenderer.material = randomCube.answer;
 
@@ -90,7 +90,7 @@ namespace whale
             }
         }
 
-        public void SelVertical(int val) // 수직 선택
+        void SelVertical(int val) // 수직 선택
         {
             if(cubeState.Equals(CubeState.Hor)) //수평이 이미 선택이 되어있다면
             {
@@ -115,7 +115,7 @@ namespace whale
             }
         }
 
-        public void SelHorizontal(int val) //수평 선택
+        void SelHorizontal(int val) //수평 선택
         {
             if (cubeState.Equals(CubeState.Ver)) //수직이 이미 선택이 되어있다면
             {
@@ -140,9 +140,8 @@ namespace whale
             }
         }
 
-        IEnumerator RotateCubes(GameObject vh, Quaternion goalRot)
+        IEnumerator RotateCubes(GameObject vh, Quaternion goalRot) //큐브 회전
         {
-            isRotate = true;
             Quaternion targetRotation = goalRot;
 
             Vector3 rotationAxis = cubeState switch
@@ -161,11 +160,10 @@ namespace whale
                 rotatedAngle += step;
                 yield return null;
             }
-
             vh.transform.rotation = targetRotation;
         }
 
-        void RoundTransform()
+        void RoundTransform() //큐브 위치 재조정
         {
             foreach (GameObject obj in LubiksCubeObj)
             {
@@ -176,11 +174,7 @@ namespace whale
                 v3.z = Mathf.Round(v3.z);
 
                 obj.transform.position = v3;
-
-                /*Cube cube = obj.GetComponent<Cube>();
-                cube.RoundTransform();*/
             }
-
         }
 
         #region Click
