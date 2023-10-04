@@ -96,8 +96,8 @@ namespace whale
             {
                 foreach (GameObject obj in HorizontalLineCube)
                 {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = Color.gray;
+                    /*Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;*/
                     obj.transform.SetParent(cubeLoc.transform);
                 }
                 HorizontalLineCube.Clear();
@@ -109,8 +109,8 @@ namespace whale
                 if (obj.transform.position.x.Equals(val))
                 {
                     VerticalLineCube.Add(obj);
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = selVerColor;
+                    /*Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = selVerColor;*/
                 }
             }
         }
@@ -121,8 +121,8 @@ namespace whale
             {
                 foreach (GameObject obj in VerticalLineCube)
                 {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = Color.gray;
+                    /*Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;*/
                     obj.transform.SetParent(cubeLoc.transform);
                 }
                 VerticalLineCube.Clear();
@@ -134,8 +134,8 @@ namespace whale
                 if (obj.transform.position.z.Equals(val))
                 {
                     HorizontalLineCube.Add(obj);
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = selHorColor;
+                    /*Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = selHorColor;*/
                 }
             }
         }
@@ -160,7 +160,7 @@ namespace whale
                 rotatedAngle += step;
                 yield return null;
             }
-            vh.transform.rotation = targetRotation;
+            RoundTransform();
         }
 
         void RoundTransform() //큐브 위치 재조정
@@ -177,6 +177,7 @@ namespace whale
             }
         }
 
+
         #region Click
         public void Click_ChangeVerLine() //수직 라인 선택
         {
@@ -188,8 +189,8 @@ namespace whale
             {
                 foreach (GameObject obj in VerticalLineCube)
                 {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = Color.gray;
+                    /*Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;*/
                     obj.transform.SetParent(cubeLoc.transform);
                 }
             }
@@ -209,8 +210,8 @@ namespace whale
             {
                 foreach (GameObject obj in HorizontalLineCube)
                 {
-                    Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = Color.gray;
+                   /* Renderer renderer = obj.GetComponent<Renderer>();
+                    renderer.material.color = Color.gray;*/
                     obj.transform.SetParent(cubeLoc.transform);
                 }
             }
@@ -238,6 +239,21 @@ namespace whale
                 obj.transform.SetParent(hor.transform);
             }
             StartCoroutine(RotateCubes(hor, Quaternion.Euler(0, 0, 90)));
+        }
+        public void Click_AnswerCheck()
+        {
+            int a = 0;
+            foreach (Cube item in LubiksCubeScript)
+            {
+                if (item.isCurPos)
+                {
+                    a++;
+                }
+            }
+            if (a >= 9) 
+            {
+                Debug.Log("Clear");
+            }
         }
         #endregion
 

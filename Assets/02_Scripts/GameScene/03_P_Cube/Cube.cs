@@ -8,12 +8,32 @@ namespace whale
     {
         [Header("CubeKey")]
         [HideInInspector] public int cubeKey;
-        [HideInInspector] public bool isSel;
-        [HideInInspector] public bool isKey;
+        public bool isCurPos;
+        public bool isKey;
 
         [Header("Cube_Material")]
         [SerializeField] Material normal;
         public Material answer;
         public MeshRenderer Meshrenderer;
+
+        #region Trigger
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("AnswerCheck"))
+            {
+                if (isKey)
+                {
+                    isCurPos = true;
+                }
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("AnswerCheck"))
+            {
+                isCurPos = false;
+            }
+        }
+        #endregion
     }
 }

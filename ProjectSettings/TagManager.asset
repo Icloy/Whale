@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Item
+  - Puzzle
+  - AnswerCheck
   layers:
   - Default
   - TransparentFX
