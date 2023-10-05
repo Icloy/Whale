@@ -59,6 +59,10 @@ namespace whale
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
 
             userSession.m_userTransform[0] = new NetVector3(transform.position);
+
+            MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
+
+            //RoomUserMoveDirect(UserSession userSession)
         }
 
         void PlayerMove()

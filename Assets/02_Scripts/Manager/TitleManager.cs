@@ -66,7 +66,7 @@ namespace whale
             UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
 
-            MainManager.Instance.netGameManager.RoomUserMove(userSession);
+            //MainManager.Instance.netGameManager.RoomUserMove(userSession);
 
             Debug.Log("UserMove : ");
         }
