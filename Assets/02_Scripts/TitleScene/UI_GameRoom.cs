@@ -41,7 +41,7 @@ namespace whale
         {
             ClearPanel();
             joinPopup.SetActive(true);
-            TitleManager.s.RoomEnter();
+            MainManager.Instance.titleManager.RoomEnter();
         }
 
         public void PopUP_CreateRoom()
@@ -72,7 +72,9 @@ namespace whale
                 return;
             }*/
             MainManager.Instance.statusContainer.userName = userName.text;
-            TitleManager.s.OnClick_Login(userName.text);
+            MainManager.Instance.titleManager.OnClick_Login(userName.text);
+            MainManager.Instance.titleManager.OnClick_Start();
+
         }
 
         public void Join_Cancel() //RoomCancel도 이거 사용

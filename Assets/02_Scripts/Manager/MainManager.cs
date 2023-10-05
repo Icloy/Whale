@@ -11,6 +11,7 @@ namespace whale
         public UIManager uiManager;
         public NetworkManager networkManager;
         public NetGameManager netGameManager;
+        public TitleManager titleManager;
         public LoadingManager loadingManager;
 
         [Header("GameScene")]

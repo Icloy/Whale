@@ -187,6 +187,7 @@ MonoBehaviour:
   uiManager: {fileID: 1831708247}
   networkManager: {fileID: 1780500682}
   netGameManager: {fileID: 1780500680}
+  titleManager: {fileID: 1780500683}
   loadingManager: {fileID: 1847883200}
   playerAnim: {fileID: 0}
   imageContainer: {fileID: 11400000, guid: e9d87cfb3707d0c4facd66a7031c98b5, type: 2}
@@ -870,54 +871,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1223525223}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1578777430
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1578777431}
-  - component: {fileID: 1578777432}
-  m_Layer: 0
-  m_Name: TitleManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1578777431
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578777430}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1578777432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1578777430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7f7491440bd4044cbd3ae47f7bb2a0e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loginPanel: {fileID: 0}
-  gameStartBtn: {fileID: 0}
-  playerPrefab: []
-  inputUserID: {fileID: 0}
 --- !u!1 &1736909904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1034,6 +987,7 @@ GameObject:
   - component: {fileID: 1780500681}
   - component: {fileID: 1780500682}
   - component: {fileID: 1780500680}
+  - component: {fileID: 1780500683}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1061,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1780500679}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1080,6 +1034,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44151c7d3d323d4419dd2923dbe09733, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1780500683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780500679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f7491440bd4044cbd3ae47f7bb2a0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loginPanel: {fileID: 0}
+  gameStartBtn: {fileID: 0}
+  playerPrefab: []
+  inputUserID: {fileID: 0}
 --- !u!1 &1831708246
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,5 +1649,4 @@ SceneRoots:
   - {fileID: 269924120}
   - {fileID: 1281554240}
   - {fileID: 454182339}
-  - {fileID: 1578777431}
   - {fileID: 116718627}

@@ -8,8 +8,6 @@ namespace whale
 {
     public class TitleManager : MonoBehaviour
     {
-        public static TitleManager s;
-
         public GameObject loginPanel;
         public GameObject gameStartBtn;
         public GameObject[] playerPrefab;
@@ -17,7 +15,6 @@ namespace whale
         
         void Start()
         {
-            s = this;
             MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
             //MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);

@@ -59,7 +59,7 @@ namespace whale
 
             Debug.Log("Recv_ROOM_ENTER : " + m_roomSession.m_RoomNo.ToString());
 
-            TitleManager.s.RoomEnter();
+            MainManager.Instance.titleManager.RoomEnter();
         }
 
         //다른 유저 방입장
@@ -72,7 +72,7 @@ namespace whale
 
             Debug.Log("Recv_ROOM_MAN_IN : " + userSession.m_szUserID);
 
-            TitleManager.s.RoomUserAdd(userSession);
+            MainManager.Instance.titleManager.RoomUserAdd(userSession);
         }
 
         //다른유저 방 퇴장
@@ -90,7 +90,7 @@ namespace whale
                 }
             }
 
-            TitleManager.s.RoomUserDel(userSession);
+            MainManager.Instance.titleManager.RoomUserDel(userSession);
 
             Debug.Log("Recv_ROOM_MAN_OUT : " + userSession.m_szUserID);
         }
@@ -103,7 +103,7 @@ namespace whale
 
             Debug.Log("Recv_ROOM_BROADCAST" + szData);
 
-            TitleManager.s.RoomBroadcast(szData);
+            MainManager.Instance.titleManager.RoomBroadcast(szData);
         }
 
         //방에서 본인정보 업데이트
@@ -123,7 +123,7 @@ namespace whale
 
             Debug.Log("Recv_ROOM_USER_DATA_UPDATE" + userSession.m_szUserID);
 
-            TitleManager.s.RoomUserDataUpdate(userSession);
+            MainManager.Instance.titleManager.RoomUserDataUpdate(userSession);
         }
         public void Recv_ROOM_USER_MOVE_DIRECT(BinaryReader br)
         {
@@ -141,7 +141,7 @@ namespace whale
 
             Debug.Log("Recv_ROOM_USER_MOVE_DIRECT" + userSession.m_szUserID);
 
-            TitleManager.s.RoomUserMoveDirect(userSession);
+            MainManager.Instance.titleManager.RoomUserMoveDirect(userSession);
         }
         public void Recv_ROOM_USER_ITEM_UPDATE(BinaryReader br)
         {
@@ -159,7 +159,7 @@ namespace whale
 
             Debug.Log("Recv_ROOM_USER_ITEM_UPDATE" + userSession.m_szUserID);
 
-            TitleManager.s.RoomUserItemUpdate(userSession);
+            MainManager.Instance.titleManager.RoomUserItemUpdate(userSession);
         }
         public void Recv_ROOM_DATA_UPDATE(BinaryReader br)
         {
@@ -171,7 +171,7 @@ namespace whale
             m_roomSession.ReadBin(br);
             //Debug.Log("Recv_ROOM_UPDATE : " + m_roomSession.m_RoomNo.ToString() );
 
-            TitleManager.s.RoomUpdate();
+            MainManager.Instance.titleManager.RoomUpdate();
         }
 
         public void UserLogin(string szID, byte byGroup)
@@ -184,10 +184,11 @@ namespace whale
             ushort usResult = br.ReadUInt16();
             m_userHandle.ReadBin(br);
 
-            TitleManager.s.UserLoginResult(usResult);
+            MainManager.Instance.titleManager.UserLoginResult(usResult);
 
-            Debug.Log("OnRecvWaitLogin");
-        }
+            Debug.Log("OnRecvWaitLogin" + m_userHandle.m_szUserID);
+
+            }
 
         public void RoomBroadcast(string szData)
         {
