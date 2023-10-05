@@ -35,7 +35,7 @@
         public const byte ROOM_MAN_OUT = 4; // 유저 퇴장
         public const byte ROOM_BROADCAST = 5;    // JSON데이터 전송
         public const byte ROOM_USER_DATA_UPDATE = 6;    // 룸 유저 데이터 변경
-        public const byte ROOM_UPDATE = 7;      // 룸 정보 업데이트 - 0.5초 간격
+        public const byte ROOM_UPDATE = 7;      // 룸 정보 업데이트 - 0.1초 간격
         public const byte ROOM_USER_MOVE = 8;   // 유저 위치정보 변경 - ROOM_UPDATE에서 반영되서 옴
         public const byte ROOM_USER_MOVE_DIRECT = 9;    // 유저위치정보 변경 - 즉시
         public const byte ROOM_USER_ITEM_UPDATE = 10;   // 유저별 아이템 정보 갱신

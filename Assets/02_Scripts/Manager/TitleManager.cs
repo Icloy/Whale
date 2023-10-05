@@ -122,8 +122,7 @@ namespace whale
             Vector3 pos = user.m_userTransform[0].GetVector3();
 
             GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]]);
-            //playerObj.GetComponent<Player>().Init(user);
-            //¼öÁ¤¿ä¸Á
+            playerObj.GetComponent<Player>().Init(user);
         }
 
         public void RoomBroadcast(string szData)

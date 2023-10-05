@@ -21,7 +21,16 @@ namespace whale
         private Vector3 playerVelocity;
         private bool groundedPlayer;
 
+        [SerializeField] bool aa;
         // Start is called before the first frame update
+
+        private void Awake()
+        {
+            if (!aa)
+            {
+                Destroy(GetComponent<Player>());
+            }
+        }
         void Start()
         {
             Lock();
@@ -43,7 +52,6 @@ namespace whale
         {
             //if (gameObject.name != NetGameManager.instance.m_userHandle.m_szUserID)
             //    return;
-
             PlayerMove();
             PlayerJump();
 
@@ -109,6 +117,10 @@ namespace whale
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+        }
+        public void Init(UserSession user)
+        {
+            gameObject.name = user.m_szUserID;
         }
     }
 }
