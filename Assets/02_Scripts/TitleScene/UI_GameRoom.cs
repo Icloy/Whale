@@ -26,7 +26,7 @@ namespace whale
 
 
         [Header("GameLobby")]
-        [SerializeField] GameObject userInfo;
+        [SerializeField] TMP_Text userInfo;
 
         private void Start()
         {
@@ -94,7 +94,13 @@ namespace whale
 
         public void Room_GameStart()
         {
-            MainManager.Instance.loadingManager.LoadScene("03_GameScene");
+            string userID = userInfo.text;
+            if (userID.Length < 1)
+                return;
+
+            MainManager.Instance.netGameManager.UserLogin(userID, 1);
+
+            // MainManager.Instance.loadingManager.LoadScene("03_GameScene");
 
         }
 

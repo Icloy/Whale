@@ -18,7 +18,8 @@ namespace whale
         void Start()
         {
             s = this;
-            MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650); 
+            MainManager.Instance.netGameManager.ConnectServer("192.168.246.216", 3650, true);
+
             //MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
