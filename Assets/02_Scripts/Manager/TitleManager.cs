@@ -66,9 +66,7 @@ namespace whale
             UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
 
-            //MainManager.Instance.netGameManager.RoomUserMove(userSession);
-
-            Debug.Log("UserMove : ");
+            MainManager.Instance.netGameManager.RoomUserMove(userSession);
         }
 
         //발사했을때의 샘플코드
@@ -135,7 +133,7 @@ namespace whale
             if (dataID == 1)//게임시작
             {
                 //gameStartBtn.SetActive(false);
-                InvokeRepeating("UserMove", 0, 0.05f);
+                InvokeRepeating("UserMove", 0, 0.01f);
             }
             else if (dataID == 2)//총알발사
             {
@@ -172,7 +170,7 @@ namespace whale
                     GameObject playerObj = GameObject.Find(roomSession.m_userList[i].m_szUserID);
                     if (playerObj)
                     {
-                        //Destroy(playerObj, 0);
+                        Destroy(playerObj, 0);
                     }
 
 
