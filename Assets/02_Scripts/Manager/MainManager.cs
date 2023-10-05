@@ -24,13 +24,6 @@ namespace whale
 
         [Header("Other")]
         public GameSceneState gameSceneState;
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.P))
-            {
-            }
-        }
     }
     public enum GameSceneState
     {
