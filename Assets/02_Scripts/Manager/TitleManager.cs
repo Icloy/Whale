@@ -18,9 +18,9 @@ namespace whale
         void Start()
         {
             s = this;
-            MainManager.Instance.netGameManager.ConnectServer("192.168.246.216", 3650, true);
-
+            MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
             //MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
+            //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
 
@@ -35,13 +35,12 @@ namespace whale
             }
         }
 
-        public void OnClick_Login()
+        public void OnClick_Login(string userID)
         {
-            string userID = inputUserID.text;
             if (userID.Length < 1)
                 return;
 
-            MainManager.Instance.netGameManager.UserLogin(userID, 1);
+            MainManager.Instance.netGameManager.UserLogin(userID, 2); //뒤에 숫자 조번호(서버 방 입장 )
         }
 
         public void OnClick_Start()
@@ -94,7 +93,7 @@ namespace whale
         {
             if (usResult == 0)
             {
-                loginPanel.SetActive(false);
+                MainManager.Instance.loadingManager.LoadScene("03_GameScene");
             }
 
             Debug.Log("UserLoginResult : " + usResult.ToString());
@@ -124,7 +123,7 @@ namespace whale
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
 
-            GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]], pos, transform.rotation);
+            //GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]], pos, transform.rotation);
             //playerObj.GetComponent<Player>().Init(user);
             //수정요망
         }
@@ -138,7 +137,7 @@ namespace whale
             Debug.Log("RoomBroadcast : " + userID + " , " + dataID.ToString());
             if (dataID == 1)//게임시작
             {
-                gameStartBtn.SetActive(false);
+                //gameStartBtn.SetActive(false);
                 InvokeRepeating("UserMove", 0, 0.05f);
             }
             else if (dataID == 2)//총알발사

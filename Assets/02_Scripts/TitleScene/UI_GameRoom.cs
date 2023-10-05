@@ -26,12 +26,8 @@ namespace whale
 
 
         [Header("GameLobby")]
-        [SerializeField] TMP_Text userInfo;
+        [SerializeField] GameObject userInfo;
 
-        private void Start()
-        {
-            
-        }
         void ClearPanel()
         {
             popUP.SetActive(false);
@@ -68,15 +64,15 @@ namespace whale
                 content.text = MainManager.Instance.languageContainer.titleUIText[0];
                 exceptionPopup.SetActive(true);
                 return;
-            }
+            }/*
             else if(roomIp.text.Length <= 0)
             {
                 content.text = MainManager.Instance.languageContainer.titleUIText[1];
                 exceptionPopup.SetActive(true);
                 return;
-            }
+            }*/
             MainManager.Instance.statusContainer.userName = userName.text;
-
+            TitleManager.s.OnClick_Login(userName.text);
         }
 
         public void Join_Cancel() //RoomCancel도 이거 사용
@@ -94,12 +90,6 @@ namespace whale
 
         public void Room_GameStart()
         {
-            string userID = userInfo.text;
-            if (userID.Length < 1)
-                return;
-
-            MainManager.Instance.netGameManager.UserLogin(userID, 1);
-
             // MainManager.Instance.loadingManager.LoadScene("03_GameScene");
 
         }

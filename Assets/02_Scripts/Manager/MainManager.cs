@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using whale;
 
 namespace whale
 {
@@ -23,8 +24,14 @@ namespace whale
 
         [Header("Other")]
         public GameSceneState gameSceneState;
-    }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+            }
+        }
+    }
     public enum GameSceneState
     {
         Title,
