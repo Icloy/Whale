@@ -35,8 +35,36 @@ namespace whale
         // Update is called once per frame
         void Update()
         {
-            PlayerMove();
-            PlayerJump();
+            //PlayerMove();
+            //PlayerJump();
+        }
+
+        private void FixedUpdate()
+        {
+            //if (gameObject.name != NetGameManager.instance.m_userHandle.m_szUserID)
+            //    return;
+
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                transform.Translate(Vector3.left * 10.0f * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow))
+            {
+                transform.Translate(Vector3.right * 10.0f * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.UpArrow))
+            {
+                transform.Translate(Vector3.forward * 10.0f * Time.deltaTime);
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                transform.Translate(Vector3.back * 10.0f * Time.deltaTime);
+            }
+
+            UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
+                MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
+
+            userSession.m_userTransform[0] = new NetVector3(transform.position);
         }
 
         void PlayerMove()
