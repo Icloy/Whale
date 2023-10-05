@@ -172,7 +172,7 @@ namespace whale
                     GameObject playerObj = GameObject.Find(roomSession.m_userList[i].m_szUserID);
                     if (playerObj)
                     {
-                        Destroy(playerObj, 0);
+                        //Destroy(playerObj, 0);
                     }
 
 
