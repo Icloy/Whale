@@ -18,8 +18,8 @@ namespace whale
         void Start()
         {
             s = this;
-            //MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650); 
-            MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
+            MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650); 
+            //MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
 
@@ -30,6 +30,7 @@ namespace whale
                 RoomSession roomSession = MainManager.Instance.netGameManager.m_roomSession;
                 roomSession.m_nRoomData[0] = 11;
                 MainManager.Instance.netGameManager.RoomDataUpdate(roomSession);
+
             }
         }
 
@@ -124,6 +125,7 @@ namespace whale
 
             GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]], pos, transform.rotation);
             //playerObj.GetComponent<Player>().Init(user);
+            //수정요망
         }
 
         public void RoomBroadcast(string szData)
@@ -136,7 +138,7 @@ namespace whale
             if (dataID == 1)//게임시작
             {
                 gameStartBtn.SetActive(false);
-                InvokeRepeating("UserMove", 0, 0.1f);
+                InvokeRepeating("UserMove", 0, 0.05f);
             }
             else if (dataID == 2)//총알발사
             {
@@ -175,6 +177,8 @@ namespace whale
                     {
                         Destroy(playerObj, 0);
                     }
+
+
                     return;
                 }
             }

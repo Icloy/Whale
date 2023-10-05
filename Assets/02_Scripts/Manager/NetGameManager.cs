@@ -11,6 +11,27 @@ namespace whale
         public UserHandle m_userHandle = new UserHandle();    // 유저개인정보
         public RoomSession m_roomSession = new RoomSession(); // 방정보
 
+        private float m_fFlowTime = 0.0f;
+        private float m_fSendTime = 0.0f;
+
+        public void Update()
+        {
+            m_fFlowTime += Time.deltaTime;
+        }
+
+        private bool IsSendEnable()
+        {
+            float fGap = m_fFlowTime - m_fSendTime;
+            if (fGap < 0.1)
+            {
+                Debug.Log("SendData Time = " + fGap.ToString());
+                return false;
+            }
+
+            m_fSendTime = m_fFlowTime;
+            return true;
+        }
+
         public void ConnectServer(string szIP, int nPort, bool isIntranet = false)
         {
             MainManager.Instance.networkManager.Init(szIP, nPort, isIntranet);
@@ -147,7 +168,7 @@ namespace whale
         public void Recv_ROOM_UPDATE(BinaryReader br)
         {
             m_roomSession.ReadBin(br);
-            Debug.Log("Recv_ROOM_UPDATE : " + m_roomSession.m_RoomNo.ToString());
+            //Debug.Log("Recv_ROOM_UPDATE : " + m_roomSession.m_RoomNo.ToString() );
 
             TitleManager.s.RoomUpdate();
         }

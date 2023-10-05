@@ -10,7 +10,7 @@ namespace whale
     {
         [Header("All")]
         public GameObject allGameRoom;
-        
+
         [Header("Object")]
         public GameObject popUP;
         [SerializeField] GameObject joinPopup;
@@ -28,7 +28,10 @@ namespace whale
         [Header("GameLobby")]
         [SerializeField] GameObject userInfo;
 
-        
+        private void Start()
+        {
+            
+        }
         void ClearPanel()
         {
             popUP.SetActive(false);
@@ -42,6 +45,7 @@ namespace whale
         {
             ClearPanel();
             joinPopup.SetActive(true);
+            TitleManager.s.RoomEnter();
         }
 
         public void PopUP_CreateRoom()
