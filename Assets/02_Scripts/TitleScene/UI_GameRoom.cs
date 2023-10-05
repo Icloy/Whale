@@ -41,7 +41,7 @@ namespace whale
         {
             ClearPanel();
             joinPopup.SetActive(true);
-            MainManager.Instance.titleManager.RoomEnter();
+
         }
 
         public void PopUP_CreateRoom()

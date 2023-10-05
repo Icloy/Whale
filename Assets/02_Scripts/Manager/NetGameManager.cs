@@ -58,8 +58,6 @@ namespace whale
             m_roomSession.ReadBin(br);
 
             Debug.Log("Recv_ROOM_ENTER : " + m_roomSession.m_RoomNo.ToString());
-
-            MainManager.Instance.titleManager.RoomEnter();
         }
 
         //다른 유저 방입장

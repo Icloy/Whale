@@ -15,15 +15,15 @@ namespace whale
         
         void Start()
         {
-            MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
+            //MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
             //MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);
-            //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
+            MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.A))
+            if (Input.GetKeyDown(KeyCode.K))
             {
                 RoomSession roomSession = MainManager.Instance.netGameManager.m_roomSession;
                 roomSession.m_nRoomData[0] = 11;
@@ -91,6 +91,7 @@ namespace whale
             if (usResult == 0)
             {
                 MainManager.Instance.loadingManager.LoadScene("03_GameScene");
+                MainManager.Instance.titleManager.RoomEnter();
             }
 
             Debug.Log("UserLoginResult : " + usResult.ToString());
@@ -120,7 +121,7 @@ namespace whale
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
 
-            //GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]], pos, transform.rotation);
+            GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]]);
             //playerObj.GetComponent<Player>().Init(user);
             //¼öÁ¤¿ä¸Á
         }
