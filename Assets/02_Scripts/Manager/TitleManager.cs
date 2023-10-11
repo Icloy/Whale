@@ -93,6 +93,7 @@ namespace whale
             }
 
             Debug.Log("UserLoginResult : " + usResult.ToString());
+            MainManager.Instance.statusContainer.userNum = usResult + 1;
         }
 
         public void RoomEnter()

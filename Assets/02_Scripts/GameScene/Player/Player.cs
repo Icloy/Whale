@@ -21,27 +21,17 @@ namespace whale
         private Vector3 playerVelocity;
         private bool groundedPlayer;
 
-        [SerializeField] bool aa;
-        // Start is called before the first frame update
-
-        private void Awake()
-        {
-            if (!aa)
-            {
-                Destroy(GetComponent<Player>());
-            }
-        }
         void Start()
         {
             Lock();
             controller = GetComponent<CharacterController>();
+            cam = GameObject.Find("Main Camera").transform;
             if (controller == null)
             {
                 controller = gameObject.AddComponent<CharacterController>();
             }
         }
 
-        // Update is called once per frame
         void Update()
         {
             //PlayerMove();
