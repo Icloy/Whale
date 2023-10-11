@@ -128,6 +128,9 @@ namespace whale
             UserSession userSession = new UserSession();
             userSession.ReadBin(br);
 
+            if (m_userHandle.m_szUserID == userSession.m_szUserID)
+                return;
+
             for (int i = 0; i < m_roomSession.m_userList.Count; i++)
             {
                 if (m_roomSession.m_userList[i].m_szUserID == userSession.m_szUserID)
@@ -169,7 +172,8 @@ namespace whale
             m_roomSession.ReadBin(br);
             //Debug.Log("Recv_ROOM_UPDATE : " + m_roomSession.m_RoomNo.ToString() );
 
-            MainManager.Instance.titleManager.RoomUpdate();
+
+            //MainManager.Instance.titleManager.RoomUpdate();
         }
 
         public void UserLogin(string szID, byte byGroup)

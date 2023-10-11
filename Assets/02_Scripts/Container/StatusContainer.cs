@@ -8,5 +8,10 @@ namespace whale
     {
         public string userName;
         public float moveSpeed;
+
+        private void Awake()
+        {
+            moveSpeed = 10f;
+        }
     }
 }

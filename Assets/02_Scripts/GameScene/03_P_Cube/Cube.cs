@@ -8,8 +8,8 @@ namespace whale
     {
         [Header("CubeKey")]
         [HideInInspector] public int cubeKey;
-        public bool isCurPos;
-        public bool isKey;
+        [HideInInspector] public bool isCurPos;
+        [HideInInspector] public bool isKey;
 
         [Header("Cube_Material")]
         [SerializeField] Material normal;

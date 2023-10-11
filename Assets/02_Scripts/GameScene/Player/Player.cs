@@ -87,6 +87,26 @@ namespace whale
                 PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
             }
 
+            /*
+                //1007 - 위치와 각도를 저장하고 값이 다르면 전송
+                NetVector3 prevTransform0 = new NetVector3(0,0,0);
+                NetVector3 prevTransform1 = new NetVector3(0, 0, 0);
+
+
+                prevTransform0 = new NetVector3(transform.position);
+                prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
+
+                UserSession userSession = NetGameManager.instance.GetRoomUserSession(
+                    NetGameManager.instance.m_userHandle.m_szUserID);
+
+                if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
+                    return;
+
+                userSession.m_userTransform[0] = prevTransform0;
+                userSession.m_userTransform[1] = prevTransform1;
+
+                NetManager.instance.Send_ROOM_USER_MOVE_DIRECT(userSession);
+                */
         }
 
         void PlayerJump()
