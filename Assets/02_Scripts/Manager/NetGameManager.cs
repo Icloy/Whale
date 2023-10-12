@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using static UnityEditor.Progress;
 using MNF;
 
 namespace whale
@@ -72,6 +71,12 @@ namespace whale
             Debug.Log("Recv_ROOM_MAN_IN : " + userSession.m_szUserID);
 
             MainManager.Instance.titleManager.RoomUserAdd(userSession);
+            RoomSession rs = new RoomSession();
+            rs.ReadBin(br);
+            if (rs.m_userList.Count >= 1)
+            {
+                Debug.Log("dd");
+            }
         }
 
         //다른유저 방 퇴장

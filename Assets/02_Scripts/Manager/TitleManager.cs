@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MNF;
@@ -101,6 +99,7 @@ namespace whale
         public void RoomEnter()
         {
             RoomSession roomSession = MainManager.Instance.netGameManager.m_roomSession;
+            Debug.Log("RoomEnter List Cnt" + roomSession.m_userList.Count);
             for (int i = 0; i < roomSession.m_userList.Count; i++)
             {
                 RoomOneUserAdd(roomSession.m_userList[i]);
@@ -122,7 +121,8 @@ namespace whale
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
 
-            GameObject playerObj = GameManager.gm.CreatePlayer(2,"");
+            GameObject playerObj = GameManager.gm.CreatePlayer(2, "");
+            Debug.Log("RoomOneUserAdd");
             playerObj.GetComponent<Player>().Init(user);
         }
 
@@ -135,7 +135,6 @@ namespace whale
             Debug.Log("RoomBroadcast : " + userID + " , " + dataID.ToString());
             if (dataID == 1)//게임시작
             {
-                //gameStartBtn.SetActive(false);
                 InvokeRepeating("UserMove", 0, 0.01f);
             }
             else if (dataID == 2)//총알발사
