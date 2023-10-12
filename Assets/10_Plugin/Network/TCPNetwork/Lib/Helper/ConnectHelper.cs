@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 
-namespace whale
+namespace MNF
 {
     static class ConnectHelper
     {

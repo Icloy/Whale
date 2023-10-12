@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 
-namespace whale
+namespace MNF
 {
     [System.Serializable]
     public class NetDateTime
@@ -147,6 +147,13 @@ namespace whale
             vec.y = m_Y / 1000;
             vec.z = m_Z / 1000;
             return vec;
+        }
+        public bool Equals(NetVector3 vec)
+        {
+            if (m_X == vec.m_X && m_Y == vec.m_Y && m_Z == vec.m_Z)
+                return true;
+            else
+                return false;
         }
     }
 }

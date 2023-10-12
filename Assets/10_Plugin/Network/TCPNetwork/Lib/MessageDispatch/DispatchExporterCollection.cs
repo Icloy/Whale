@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace whale
+namespace MNF
 {
     internal class DispatchExporterCollection : Singleton<DispatchExporterCollection>
     {

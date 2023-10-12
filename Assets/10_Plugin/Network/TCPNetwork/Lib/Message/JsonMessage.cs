@@ -2,7 +2,7 @@
 using System.Text;
 using System.Runtime.InteropServices;
 
-namespace whale.Message
+namespace MNF.Message
 {
     public static class JsonMessageBuffer
     {

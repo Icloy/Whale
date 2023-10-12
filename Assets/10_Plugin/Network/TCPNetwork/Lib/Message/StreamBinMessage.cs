@@ -6,6 +6,7 @@ using System.Text;
 
 using UnityEngine;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 public	class StreamBin
 {
@@ -51,7 +52,7 @@ public	class StreamBin
 }
 
 
-namespace whale.Message
+namespace MNF.Message
 {
 	[System.Serializable]
 	public class BinData
@@ -138,12 +139,6 @@ namespace whale.Message
 
 		[MarshalAs(UnmanagedType.U2)]
 		public	ushort 	m_Head2;
-
-		[MarshalAs(UnmanagedType.U2)]
-		public	ushort 	m_Head3;
-
-		[MarshalAs(UnmanagedType.U2)]
-		public	ushort 	m_Head4;
 
 		[MarshalAs(UnmanagedType.U2)]
 		public	ushort 	m_Check;

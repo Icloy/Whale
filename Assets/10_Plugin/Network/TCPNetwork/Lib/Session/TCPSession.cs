@@ -1,7 +1,7 @@
 ﻿using System.Net.Sockets;
-using whale.Message;
+using MNF.Message;
 
-namespace whale
+namespace MNF
 {
     /**
      * @brief TCP communication object.

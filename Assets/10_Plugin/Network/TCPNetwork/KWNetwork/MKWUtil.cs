@@ -7,7 +7,7 @@ using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
 
-namespace whale
+namespace MNF
 {
 	public class NetString
 	{

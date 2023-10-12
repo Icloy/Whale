@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace whale
+namespace MNF
 {
 	//https://blogs.msdn.microsoft.com/knom/2008/12/31/ip-address-calculations-with-c-subnetmasks-networks/
 

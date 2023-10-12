@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Windows.System.Diagnostics;
 #endif
 
-namespace whale
+namespace MNF
 {
     public class ThreadAdapter : IDisposable
     {

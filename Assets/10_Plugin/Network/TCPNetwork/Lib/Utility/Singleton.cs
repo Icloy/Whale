@@ -1,4 +1,4 @@
-﻿namespace whale
+﻿namespace MNF
 {
     public class Singleton<T> where T : class, new()
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using whale;
+using MNF;
 
-namespace whale
+namespace MNF
 {
 	/**
      * @brief Classes that support tcp.

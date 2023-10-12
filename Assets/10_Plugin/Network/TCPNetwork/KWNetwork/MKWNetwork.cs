@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using whale;
-using whale.Message;
+using MNF;
+using MNF.Message;
 
 using System.IO;
 
@@ -29,7 +29,7 @@ public class MKWNetwork : KWSingleton<MKWNetwork>
 
 		IsInit = false;
 
-		whale.Message.StreamBinRecver.Alloc();
+		MNF.Message.StreamBinRecver.Alloc();
 
 		if (LogManager.Instance.Init() == false)
 			Debug.Log("LogWriter init failed");

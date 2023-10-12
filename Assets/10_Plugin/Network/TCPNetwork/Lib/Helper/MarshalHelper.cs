@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace whale
+namespace MNF
 {
     /*
      * https://msdn.microsoft.com/ko-kr/library/2x07fbw8(v=vs.110).aspx

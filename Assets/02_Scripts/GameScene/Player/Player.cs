@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using MNF;
 
 namespace whale
 {
@@ -11,6 +12,14 @@ namespace whale
 
         [Header("Move")]
         [SerializeField] private float speed;
+
+        NetVector3 prevTransform0 = new NetVector3(0, 0, 0);
+        NetVector3 prevTransform1 = new NetVector3(0, 0, 0);
+        //이동 속도
+        float moveSpeed = 10.0f;
+        //회전 속도
+        float rotateSpeed = 150.0f;
+
 
         private float turnSmoothTime = 0.1f;
         float turnSmoothVelocity;
@@ -53,7 +62,7 @@ namespace whale
 
         void PlayerMove()
         {
-            float horizontal = Input.GetAxisRaw("Horizontal");
+            /*float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -75,28 +84,32 @@ namespace whale
             else
             {
                 PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
-            }
+            }*/
 
-            /*
-                //1007 - 위치와 각도를 저장하고 값이 다르면 전송
-                NetVector3 prevTransform0 = new NetVector3(0,0,0);
-                NetVector3 prevTransform1 = new NetVector3(0, 0, 0);
+            //이동속도
+            float move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+            //회전속도
+            float rotate = Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime;
 
+            //이동
+            transform.Translate(0, 0, move);
+            //회전
+            transform.Rotate(0, rotate, 0);
 
-                prevTransform0 = new NetVector3(transform.position);
-                prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
+            //1007 - 위치와 각도를 저장하고 값이 다르면 전송
+            prevTransform0 = new NetVector3(transform.position);
+            prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
 
-                UserSession userSession = NetGameManager.instance.GetRoomUserSession(
-                    NetGameManager.instance.m_userHandle.m_szUserID);
+            UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
+                MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
 
-                if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
-                    return;
+            if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
+                return;
 
-                userSession.m_userTransform[0] = prevTransform0;
-                userSession.m_userTransform[1] = prevTransform1;
+            userSession.m_userTransform[0] = prevTransform0;
+            userSession.m_userTransform[1] = prevTransform1;
 
-                NetManager.instance.Send_ROOM_USER_MOVE_DIRECT(userSession);
-                */
+            MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
         }
 
         void PlayerJump()

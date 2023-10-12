@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace whale.Message
+namespace MNF.Message
 {
     public class MessageBuffer<TMessageHeader> where TMessageHeader : new()
     {

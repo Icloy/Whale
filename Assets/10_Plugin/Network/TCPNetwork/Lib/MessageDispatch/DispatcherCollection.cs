@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 
-namespace whale
+namespace MNF
 {
     enum DISPATCH_TYPE
     {

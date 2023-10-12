@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading;
 
-namespace whale
+namespace MNF
 {
     public abstract class EventNofier
     {

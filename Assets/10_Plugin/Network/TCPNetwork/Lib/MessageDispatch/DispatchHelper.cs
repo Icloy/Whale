@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace whale
+namespace MNF
 {
 	/**
      * @brief Process the received message.

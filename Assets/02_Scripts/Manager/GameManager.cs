@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace whale
@@ -29,9 +30,11 @@ namespace whale
                     break;
                 case 1:
                     GameObject Player1 = Instantiate(PlayerPref, p1StartPos);
+                    Player1.transform.SetParent(null, false);
                     break;
                 case 2:
                     GameObject Player2 = Instantiate(PlayerPref, p2StartPos);
+                    Player2.transform.SetParent(null, false);
                     break;
             }
         }

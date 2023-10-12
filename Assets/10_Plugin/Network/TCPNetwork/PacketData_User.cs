@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace whale
+namespace MNF
 {
 	[System.Serializable]
 	public class UserItem

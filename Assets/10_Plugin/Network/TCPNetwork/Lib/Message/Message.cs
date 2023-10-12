@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace whale
+namespace MNF
 {
     public abstract class IMessage
     {
