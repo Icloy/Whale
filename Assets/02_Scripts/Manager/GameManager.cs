@@ -23,31 +23,28 @@ namespace whale
 
         private void Start()
         {
-            CreatePlayer(1);
+            CreatePlayer(1, MainManager.Instance.statusContainer.userName);
         }
-        public GameObject CreatePlayer(int a)
+        public GameObject CreatePlayer(int a, string name)
         {
             switch (a)
             {
                 case 0:
                     Debug.Log("Net Error");
                     return null;
-                    break;
                 case 1:
                     GameObject Player1 = Instantiate(PlayerPref, p1StartPos);
                     Player1.transform.SetParent(null, false);
-                    Player1.gameObject.name = "Player1";
+                    Player1.gameObject.name = name;
                     FreeLockCamera aa = GameObject.Find("FreeLook Camera").GetComponent<FreeLockCamera>();
                     aa.cfl.Follow = Player1.transform;
                     aa.cfl.LookAt = Player1.transform;
                     return null;
-                    break;
                 case 2:
                     GameObject Player2 = Instantiate(PlayerPref, p2StartPos);
                     Player2.transform.SetParent(null, false);
-                    Player2.gameObject.name = "Player2";
+                    Player2.gameObject.name = name;
                     return Player2;
-                    break;
             }
             return null;
         }

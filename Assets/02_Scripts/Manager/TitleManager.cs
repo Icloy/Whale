@@ -122,7 +122,7 @@ namespace whale
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
 
-            GameObject playerObj = GameManager.gm.CreatePlayer(2);
+            GameObject playerObj = GameManager.gm.CreatePlayer(2,"");
             playerObj.GetComponent<Player>().Init(user);
         }
 
