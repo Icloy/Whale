@@ -15,11 +15,6 @@ namespace whale
 
         NetVector3 prevTransform0 = new NetVector3(0, 0, 0);
         NetVector3 prevTransform1 = new NetVector3(0, 0, 0);
-        //이동 속도
-        float moveSpeed = 10.0f;
-        //회전 속도
-        float rotateSpeed = 150.0f;
-
 
         private float turnSmoothTime = 0.1f;
         float turnSmoothVelocity;
@@ -39,12 +34,6 @@ namespace whale
             {
                 controller = gameObject.AddComponent<CharacterController>();
             }
-        }
-
-        void Update()
-        {
-            //PlayerMove();
-            //PlayerJump();
         }
 
         private void FixedUpdate()
@@ -71,7 +60,6 @@ namespace whale
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
 
             if (direction.magnitude >= 0.1f)
             {
@@ -120,11 +108,13 @@ namespace whale
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
         }
+
         public void Lock() //마우스 커서 안보이게
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
         public void Init(UserSession user)
         {
             gameObject.name = user.m_szUserID;
