@@ -62,7 +62,7 @@ namespace whale
 
         void PlayerMove()
         {
-            /*float horizontal = Input.GetAxisRaw("Horizontal");
+            float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
@@ -84,17 +84,7 @@ namespace whale
             else
             {
                 PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
-            }*/
-
-            //이동속도
-            float move = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
-            //회전속도
-            float rotate = Input.GetAxis("Horizontal") * rotateSpeed * Time.deltaTime;
-
-            //이동
-            transform.Translate(0, 0, move);
-            //회전
-            transform.Rotate(0, rotate, 0);
+            }
 
             //1007 - 위치와 각도를 저장하고 값이 다르면 전송
             prevTransform0 = new NetVector3(transform.position);
