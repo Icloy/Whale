@@ -1,7 +1,6 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using MNF;
 using System.Collections;
 
@@ -22,29 +21,6 @@ namespace whale
             //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
-
-        private void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        private void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-        }
-
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            if (MainManager.Instance.gameSceneState == GameSceneState.GameScene)
-            {
-                if (gameManager == null)
-                {
-                    Debug.Log("#");
-                    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-                }
-            }
-        }
-
 
         void Update()
         {
@@ -154,16 +130,9 @@ namespace whale
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
             Debug.Log("icloy user.m_szUserID" + user.m_szUserID);
-            if (user.m_szUserID == MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
+            if (user.m_szUserID != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
             {
-                if(gameManager != null)
-                {
-                    GameManager.gm.CreatePlayer(1, user.m_szUserID);
-                }
-                else
-                {
-                    Debug.Log("!");
-                }
+                GameManager.gm.CreatePlayer(false, user.m_szUserID);
             }
             //else
             //{
