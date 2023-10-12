@@ -44,6 +44,8 @@ namespace whale
                     GameObject Player2 = Instantiate(PlayerPref, p2StartPos);
                     Player2.transform.SetParent(null, false);
                     Player2.gameObject.name = name;
+                    Destroy(Player2.GetComponent<Player>());
+                    Destroy(Player2.GetComponent<PickUp>());
                     return Player2;
             }
             return null;

@@ -93,8 +93,8 @@ namespace whale
             UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
 
-            if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
-                return;
+            /*if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
+                return;*/
 
             userSession.m_userTransform[0] = prevTransform0;
             userSession.m_userTransform[1] = prevTransform1;
