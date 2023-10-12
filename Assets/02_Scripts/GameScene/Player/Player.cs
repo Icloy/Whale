@@ -49,15 +49,21 @@ namespace whale
 
         private void FixedUpdate()
         {
-            //if (gameObject.name != NetGameManager.instance.m_userHandle.m_szUserID)
-            //    return;
+            if (gameObject.name != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
+                return;
             PlayerMove();
             PlayerJump();
-
+            
             UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
 
-            userSession.m_userTransform[0] = new NetVector3(transform.position);
+            if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
+                return;
+
+            userSession.m_userTransform[0] = prevTransform0;
+            userSession.m_userTransform[1] = prevTransform1;
+
+            MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
         }
 
         void PlayerMove()
@@ -86,20 +92,8 @@ namespace whale
                 PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
             }
 
-            //1007 - 위치와 각도를 저장하고 값이 다르면 전송
             prevTransform0 = new NetVector3(transform.position);
             prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
-
-            UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
-                MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
-
-            /*if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
-                return;*/
-
-            userSession.m_userTransform[0] = prevTransform0;
-            userSession.m_userTransform[1] = prevTransform1;
-
-            MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
         }
 
         void PlayerJump()
