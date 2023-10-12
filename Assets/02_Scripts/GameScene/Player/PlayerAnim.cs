@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
-{
+{/*
     public enum PlayerState
     {
         Idle,
@@ -20,7 +20,7 @@ public class PlayerAnim : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -49,5 +49,5 @@ public class PlayerAnim : MonoBehaviour
                     break;
                 }
         }
-    }
+    }*/
 }

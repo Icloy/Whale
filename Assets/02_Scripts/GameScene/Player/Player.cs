@@ -70,7 +70,7 @@ namespace whale
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
-
+/*
             if (horizontal != 0 || vertical != 0)
             {
                 PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Walk);
@@ -79,7 +79,7 @@ namespace whale
             {
                 PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
             }
-
+*/
             prevTransform0 = new NetVector3(transform.position);
             prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
 

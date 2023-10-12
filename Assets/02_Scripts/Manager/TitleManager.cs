@@ -129,15 +129,11 @@ namespace whale
         void RoomOneUserAdd(UserSession user)
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
-            Debug.Log("icloy user.m_szUserID" + user.m_szUserID);
             if (user.m_szUserID != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
             {
+                Debug.Log("icloy 플레이어 프리팹 제작" + user.m_szUserID);
                 GameManager.gm.CreatePlayer(false, user.m_szUserID);
             }
-            //else
-            //{
-            //    GameManager.gm.CreatePlayer(2, user.m_szUserID);
-            //}
         }
 
 
@@ -172,7 +168,7 @@ namespace whale
                         Destroy(playerObj, 0);
                     }
 
-                    RoomOneUserAdd(user);
+                    //RoomOneUserAdd(user);
                     return;
                 }
             }
