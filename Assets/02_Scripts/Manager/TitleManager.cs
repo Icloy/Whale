@@ -1,7 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using MNF;
+using System.Collections;
 
 namespace whale
 {
@@ -11,6 +13,7 @@ namespace whale
         public GameObject gameStartBtn;
         public GameObject playerPrefab;
         public InputField inputUserID;
+        public GameManager gameManager;
         
         void Start()
         {
@@ -19,6 +22,29 @@ namespace whale
             //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
+
+        private void OnEnable()
+        {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+        }
+
+        private void OnDisable()
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (MainManager.Instance.gameSceneState == GameSceneState.GameScene)
+            {
+                if (gameManager == null)
+                {
+                    Debug.Log("#");
+                    gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+                }
+            }
+        }
+
 
         void Update()
         {
@@ -100,8 +126,17 @@ namespace whale
             Debug.Log("RoomEnter List Cnt" + roomSession.m_userList.Count);
             for (int i = 0; i < roomSession.m_userList.Count; i++)
             {
-                RoomOneUserAdd(roomSession.m_userList[i]);
+                // 0.5초 뒤에 RoomOneUserAdd 메서드 실행
+                float delay = 0.5f;
+                UserSession user = roomSession.m_userList[i];
+                StartCoroutine(DelayedRoomOneUserAdd(user, delay));
             }
+        }
+
+        private IEnumerator DelayedRoomOneUserAdd(UserSession user, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            RoomOneUserAdd(user);
         }
 
         public void RoomUserAdd(UserSession user)
@@ -121,13 +156,21 @@ namespace whale
             Debug.Log("icloy user.m_szUserID" + user.m_szUserID);
             if (user.m_szUserID == MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
             {
-                GameManager.gm.CreatePlayer(1, user.m_szUserID);
+                if(gameManager != null)
+                {
+                    GameManager.gm.CreatePlayer(1, user.m_szUserID);
+                }
+                else
+                {
+                    Debug.Log("!");
+                }
             }
-            else
-            {
-                GameManager.gm.CreatePlayer(2, user.m_szUserID);
-            }
+            //else
+            //{
+            //    GameManager.gm.CreatePlayer(2, user.m_szUserID);
+            //}
         }
+
 
         public void RoomBroadcast(string szData)
         {

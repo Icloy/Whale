@@ -20,6 +20,7 @@ namespace whale
         bool isCreateP1;
         private void Awake()
         {
+            MainManager.Instance.gameSceneState = GameSceneState.GameScene;
             gm = this;
         }
 
