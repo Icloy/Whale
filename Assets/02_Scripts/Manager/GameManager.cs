@@ -7,7 +7,7 @@ namespace whale
 {
     public class GameManager : MonoBehaviour
     {
-        static GameManager gm;
+        public static GameManager gm;
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;
@@ -23,9 +23,13 @@ namespace whale
 
         private void Start()
         {
-            switch (MainManager.Instance.statusContainer.userNum)
+            CreatePlayer(1, true);
+        }
+        public void CreatePlayer(int a, bool own)
+        {
+            switch (a)
             {
-                case 0 :
+                case 0:
                     Debug.Log("Net Error");
                     break;
                 case 1:
@@ -40,9 +44,6 @@ namespace whale
                     GameObject Player2 = Instantiate(PlayerPref, p2StartPos);
                     Player2.transform.SetParent(null, false);
                     Player2.gameObject.name = "Player2";
-                    FreeLockCamera bb = GameObject.Find("FreeLook Camera").GetComponent<FreeLockCamera>();
-                    bb.cfl.Follow = Player2.transform;
-                    bb.cfl.LookAt = Player2.transform;
                     break;
             }
         }

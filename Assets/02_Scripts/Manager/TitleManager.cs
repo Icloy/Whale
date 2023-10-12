@@ -11,7 +11,8 @@ namespace whale
     {
         public GameObject loginPanel;
         public GameObject gameStartBtn;
-        public GameObject[] playerPrefab;
+        //public GameObject[] playerPrefab;
+        public GameObject playerPrefab;
         public InputField inputUserID;
         
         void Start()
@@ -121,7 +122,8 @@ namespace whale
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
 
-            GameObject playerObj = Instantiate(playerPrefab[user.m_nUserData[0]]);
+            GameManager.gm.CreatePlayer(2, false);
+            GameObject playerObj = Instantiate(playerPrefab);
             playerObj.GetComponent<Player>().Init(user);
         }
 
