@@ -34,13 +34,14 @@ namespace whale
             }
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             if (gameObject.name != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
                 return;
+
             PlayerMove();
             PlayerJump();
-            
+
             UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
             if (userSession == null) return;
@@ -81,6 +82,7 @@ namespace whale
 
             prevTransform0 = new NetVector3(transform.position);
             prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
+
         }
 
         void PlayerJump()
