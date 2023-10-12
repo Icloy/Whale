@@ -56,6 +56,7 @@ namespace whale
         public void Recv_ROOM_ENTER(BinaryReader br)
         {
             m_roomSession.ReadBin(br);
+            MainManager.Instance.titleManager.RoomEnter();
 
             Debug.Log("Recv_ROOM_ENTER : " + m_roomSession.m_RoomNo.ToString());
         }
@@ -71,12 +72,8 @@ namespace whale
             Debug.Log("Recv_ROOM_MAN_IN : " + userSession.m_szUserID);
 
             MainManager.Instance.titleManager.RoomUserAdd(userSession);
-            RoomSession rs = new RoomSession();
-            rs.ReadBin(br);
-            if (rs.m_userList.Count >= 1)
-            {
-                Debug.Log("dd");
-            }
+
+            // ??
         }
 
         //다른유저 방 퇴장
