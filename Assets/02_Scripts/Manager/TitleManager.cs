@@ -9,7 +9,6 @@ namespace whale
     {
         public GameObject loginPanel;
         public GameObject gameStartBtn;
-        //public GameObject[] playerPrefab;
         public GameObject playerPrefab;
         public InputField inputUserID;
         
@@ -119,10 +118,15 @@ namespace whale
         void RoomOneUserAdd(UserSession user)
         {
             Vector3 pos = user.m_userTransform[0].GetVector3();
-
-            GameObject playerObj = GameManager.gm.CreatePlayer(2, "");
-            Debug.Log("RoomOneUserAdd");
-            playerObj.GetComponent<Player>().Init(user);
+            Debug.Log("icloy user.m_szUserID" + user.m_szUserID);
+            if (user.m_szUserID == MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
+            {
+                GameManager.gm.CreatePlayer(1, user.m_szUserID);
+            }
+            else
+            {
+                GameManager.gm.CreatePlayer(2, user.m_szUserID);
+            }
         }
 
         public void RoomBroadcast(string szData)
