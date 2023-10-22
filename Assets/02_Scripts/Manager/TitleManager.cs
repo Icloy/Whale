@@ -85,6 +85,21 @@ namespace whale
             MainManager.Instance.netGameManager.RoomBroadcast(sendData);
         }
 
+        //제작중인 샘플코드
+        public void ObjectInteraction(int a , int b, string c)
+        {
+            var data = new Object_Interaction
+            {
+                USER = a,
+                STATE = b,
+                WHERE = c,
+            };
+
+            string sendData = LitJson.JsonMapper.ToJson(data);
+            MainManager.Instance.netGameManager.RoomBroadcast(sendData);
+        }
+
+
         public void UserLoginResult(ushort usResult)
         {
             if (usResult == 0)
