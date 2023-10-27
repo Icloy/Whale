@@ -8,12 +8,12 @@ namespace whale
 {
     public class TitleManager : MonoBehaviour
     {
-        public GameObject loginPanel;
+        /*public GameObject loginPanel;
         public GameObject gameStartBtn;
         public GameObject playerPrefab;
         public InputField inputUserID;
         public GameManager gameManager;
-        
+        */
         void Start()
         {
             MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
@@ -86,11 +86,12 @@ namespace whale
         }
 
         //제작중인 샘플코드
-        public void ObjectInteraction(int a , string b, int c)
+        public void ObjectInteraction(int a , string b, int c) //c는 0 default 1 active 2 off
         {
             var data = new Object_Interaction
             {
                 USER = a,
+                DATA = 2,
                 WHERE = b,
                 STATE = c
             };
@@ -159,14 +160,33 @@ namespace whale
             int dataID = Convert.ToInt32(jData["DATA"].ToString());
 
             Debug.Log("RoomBroadcast : " + userID + " , " + dataID.ToString());
-            if (dataID == 1)//게임시작
+            if (dataID == 1) //게임시작
             {
                 InvokeRepeating("UserMove", 0, 0.01f);
             }
-            else if (dataID == 2)//총알발사
+            else if (dataID == 2) //오브젝트 활성화
             {
-                string power = jData["Power"].ToString();
-                string pos = jData["Position"].ToString();
+                string where = jData["WHERE"].ToString();
+                if (where == null) return;
+                int state = Convert.ToInt32(jData["STATE"].ToString());
+                switch (where)
+                {
+                    case "TEST" :
+                        if (state == 0)
+                        {
+
+                        }
+                        else if (state == 1)
+                        {
+                            Debug.Log("대충 오브젝트 색깔 바뀌었음!");
+                        }
+                        else if (state == 2)
+                        {
+
+                        }
+                        else break;
+                        break;
+                }
             }
 
         }

@@ -125,13 +125,11 @@ public class PickUp : MonoBehaviour
             {
                 case "Cube_Length":
                     //여기에 쓰면 됌
-                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Test", 1);
-                    Debug.Log("!");
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "TEST", 1);
                     break;
                 case "Cube_Width":
                     //여기에 쓰면 됌
-                    Debug.Log("2");
-
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "TEST", 1);
                     break;
             }
         }
