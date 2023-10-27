@@ -86,13 +86,13 @@ namespace whale
         }
 
         //제작중인 샘플코드
-        public void ObjectInteraction(int a , int b, string c)
+        public void ObjectInteraction(int a , string b, int c)
         {
             var data = new Object_Interaction
             {
                 USER = a,
-                STATE = b,
-                WHERE = c,
+                WHERE = b,
+                STATE = c
             };
 
             string sendData = LitJson.JsonMapper.ToJson(data);

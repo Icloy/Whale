@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using whale;
 
 public class PickUp : MonoBehaviour
 {
@@ -30,10 +31,6 @@ public class PickUp : MonoBehaviour
         CheckItem();
         TryAction();
     }
-
-
-
-
 
     private void TryAction()
     {
@@ -128,6 +125,7 @@ public class PickUp : MonoBehaviour
             {
                 case "Cube_Length":
                     //여기에 쓰면 됌
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Test", 1);
                     Debug.Log("!");
                     break;
                 case "Cube_Width":

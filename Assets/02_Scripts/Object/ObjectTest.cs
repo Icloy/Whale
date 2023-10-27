@@ -13,7 +13,7 @@ namespace whale
 
         public void PressButton()
         {
-            
+           // MainManager.Instance.titleManager.
         }
     }
 }
