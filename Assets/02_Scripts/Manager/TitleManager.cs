@@ -178,7 +178,7 @@ namespace whale
                         }
                         else if (state == 1)
                         {
-                            Debug.Log("대충 오브젝트 색깔 바뀌었음!");
+                            GameManager.gm.objController.TestCubeColor();
                         }
                         else if (state == 2)
                         {

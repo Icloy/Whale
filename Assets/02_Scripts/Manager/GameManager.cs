@@ -8,6 +8,7 @@ namespace whale
     public class GameManager : MonoBehaviour
     {
         public static GameManager gm;
+        public ObjectController objController;
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;
