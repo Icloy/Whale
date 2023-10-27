@@ -17,9 +17,12 @@ public class PickUp : MonoBehaviour
 
     public GameObject item = null;  // 바라보고 있는 아이템
     public GameObject heldItem = null;  // 들고 있는 아이템
+    public GameObject obj = null;
     public Transform hand;
     private KeyCode pickupKey = KeyCode.E;
     private KeyCode dropKey = KeyCode.Q;
+
+    private bool isObj;
 
     // Update is called once per frame
     void Update()
@@ -38,6 +41,7 @@ public class PickUp : MonoBehaviour
         {
             CheckItem();
             CanPickUp();
+            CheckObj();
         }
 
     }
@@ -88,6 +92,7 @@ public class PickUp : MonoBehaviour
             else
             {
                 item = null;
+                obj = null;
             }
 
         }
@@ -97,11 +102,41 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    void CheckObj()
+    {
+        if (hitInfo.transform.tag == "Object")
+        {
+            ObjectInfoApper();
+        }
+    }
+
     void ItemInfoAppear()
     {
         pickupActivated = true; //false 에서 true로 변경
         item = hitInfo.transform.GetComponent<Item>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
 
+    }
+
+    void ObjectInfoApper()
+    {
+        item = null;
+        pickupActivated = false;
+        obj = hitInfo.transform.GetComponent<Item>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
+        if (obj != null && Input.GetKeyDown(pickupKey))
+        {
+            switch (obj.name)
+            {
+                case "Cube_Length":
+                    //여기에 쓰면 됌
+                    Debug.Log("!");
+                    break;
+                case "Cube_Width":
+                    //여기에 쓰면 됌
+                    Debug.Log("2");
+
+                    break;
+            }
+        }
     }
 
     void InfoDisappear()

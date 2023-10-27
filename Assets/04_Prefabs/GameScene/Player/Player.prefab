@@ -97,7 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ebcce1a9addb17458f9cdfb37472d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerState: 0
 --- !u!1 &4140931247641993232
 GameObject:
   m_ObjectHideFlags: 0
@@ -313,7 +312,6 @@ MonoBehaviour:
   speed: 20
   jumpPower: 2
   gravity: -40
-  aa: 0
 --- !u!114 &8906376807277984237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,7 +327,8 @@ MonoBehaviour:
   range: 2
   layerMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 4608
   item: {fileID: 0}
   heldItem: {fileID: 0}
+  obj: {fileID: 0}
   hand: {fileID: 3069922117997706658}

@@ -8,6 +8,7 @@ TagManager:
   - Item
   - Puzzle
   - AnswerCheck
+  - Object
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Item
   - Maze
   - Map
-  - 
+  - Object
   - 
   - 
   - 
