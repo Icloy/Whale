@@ -9,14 +9,14 @@ namespace whale
         [SerializeField] GameObject testCube;
 
 
-
+        [SerializeField] Material redMeterial;
 
 
 
         public void TestCubeColor()
         {
-            MeshRenderer mesh = testCube.GetComponent<MeshRenderer>();
-            mesh.material.color = Color.red;
+            MeshRenderer renderer = testCube.GetComponent<MeshRenderer>();
+            renderer.material = redMeterial;
         }
     }
 }
