@@ -101,9 +101,12 @@ public class PickUp : MonoBehaviour
 
     void CheckObj()
     {
-        if (hitInfo.transform.tag == "Object")
+        if (hitInfo.transform != null)
         {
-            ObjectInfoApper();
+            if (hitInfo.transform.tag == "Object")
+            {
+                ObjectInfoApper();
+            }
         }
     }
 
@@ -126,10 +129,12 @@ public class PickUp : MonoBehaviour
                 case "Cube_Length":
                     //여기에 쓰면 됌
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "TEST", 1);
+                    Debug.Log("Cube_Length");
                     break;
                 case "Cube_Width":
                     //여기에 쓰면 됌
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "TEST", 1);
+                    Debug.Log("Cube_Width");
                     break;
             }
         }
