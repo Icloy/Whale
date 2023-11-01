@@ -70,30 +70,16 @@ namespace whale
             MainManager.Instance.netGameManager.RoomUserMove(userSession);
         }
 
-        //발사했을때의 샘플코드
-        private void TankFire()
-        {
-            var data = new TANK_FIRE
-            {
-                USER = "User10",
-                DATA = 2,
-                Power = "10",
-                Position = "1,1,1"
-            };
-
-            string sendData = LitJson.JsonMapper.ToJson(data);
-            MainManager.Instance.netGameManager.RoomBroadcast(sendData);
-        }
-
-        //제작중인 샘플코드
+        
+        //네트워크 호출 코드
         public void ObjectInteraction(int a , string b, int c) //c는 0 default 1 active 2 off
         {
             var data = new Object_Interaction
             {
                 USER = a,
                 DATA = 2,
-                WHERE = b,
-                STATE = c
+                WHERE = b, //어떤 오브젝트 활성화 할건지
+                STATE = c //WHERE의 오브젝트 상태 활성화 할껀지 없앨껀지 등.(추가로 하나 컨트롤 할 수 있는값)
             };
 
             string sendData = LitJson.JsonMapper.ToJson(data);
@@ -171,21 +157,22 @@ namespace whale
                 int state = Convert.ToInt32(jData["STATE"].ToString());
                 switch (where)
                 {
-                    case "TEST" :
-                        if (state == 0)
+                    case "Cube" :
+                        if (state == 0) //가로 축
                         {
 
                         }
-                        else if (state == 1)
+                        else if (state == 1) //세로 축
                         {
                             GameManager.gm.objController.TestCubeColor();
                         }
-                        else if (state == 2)
+                        else if (state == 2) //정답 체크
                         {
 
                         }
                         else break;
                         break;
+                        //case
                 }
             }
 
