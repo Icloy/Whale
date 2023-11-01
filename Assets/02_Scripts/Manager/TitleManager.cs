@@ -158,17 +158,26 @@ namespace whale
                 switch (where)
                 {
                     case "Cube" :
-                        if (state == 0) //가로 축
+                        if (state == 0) //가로 축 회전
                         {
+                            GameManager.gm.objController.Puzzle_Cube_RotateHor();
 
                         }
-                        else if (state == 1) //세로 축
+                        else if (state == 1) //세로 축 회전
                         {
-                            GameManager.gm.objController.TestCubeColor();
+                            GameManager.gm.objController.Puzzle_Cube_RotateVer();
                         }
                         else if (state == 2) //정답 체크
                         {
-
+                            GameManager.gm.objController.Puzzle_Cube_CheckAnswer();
+                        }
+                        else if (state == 4) // 가로 선택
+                        {
+                            GameManager.gm.objController.Puzzle_Cube_ChooseHor();
+                        }
+                        else if (state == 5) // 세로 선택
+                        {
+                            GameManager.gm.objController.Puzzle_Cube_ChooseVer();
                         }
                         else break;
                         break;
