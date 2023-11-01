@@ -133,7 +133,7 @@ namespace whale
             Vector3 pos = user.m_userTransform[0].GetVector3();
             if (user.m_szUserID != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
             {
-                Debug.Log("icloy 플레이어 프리팹 제작" + user.m_szUserID);
+                Debug.Log("플레이어 프리팹 제작" + user.m_szUserID);
                 GameManager.gm.CreatePlayer(false, user.m_szUserID);
             }
         }
@@ -158,30 +158,30 @@ namespace whale
                 switch (where)
                 {
                     case "Cube" :
-                        if (state == 0) //가로 축 회전
+                        switch (state)
                         {
-                            GameManager.gm.objController.Puzzle_Cube_RotateHor();
-
+                            case 0://가로 축 회전
+                                GameManager.gm.objController.Puzzle_Cube_RotateHor();
+                                break;
+                            case 1://세로 축 회전
+                                GameManager.gm.objController.Puzzle_Cube_RotateVer();
+                                break;
+                            case 2: //정답 체크
+                                GameManager.gm.objController.Puzzle_Cube_CheckAnswer();
+                                break;
+                            case 3: // 가로 선택
+                                GameManager.gm.objController.Puzzle_Cube_ChooseHor();
+                                break;
+                            case 4: // 세로 선택
+                                GameManager.gm.objController.Puzzle_Cube_ChooseVer();
+                                break;
                         }
-                        else if (state == 1) //세로 축 회전
-                        {
-                            GameManager.gm.objController.Puzzle_Cube_RotateVer();
-                        }
-                        else if (state == 2) //정답 체크
-                        {
-                            GameManager.gm.objController.Puzzle_Cube_CheckAnswer();
-                        }
-                        else if (state == 4) // 가로 선택
-                        {
-                            GameManager.gm.objController.Puzzle_Cube_ChooseHor();
-                        }
-                        else if (state == 5) // 세로 선택
-                        {
-                            GameManager.gm.objController.Puzzle_Cube_ChooseVer();
-                        }
-                        else break;
                         break;
-                        //case
+                        
+                        
+                        
+                        
+                       
                 }
             }
 

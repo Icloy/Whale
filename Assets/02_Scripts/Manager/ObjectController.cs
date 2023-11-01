@@ -12,9 +12,12 @@ namespace whale
 
         private void Start()
         {
-            //필요 스크립트 find로 가져오든 씬작업중인거 끝나면 붙이든...            
+            //필요 스크립트 find로 가져오든 씬작업중인거 끝나면 붙이든...
+            
         }
 
+
+        //region 늘리면서 추가
         #region Puzzle_cube
         public void Puzzle_Cube_RotateHor() // 큐브퍼즐 가로 축 회전
         {
