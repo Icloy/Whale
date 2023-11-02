@@ -142,6 +142,9 @@ public class PickUp : MonoBehaviour
                 case "Cube_VerticalC":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 4);
                     break;
+                case "Cube_Random":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 4);
+                    break;
                 #endregion
                 #region Maze
                 case "BlueBtn":
