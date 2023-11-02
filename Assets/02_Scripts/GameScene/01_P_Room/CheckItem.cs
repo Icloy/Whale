@@ -11,12 +11,11 @@ namespace whale
         public List<bool> itemBool = new List<bool>();
        public void ItemOk(Vector3 position)
         {
-            GameObject effectInstance = Instantiate(effect, position, Quaternion.identity);
-            Destroy(effectInstance, 1.0f);
-            if(itemBool[0] && itemBool[1] && itemBool[2])
-            {
-                Debug.Log("클리어");
-            }
+            Vector3 rotation = new Vector3(-90, 0, 0);
+            Quaternion desiredRotation = Quaternion.Euler(rotation);
+            GameObject effectInstance = Instantiate(effect, position, desiredRotation);
+            Destroy(effectInstance, 5.0f);
+            StartCoroutine(ItemEnd());
         }
 
         public void ItemDel(int num)
@@ -35,6 +34,15 @@ namespace whale
             {
                 itemList[4].SetActive(false);
                 itemList[5].SetActive(false);
+            }
+        }
+
+        IEnumerator ItemEnd()
+        {
+            yield return new WaitForSeconds(1f);
+            if (itemBool[0] && itemBool[1] && itemBool[2])
+            {
+                Debug.Log("클리어");
             }
         }
     }

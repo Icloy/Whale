@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 1902312493838153513}
   - component: {fileID: 5038968696802628455}
   - component: {fileID: 3426117734666945226}
-  m_Layer: 0
+  - component: {fileID: 3374421580386983470}
+  m_Layer: 12
   m_Name: Ans_3_R
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -27,13 +28,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7079118152322622093}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 33.800003, y: 0.3392315, z: 2.6508484}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1902312493838153513
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -105,3 +106,16 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.45142195, y: 1.2958498, z: 1.0035528}
   m_Center: {x: 0, y: 0.6479249, z: -0.000000059604645}
+--- !u!114 &3374421580386983470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7079118152322622093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05d26c5d2718f243a2d797deb3dc4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: cadb542c2593cea4fa6613428a2f6c17, type: 2}

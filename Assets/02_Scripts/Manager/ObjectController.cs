@@ -71,18 +71,25 @@ namespace whale
         #region Puzzle_Room
         public void Puzzle_Room_01()
         {
-            checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            checkItem.ItemOk(new Vector3(checkItem.itemList[0].transform.position.x, checkItem.itemList[0].transform.position.y, checkItem.itemList[0].transform.position.z));
+            checkItem.ItemOk(new Vector3(checkItem.itemList[1].transform.position.x, checkItem.itemList[1].transform.position.y, checkItem.itemList[1].transform.position.z));
             checkItem.ItemDel(0);
             checkItem.itemBool[0] = true;
         }
         public void Puzzle_Room_02()
         {
+            checkItem.ItemOk(new Vector3(checkItem.itemList[2].transform.position.x, checkItem.itemList[2].transform.position.y, checkItem.itemList[2].transform.position.z));
+            checkItem.ItemOk(new Vector3(checkItem.itemList[3].transform.position.x, checkItem.itemList[3].transform.position.y, checkItem.itemList[3].transform.position.z));
+
             checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
             checkItem.ItemDel(1);
             checkItem.itemBool[1] = true;
         }
         public void Puzzle_Room_03()
         {
+            checkItem.ItemOk(new Vector3(checkItem.itemList[4].transform.position.x, checkItem.itemList[4].transform.position.y, checkItem.itemList[4].transform.position.z));
+            checkItem.ItemOk(new Vector3(checkItem.itemList[5].transform.position.x, checkItem.itemList[5].transform.position.y, checkItem.itemList[5].transform.position.z));
+
             checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
             checkItem.ItemDel(2);
             checkItem.itemBool[2] = true;

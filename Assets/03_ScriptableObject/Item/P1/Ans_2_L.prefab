@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8890884625299416967}
   - component: {fileID: 8583651034758614689}
   - component: {fileID: 4548540992286058901}
-  m_Layer: 10
+  - component: {fileID: 2687792764849186750}
+  m_Layer: 12
   m_Name: CandleLight (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,6 +108,29 @@ Halo:
     serializedVersion: 2
     rgba: 4288406783
   m_Size: -0.05
+--- !u!114 &2687792764849186750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 585829739831754793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &854564019265380160
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +142,8 @@ GameObject:
   - component: {fileID: 6756514121639807192}
   - component: {fileID: 2836198729176872579}
   - component: {fileID: 7435339927751438576}
-  m_Layer: 10
+  - component: {fileID: 9152131849146251728}
+  m_Layer: 12
   m_Name: CandleLight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -214,6 +239,29 @@ Halo:
     serializedVersion: 2
     rgba: 4288406783
   m_Size: -0.05
+--- !u!114 &9152131849146251728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 854564019265380160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &2266025648737510457
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,9 +274,10 @@ GameObject:
   - component: {fileID: 5145046735002573255}
   - component: {fileID: 6000301367199116769}
   - component: {fileID: 117885692169958203}
-  m_Layer: 0
+  - component: {fileID: 7915053374001358762}
+  m_Layer: 12
   m_Name: Ans_2_L
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
@@ -241,7 +290,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2266025648737510457}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.8780842, y: 1.9339347, z: 10.799377}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
@@ -326,6 +375,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1776075, y: 0.992036, z: 0.2939901}
   m_Center: {x: 0.00000023841858, y: 0.49601787, z: 0.000000059604645}
+--- !u!114 &7915053374001358762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2266025648737510457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c05d26c5d2718f243a2d797deb3dc4be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 4403a055720a87441a0efc52255affef, type: 2}
 --- !u!1 &4247296333571346340
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5042126647132812935}
   - component: {fileID: 1390779048450513935}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -380,7 +442,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7638926638654027866}
   - component: {fileID: 4422249242758672190}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flame (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +487,8 @@ GameObject:
   - component: {fileID: 513086934467698666}
   - component: {fileID: 811263852051698419}
   - component: {fileID: 2957114730787437290}
-  m_Layer: 10
+  - component: {fileID: 6879504969974636286}
+  m_Layer: 12
   m_Name: CandleLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -521,6 +584,29 @@ Halo:
     serializedVersion: 2
     rgba: 4288406783
   m_Size: -0.05
+--- !u!114 &6879504969974636286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7785181106829550141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1 &8061584003002710241
 GameObject:
   m_ObjectHideFlags: 0
@@ -531,7 +617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6004712347231702074}
   - component: {fileID: 3447000091376727290}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Flame (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
