@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae5caeece75f6db4ca173bd2978154c2, type: 3}
-  m_Name: Cube_Vertical
+  m_Name: Cube_Answer
   m_EditorClassIdentifier: 
-  itemPrefab: {fileID: 3796009688555450452, guid: 5acd408ea04b0c243a6ba070ccc51560,
+  itemPrefab: {fileID: 4240837305142133302, guid: b11421a209ee2b34bbe011fd584c396f,
     type: 3}
-  itemName: Cube_Vertical
-  key: 1
+  itemName: Cube_Answer
+  key: 2

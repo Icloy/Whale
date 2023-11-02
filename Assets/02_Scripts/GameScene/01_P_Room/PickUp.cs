@@ -126,14 +126,20 @@ public class PickUp : MonoBehaviour
         {
             switch (obj.name)
             {
-                case "Cube_Horizontal":
+                case "Cube_HorizontalH":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 0);
                     break;
-                case "Cube_Vertical":
+                case "Cube_VerticalH":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 1);
                     break;
                 case "Cube_Answer":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 2);
+                    break;
+                case "Cube_HorizontalC":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 3);
+                    break;
+                case "Cube_VerticalC":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 4);
                     break;
             }
         }

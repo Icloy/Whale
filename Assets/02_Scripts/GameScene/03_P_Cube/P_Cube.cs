@@ -31,9 +31,9 @@ namespace whale
         int v, h;
         float rotationSpeed = 90f;
 
-        [Header("TestUI")]
-        [SerializeField] TextMeshProUGUI vText;
-        [SerializeField] TextMeshProUGUI hText;
+        //[Header("TestUI")]
+        //[SerializeField] TextMeshProUGUI vText;
+        //[SerializeField] TextMeshProUGUI hText;
 
         private void Start()
         {
@@ -195,7 +195,7 @@ namespace whale
                 }
             }
             VerticalLineCube.Clear();
-            vText.text = "V : " + v;
+            //vText.text = "V : " + v;
             SelVertical(v);
             v++;
         }
@@ -216,7 +216,7 @@ namespace whale
                 }
             }
             HorizontalLineCube.Clear();
-            hText.text = "H : " + h;
+            //hText.text = "H : " + h;
             SelHorizontal(h);
             h++;
         }
