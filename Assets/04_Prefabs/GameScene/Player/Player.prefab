@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 2
+  itemText: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 4608
