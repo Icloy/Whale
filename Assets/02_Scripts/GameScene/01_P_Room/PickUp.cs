@@ -162,14 +162,19 @@ public class PickUp : MonoBehaviour
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 0);
                     break;
                 case "Ans_1_R":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 0);
                     break;
                 case "Ans_2_L":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 1);
                     break;
                 case "Ans_2_R":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 1);
                     break;
                 case "Ans_3_L":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 2);
                     break;
                 case "Ans_3_R":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 2);
                     break;
 
                     #endregion

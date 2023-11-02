@@ -211,8 +211,15 @@ namespace whale
                         switch (state) //각각의 실행코드 0:B 1:G 2:R
                         {
                             case 0:
-                                GameManager.gm.objController.Puzzle_Room_aa();
+                                GameManager.gm.objController.Puzzle_Room_01();
                                 break;
+                            case 1:
+                                GameManager.gm.objController.Puzzle_Room_02();
+                                break;
+                            case 2:
+                                GameManager.gm.objController.Puzzle_Room_03();
+                                break;
+
                         }
                         //중복 감지 해제 코드 여기
                         break;
