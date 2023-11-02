@@ -178,6 +178,9 @@ namespace whale
                             case 4: // 세로 선택
                                 GameManager.gm.objController.Puzzle_Cube_ChooseVer();
                                 break;
+                            case 5: //큐브 랜덤 값 주기
+                                GameManager.gm.objController.Puzzle_Cube_Random();
+                                break;
                         }
                         break;
                     #endregion
