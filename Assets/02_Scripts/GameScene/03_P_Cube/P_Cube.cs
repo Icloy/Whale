@@ -22,7 +22,7 @@ namespace whale
         [SerializeField] GameObject cubeLoc;
         [SerializeField] GameObject ver;
         [SerializeField] GameObject hor;
-        
+
         [Header("Caching")]
         CubeState cubeState;
         Color selVerColor;
@@ -31,20 +31,20 @@ namespace whale
         int v, h;
         float rotationSpeed = 90f;
 
-        /*[Header("TestUI")]
+        [Header("TestUI")]
         [SerializeField] TextMeshProUGUI vText;
         [SerializeField] TextMeshProUGUI hText;
-*/
+
         private void Start()
         {
-            //InitCubeProcess();
+            InitCubeProcess();
 
-            //¼±ÅÃ½Ã »ö»ó
+            //ï¿½ï¿½ï¿½Ã½ï¿½ ï¿½ï¿½ï¿½ï¿½
             selVerColor = Color.yellow;
             selHorColor = Color.green;
         }
 
-        void InitCubeProcess() //Å¥ºê »ý¼º
+        void InitCubeProcess() //Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             int cubeKey = 1;
             for (int i = 0; i < cubeNum; i++)
@@ -69,7 +69,7 @@ namespace whale
             cubeState = CubeState.None;
         }
 
-        public void PickRandomCube() //ÃÊ±â Å¥ºê ·£´ý ¼±ÅÃ 
+        public void PickRandomCube() //ï¿½Ê±ï¿½ Å¥ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
         {
             List<Cube> availableCubes = new List<Cube>(LubiksCubeScript);
             availableCubes.RemoveAll(cube => cube.cubeKey == 14);
@@ -89,9 +89,9 @@ namespace whale
             }
         }
 
-        void SelVertical(int val) // ¼öÁ÷ ¼±ÅÃ
+        void SelVertical(int val) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
-            if(cubeState.Equals(CubeState.Hor)) //¼öÆòÀÌ ÀÌ¹Ì ¼±ÅÃÀÌ µÇ¾îÀÖ´Ù¸é
+            if (cubeState.Equals(CubeState.Hor)) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ö´Ù¸ï¿½
             {
                 foreach (GameObject obj in HorizontalLineCube)
                 {
@@ -114,9 +114,9 @@ namespace whale
             }
         }
 
-        void SelHorizontal(int val) //¼öÆò ¼±ÅÃ
+        void SelHorizontal(int val) //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
-            if (cubeState.Equals(CubeState.Ver)) //¼öÁ÷ÀÌ ÀÌ¹Ì ¼±ÅÃÀÌ µÇ¾îÀÖ´Ù¸é
+            if (cubeState.Equals(CubeState.Ver)) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ï¿½Ö´Ù¸ï¿½
             {
                 foreach (GameObject obj in VerticalLineCube)
                 {
@@ -139,7 +139,7 @@ namespace whale
             }
         }
 
-        IEnumerator RotateCubes(GameObject vh, Quaternion goalRot) //Å¥ºê È¸Àü
+        IEnumerator RotateCubes(GameObject vh, Quaternion goalRot) //Å¥ï¿½ï¿½ È¸ï¿½ï¿½
         {
             Quaternion targetRotation = goalRot;
 
@@ -151,18 +151,55 @@ namespace whale
 
             float totalAngle = 90.0f;
             float rotatedAngle = 0.0f;
+            float t = 0;
+            Vector3 vec1 = vh.transform.localEulerAngles;
+            Vector3 vec2 = new Vector3(vec1.x + 90, 0, 0);
+            Vector3 vec3 = new Vector3(0, 0, vec1.z+90);
 
-            while (rotatedAngle < totalAngle)
+            //while (rotatedAngle <= totalAngle)
+            //{
+            //    float step = rotationSpeed * Time.deltaTime;
+            //    vh.transform.rotation *= Quaternion.AngleAxis(step, rotationAxis);
+            //    rotatedAngle += step;
+
+            //    yield return null;
+            //}
+            while (t<=1)
             {
-                float step = rotationSpeed * Time.deltaTime;
-                vh.transform.rotation *= Quaternion.AngleAxis(step, rotationAxis);
-                rotatedAngle += step;
+                t += Time.deltaTime * 5f;
+                if(cubeState == CubeState.Ver)
+                {
+                    vh.transform.localEulerAngles = Vector3.Lerp(vec1, vec2, t);
+                }
+                else
+                {
+                    vh.transform.localEulerAngles = Vector3.Lerp(vec1, vec3, t);
+                }
                 yield return null;
             }
-            RoundTransform();
+
+            if(VerticalLineCube.Count > 0)
+            {
+                foreach (GameObject obj in VerticalLineCube)
+                {
+                    obj.transform.SetParent(cubeLoc.transform);
+                }
+            }
+            if (HorizontalLineCube.Count > 0)
+            {
+                foreach (GameObject obj in HorizontalLineCube)
+                {
+                    obj.transform.SetParent(cubeLoc.transform);
+                }
+            }
+
+
+            vh.transform.localEulerAngles = Vector3.zero;
+
+            //RoundTransform();
         }
 
-        void RoundTransform() //Å¥ºê À§Ä¡ ÀçÁ¶Á¤
+        void RoundTransform() //Å¥ï¿½ï¿½ ï¿½ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
             foreach (GameObject obj in LubiksCubeObj)
             {
@@ -174,12 +211,12 @@ namespace whale
 
                 obj.transform.position = v3;
             }
-            GameManager.gm.objController.boolCubeRotate = false;
+            //GameManager.gm.objController.boolCubeRotate = false;
         }
 
 
         #region Click
-        public void Click_ChangeVerLine() //¼öÁ÷ ¶óÀÎ ¼±ÅÃ
+        public void Click_ChangeVerLine() //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             if (v > 2)
             {
@@ -195,12 +232,12 @@ namespace whale
                 }
             }
             VerticalLineCube.Clear();
-            //vText.text = "V : " + v;
+            vText.text = "V : " + v;
             SelVertical(v);
             v++;
         }
 
-        public void Click_ChangeHorLine() //¼öÆò ¶óÀÎ ¼±ÅÃ
+        public void Click_ChangeHorLine() //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         {
             if (h > 2)
             {
@@ -210,18 +247,18 @@ namespace whale
             {
                 foreach (GameObject obj in HorizontalLineCube)
                 {
-                   /* Renderer renderer = obj.GetComponent<Renderer>();
-                    renderer.material.color = Color.gray;*/
+                    /* Renderer renderer = obj.GetComponent<Renderer>();
+                     renderer.material.color = Color.gray;*/
                     obj.transform.SetParent(cubeLoc.transform);
                 }
             }
             HorizontalLineCube.Clear();
-           // hText.text = "H : " + h;
+            hText.text = "H : " + h;
             SelHorizontal(h);
             h++;
         }
 
-        public void Click_RotateVertical() //¼öÁ÷ È¸Àü
+        public void Click_RotateVertical() //ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
         {
             if (!cubeState.Equals(CubeState.Ver)) return;
             foreach (GameObject obj in VerticalLineCube)
@@ -231,7 +268,7 @@ namespace whale
             StartCoroutine(RotateCubes(ver, Quaternion.Euler(90, 0, 0)));
         }
 
-        public void Click_RotateHorizontal() //¼öÆò È¸Àü
+        public void Click_RotateHorizontal() //ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½
         {
             if (!cubeState.Equals(CubeState.Hor)) return;
             foreach (GameObject obj in HorizontalLineCube)
@@ -250,7 +287,7 @@ namespace whale
                     a++;
                 }
             }
-            if (a >= 9) 
+            if (a >= 9)
             {
                 Debug.Log("Clear");
             }
