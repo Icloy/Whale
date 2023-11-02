@@ -158,6 +158,8 @@ namespace whale
                 switch (where)
                 {
                     case "Cube" :
+                        if (GameManager.gm.objController.boolCubeRotate) return;
+                        GameManager.gm.objController.boolCubeRotate = true;
                         switch (state)
                         {
                             case 0://가로 축 회전

@@ -10,6 +10,11 @@ namespace whale
         [Header("PuzzleScript")]
         [SerializeField] P_Cube pCube;
 
+        [Header("Bool")]
+         public bool boolCubeRotate;
+
+
+
         private void Start()
         {
             //필요 스크립트 find로 가져오든 씬작업중인거 끝나면 붙이든...

@@ -31,10 +31,10 @@ namespace whale
         int v, h;
         float rotationSpeed = 90f;
 
-        //[Header("TestUI")]
-        //[SerializeField] TextMeshProUGUI vText;
-        //[SerializeField] TextMeshProUGUI hText;
-
+        /*[Header("TestUI")]
+        [SerializeField] TextMeshProUGUI vText;
+        [SerializeField] TextMeshProUGUI hText;
+*/
         private void Start()
         {
             InitCubeProcess();
@@ -175,6 +175,7 @@ namespace whale
 
                 obj.transform.position = v3;
             }
+            GameManager.gm.objController.boolCubeRotate = false;
         }
 
 
@@ -216,7 +217,7 @@ namespace whale
                 }
             }
             HorizontalLineCube.Clear();
-            //hText.text = "H : " + h;
+           // hText.text = "H : " + h;
             SelHorizontal(h);
             h++;
         }
