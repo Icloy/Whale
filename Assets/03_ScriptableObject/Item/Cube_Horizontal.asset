@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 2737662567560129440, guid: 813c227aea2419b478c8f2ae1b26455e,
     type: 3}
-  itemName: Cube_Length
+  itemName: Cube_Horizontal
   key: 2
