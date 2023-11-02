@@ -9,7 +9,10 @@ namespace whale
         public GameObject effect;
         public List<GameObject> itemList = new List<GameObject>();
         public List<bool> itemBool = new List<bool>();
-       public void ItemOk(Vector3 position)
+
+        public GameObject DoorL;
+        public GameObject DoorR;
+        public void ItemOk(Vector3 position)
         {
             Vector3 rotation = new Vector3(-90, 0, 0);
             Quaternion desiredRotation = Quaternion.Euler(rotation);
@@ -43,6 +46,8 @@ namespace whale
             if (itemBool[0] && itemBool[1] && itemBool[2])
             {
                 Debug.Log("Å¬¸®¾î");
+                DoorL.SetActive(false);
+                DoorR.SetActive(false);
             }
         }
     }
