@@ -6,6 +6,8 @@ namespace whale
 {
     public class ObjectController : MonoBehaviour
     {
+        [Header("RoomScript")]
+        [SerializeField] CheckItem checkItem;
 
         [Header("PuzzleScript")]
         [SerializeField] P_Cube pCube;
@@ -67,9 +69,23 @@ namespace whale
         }
         #endregion
         #region Puzzle_Room
-        public void Puzzle_Room_aa()
+        public void Puzzle_Room_01()
         {
-
+            checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            checkItem.ItemDel(0);
+            checkItem.itemBool[0] = true;
+        }
+        public void Puzzle_Room_02()
+        {
+            checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            checkItem.ItemDel(1);
+            checkItem.itemBool[1] = true;
+        }
+        public void Puzzle_Room_03()
+        {
+            checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            checkItem.ItemDel(2);
+            checkItem.itemBool[2] = true;
         }
         #endregion
     }
