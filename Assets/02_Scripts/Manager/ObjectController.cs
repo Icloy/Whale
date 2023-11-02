@@ -9,6 +9,7 @@ namespace whale
 
         [Header("PuzzleScript")]
         [SerializeField] P_Cube pCube;
+        [SerializeField] Maze pMaze;
 
         [Header("Bool")]
          public bool boolCubeRotate;
@@ -45,6 +46,20 @@ namespace whale
         public void Puzzle_Cube_CheckAnswer() //큐브퍼즐 정답 확인
         {
             pCube.Click_AnswerCheck();
+        }
+        #endregion
+        #region Puzzle_Maze
+        public void Puzzle_Maze_Red()
+        {
+
+        }
+        public void Puzzle_Maze_Green()
+        {
+
+        }
+        public void Puzzle_Maze_Blue()
+        {
+
         }
         #endregion
     }

@@ -126,6 +126,7 @@ public class PickUp : MonoBehaviour
         {
             switch (obj.name)
             {
+                #region Cube
                 case "Cube_HorizontalH":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 0);
                     break;
@@ -141,6 +142,18 @@ public class PickUp : MonoBehaviour
                 case "Cube_VerticalC":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 4);
                     break;
+                #endregion
+                #region Maze
+                case "BlueBtn":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 0);
+                    break;
+                case "GreenBtn":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 1);
+                    break;
+                case "RedBtn":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 2);
+                    break;
+                    #endregion
             }
         }
     }

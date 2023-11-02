@@ -157,6 +157,7 @@ namespace whale
                 int state = Convert.ToInt32(jData["STATE"].ToString());
                 switch (where)
                 {
+                    #region Cube
                     case "Cube" :
                         if (GameManager.gm.objController.boolCubeRotate) return;
                         GameManager.gm.objController.boolCubeRotate = true;
@@ -179,7 +180,25 @@ namespace whale
                                 break;
                         }
                         break;
-                        
+                    #endregion
+                    case "Maze":
+                        //중복 감지 코드는 여기
+
+                        switch (state) //각각의 실행코드 0:B 1:G 2:R
+                        {
+                            case 0:
+                                GameManager.gm.objController.Puzzle_Maze_Blue();
+                                break;
+                            case 1:
+                                GameManager.gm.objController.Puzzle_Maze_Green();
+                                break;
+                            case 2:
+                                GameManager.gm.objController.Puzzle_Maze_Red();
+                                break;
+                        }
+                        //중복 감지 해제 코드 여기
+
+                        break;
                         
                         
                         
