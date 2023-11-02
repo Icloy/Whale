@@ -3350,8 +3350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ec87d54dd6c1347b047d5788bcce14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testCube: {fileID: 0}
-  redMeterial: {fileID: 2100000, guid: cfa2ba17923d60b4e8d466e96b1ee2e3, type: 2}
+  pCube: {fileID: 0}
 --- !u!1001 &255386286
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27249,7 +27248,7 @@ PrefabInstance:
     - target: {fileID: 3369562169164121637, guid: 5acd408ea04b0c243a6ba070ccc51560,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.187
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3369562169164121637, guid: 5acd408ea04b0c243a6ba070ccc51560,
         type: 3}
@@ -27299,7 +27298,7 @@ PrefabInstance:
     - target: {fileID: 3796009688555450452, guid: 5acd408ea04b0c243a6ba070ccc51560,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3843017474261177627, guid: 5acd408ea04b0c243a6ba070ccc51560,
         type: 3}
@@ -27362,7 +27361,7 @@ PrefabInstance:
     - target: {fileID: 2737662567560129440, guid: 813c227aea2419b478c8f2ae1b26455e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2737662567560129440, guid: 813c227aea2419b478c8f2ae1b26455e,
         type: 3}
@@ -27377,7 +27376,7 @@ PrefabInstance:
     - target: {fileID: 6737498226612227234, guid: 813c227aea2419b478c8f2ae1b26455e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.187
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6737498226612227234, guid: 813c227aea2419b478c8f2ae1b26455e,
         type: 3}
