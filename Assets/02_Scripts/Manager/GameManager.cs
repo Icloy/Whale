@@ -9,6 +9,7 @@ namespace whale
     {
         public static GameManager gm;
         public ObjectController objController;
+        public ObjText objText;
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;

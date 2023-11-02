@@ -15,4 +15,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 4240837305142133302, guid: b11421a209ee2b34bbe011fd584c396f,
     type: 3}
   itemName: Cube_Answer
-  key: 2
+  itmeDes: 2

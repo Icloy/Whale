@@ -15,4 +15,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 3419851053230606546, guid: a4edf6a2164eb1a49ae9c3e16709b706,
     type: 3}
   itemName: Cube_Random
-  key: 0
+  itmeDes: 5

@@ -10,7 +10,6 @@ namespace whale
     {
         public GameObject itemPrefab;
         public string itemName;
-        public int key;
 
         public static ItemContainer instance;
 

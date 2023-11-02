@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using whale;
+using TMPro;
 
 public class PickUp : MonoBehaviour
 {
     [SerializeField]
     private float range;
-
+    public TMP_Text itemText;
     private bool pickupActivated = false;
 
     private RaycastHit hitInfo;
@@ -23,13 +24,18 @@ public class PickUp : MonoBehaviour
     private KeyCode pickupKey = KeyCode.E;
     private KeyCode dropKey = KeyCode.Q;
 
-    private bool isObj;
+    private void Start()
+    {
+        itemText = GameManager.gm.objText.itemText;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
         CheckItem();
         TryAction();
+        ObjInfo();
     }
 
     private void TryAction()
@@ -84,7 +90,7 @@ public class PickUp : MonoBehaviour
         {
             if (hitInfo.transform.tag == "Item" && heldItem == null)
             {
-                ItemInfoAppear();
+                //ItemInfoAppear();
             }
             else
             {
@@ -107,14 +113,18 @@ public class PickUp : MonoBehaviour
             {
                 ObjectInfoApper();
             }
+            else
+            {
+                InfoDisappear();
+            }
         }
     }
 
     void ItemInfoAppear()
     {
         pickupActivated = true; //false 에서 true로 변경
+        itemText.gameObject.SetActive(true);
         item = hitInfo.transform.GetComponent<Item>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
-
     }
 
     void ObjectInfoApper()
@@ -122,6 +132,7 @@ public class PickUp : MonoBehaviour
         item = null;
         pickupActivated = false;
         obj = hitInfo.transform.GetComponent<Item>().item.itemPrefab; // 요부분 중요 ** itempickup스크립트에 저장해둔 프리펩을 고대로 가져오는 구문
+
         if (obj != null && Input.GetKeyDown(pickupKey))
         {
             switch (obj.name)
@@ -182,10 +193,21 @@ public class PickUp : MonoBehaviour
         }
     }
 
+    void ObjInfo()
+    {
+        if(hitInfo.transform != null)
+        {
+            itemText.gameObject.SetActive(true);
+            itemText.text = hitInfo.transform.GetComponent<Item>().item.itemName;
+        }
+    }
+
     void InfoDisappear()
     {
         item = null;
         pickupActivated = false;
+        itemText.gameObject.SetActive(false);
+
         if (heldItem != null)
         {
             if (Input.GetKeyDown(dropKey))

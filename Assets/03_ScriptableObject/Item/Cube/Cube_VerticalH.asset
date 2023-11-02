@@ -15,4 +15,4 @@ MonoBehaviour:
   itemPrefab: {fileID: 3796009688555450452, guid: 66dec84e73b5bbc419e05bd593240e0e,
     type: 3}
   itemName: Cube_VerticalH
-  key: 1
+  itmeDes: 7
