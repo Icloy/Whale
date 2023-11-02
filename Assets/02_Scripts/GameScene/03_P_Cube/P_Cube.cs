@@ -14,10 +14,10 @@ namespace whale
         [SerializeField] GameObject cube;
         int cubeNum = 3;
 
-        List<GameObject> LubiksCubeObj = new List<GameObject>();
-        [HideInInspector] public List<Cube> LubiksCubeScript = new List<Cube>();
-        List<GameObject> HorizontalLineCube = new List<GameObject>();
-        List<GameObject> VerticalLineCube = new List<GameObject>();
+        [SerializeField] List<GameObject> LubiksCubeObj = new List<GameObject>();
+        [SerializeField] List<Cube> LubiksCubeScript = new List<Cube>();
+        [SerializeField] List<GameObject> HorizontalLineCube = new List<GameObject>();
+        [SerializeField] List<GameObject> VerticalLineCube = new List<GameObject>();
 
         [SerializeField] GameObject cubeLoc;
         [SerializeField] GameObject ver;
@@ -37,7 +37,8 @@ namespace whale
 */
         private void Start()
         {
-            InitCubeProcess();
+            //InitCubeProcess();
+            RoundTransform();
 
             //선택시 색상
             selVerColor = Color.yellow;
@@ -65,13 +66,14 @@ namespace whale
                     }
                 }
             }
+            PickRandomCube();
             cubeState = CubeState.None;
         }
 
-        public void PickRandomCube(List<Cube> aa) //초기 큐브 랜덤 선택 
+        public void PickRandomCube() //초기 큐브 랜덤 선택 
         {
-            List<Cube> availableCubes = new List<Cube>();
-            availableCubes = aa;
+            List<Cube> availableCubes = new List<Cube>(LubiksCubeScript);
+            availableCubes.RemoveAll(cube => cube.cubeKey == 14);
             for (int i = 0; i < 9; i++)
             {
                 if (availableCubes.Count > 0)
@@ -104,7 +106,7 @@ namespace whale
             RoundTransform();
             foreach (GameObject obj in LubiksCubeObj)
             {
-                if (obj.transform.position.x.Equals(val))
+                if (Mathf.Round(obj.transform.position.x) == val)
                 {
                     VerticalLineCube.Add(obj);
                     /*Renderer renderer = obj.GetComponent<Renderer>();
@@ -129,7 +131,7 @@ namespace whale
             RoundTransform();
             foreach (GameObject obj in LubiksCubeObj)
             {
-                if (obj.transform.position.z.Equals(val))
+                if (Mathf.Round(obj.transform.position.z) == val)
                 {
                     HorizontalLineCube.Add(obj);
                     /*Renderer renderer = obj.GetComponent<Renderer>();
