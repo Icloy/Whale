@@ -47,6 +47,12 @@ namespace whale
         {
             pCube.Click_AnswerCheck();
         }
+        public void Puzzle_Cube_Random()
+        {
+            List<Cube> availableCubes = new List<Cube>(pCube.LubiksCubeScript);
+            availableCubes.RemoveAll(cube => cube.cubeKey == 14); // 14번 큐브는 제외
+            pCube.PickRandomCube(availableCubes);
+        }
         #endregion
         #region Puzzle_Maze
         public void Puzzle_Maze_Red()

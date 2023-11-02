@@ -15,7 +15,7 @@ namespace whale
         int cubeNum = 3;
 
         List<GameObject> LubiksCubeObj = new List<GameObject>();
-        List<Cube> LubiksCubeScript = new List<Cube>();
+        [HideInInspector] public List<Cube> LubiksCubeScript = new List<Cube>();
         List<GameObject> HorizontalLineCube = new List<GameObject>();
         List<GameObject> VerticalLineCube = new List<GameObject>();
 
@@ -65,15 +65,13 @@ namespace whale
                     }
                 }
             }
-            PickRandomCube();
             cubeState = CubeState.None;
         }
 
-        void PickRandomCube() //초기 큐브 랜덤 선택 
+        public void PickRandomCube(List<Cube> aa) //초기 큐브 랜덤 선택 
         {
-            List<Cube> availableCubes = new List<Cube>(LubiksCubeScript);
-            availableCubes.RemoveAll(cube => cube.cubeKey == 14); // 14번 큐브는 제외
-
+            List<Cube> availableCubes = new List<Cube>();
+            availableCubes = aa;
             for (int i = 0; i < 9; i++)
             {
                 if (availableCubes.Count > 0)
