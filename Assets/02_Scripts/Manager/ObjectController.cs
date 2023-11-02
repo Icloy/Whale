@@ -12,7 +12,7 @@ namespace whale
         [SerializeField] Maze pMaze;
 
         [Header("Bool")]
-         public bool boolCubeRotate;
+        [HideInInspector] public bool boolCubeRotate;
 
 
 
@@ -58,6 +58,12 @@ namespace whale
 
         }
         public void Puzzle_Maze_Blue()
+        {
+
+        }
+        #endregion
+        #region Puzzle_Room
+        public void Puzzle_Room_aa()
         {
 
         }

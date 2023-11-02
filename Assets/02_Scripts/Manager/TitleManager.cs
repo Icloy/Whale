@@ -181,6 +181,7 @@ namespace whale
                         }
                         break;
                     #endregion
+                    #region Maze
                     case "Maze":
                         //중복 감지 코드는 여기
 
@@ -199,10 +200,21 @@ namespace whale
                         //중복 감지 해제 코드 여기
 
                         break;
-                        
-                        
-                        
-                       
+                    #endregion
+                    #region Room
+                    case "Room":
+                        //중복 감지 코드는 여기
+
+                        switch (state) //각각의 실행코드 0:B 1:G 2:R
+                        {
+                            case 0:
+                                GameManager.gm.objController.Puzzle_Room_aa();
+                                break;
+                        }
+                        //중복 감지 해제 코드 여기
+                        break;
+                    #endregion
+
                 }
             }
 

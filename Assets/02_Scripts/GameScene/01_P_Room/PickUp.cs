@@ -154,6 +154,9 @@ public class PickUp : MonoBehaviour
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 2);
                     break;
                     #endregion
+                #region Room
+
+                #endregion
             }
         }
     }
