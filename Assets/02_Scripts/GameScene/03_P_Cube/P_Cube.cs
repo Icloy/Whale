@@ -38,7 +38,6 @@ namespace whale
         private void Start()
         {
             //InitCubeProcess();
-            RoundTransform();
 
             //선택시 색상
             selVerColor = Color.yellow;
