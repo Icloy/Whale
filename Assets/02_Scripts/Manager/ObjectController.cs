@@ -47,7 +47,7 @@ namespace whale
         }
         public void Puzzle_Cube_CheckAnswer() //큐브퍼즐 정답 확인
         {
-            pCube.Click_AnswerCheck();
+           
         }
         public void Puzzle_Cube_Random() //큐브 랜덤 위치 생성
         {

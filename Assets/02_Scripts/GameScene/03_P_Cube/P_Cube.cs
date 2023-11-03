@@ -25,11 +25,8 @@ namespace whale
 
         [Header("Caching")]
         CubeState cubeState;
-        Color selVerColor;
-        Color selHorColor;
         GameObject obj;
         int v, h;
-        float rotationSpeed = 90f;
 
         [Header("TestUI")]
         [SerializeField] TextMeshProUGUI vText;
@@ -39,9 +36,6 @@ namespace whale
         {
             InitCubeProcess();
 
-            //���ý� ����
-            selVerColor = Color.yellow;
-            selHorColor = Color.green;
         }
 
         void InitCubeProcess()
@@ -130,15 +124,6 @@ namespace whale
             Vector3 vec2 = new Vector3(vec1.x + 90, 0, 0);
             Vector3 vec3 = new Vector3(0, 0, vec1.z+90);
 
-            //while (rotatedAngle <= totalAngle)
-            //{
-            //    float step = rotationSpeed * Time.deltaTime;
-            //    vh.transform.rotation *= Quaternion.AngleAxis(step, rotationAxis);
-            //    rotatedAngle += step;
-
-            //    yield return null;
-            //}
-            Vector3 originalScale = vh.transform.parent.localScale;
             while (t<=1)
             {
                 t += Time.deltaTime * 5f;
@@ -152,7 +137,6 @@ namespace whale
                 }
                 yield return null;
             }
-            vh.transform.parent.localScale = originalScale;
             SetCube();
             ListClear();
 
@@ -254,19 +238,104 @@ namespace whale
             }
             StartCoroutine(RotateCubes(hor, Quaternion.Euler(0, 0, 90)));
         }
-        public void Click_AnswerCheck()
+
+        // New 
+        public void BtnClick_ChooseState()
         {
-            int a = 0;
-            foreach (Cube item in LubiksCubeScript)
+            if(cubeState == CubeState.None) cubeState = CubeState.Hor;
+            switch (cubeState)
             {
-                if (item.isCurPos)
-                {
-                    a++;
-                }
+                case CubeState.Hor:
+                    cubeState = CubeState.CA;
+                    break;
+                case CubeState.CA:
+                    cubeState = CubeState.Ver;
+                    break;
+                case CubeState.Ver:
+                    cubeState = CubeState.Hor;
+                    break;
             }
-            if (a >= 9)
+        }
+
+        public void BtnClick_LineChoose()
+        {
+            switch (cubeState)
             {
-                Debug.Log("Clear");
+                case CubeState.Hor:
+                    if (h > 2)
+                    {
+                        h = 0;
+                    }
+                    if (HorizontalLineCube.Count > 0)
+                    {
+                        foreach (GameObject obj in HorizontalLineCube)
+                        {
+                            obj.transform.SetParent(cubeLoc.transform);
+                        }
+                        HorizontalLineCube.Clear();
+                    }
+                    //hText.text = "H : " + h;
+                    SetCube();
+                    SelHorizontal(h);
+                    h++;
+                    break;
+                case CubeState.CA:
+                    //None
+                    break;
+                case CubeState.Ver:
+                    if (v > 2)
+                    {
+                        v = 0;
+                    }
+                    if (VerticalLineCube.Count > 0)
+                    {
+                        foreach (GameObject obj in VerticalLineCube)
+                        {
+                            obj.transform.SetParent(cubeLoc.transform);
+                        }
+                        VerticalLineCube.Clear();
+                    }
+                    vText.text = "V : " + v;
+                    SetCube();
+                    SelVertical(v);
+                    v++;
+                    break;
+            }
+        }
+
+        public void BtnClick_Rotate_CheckAnswer()
+        {
+            switch (cubeState)
+            {
+                case CubeState.Hor:
+                    foreach (GameObject obj in HorizontalLineCube)
+                    {
+                        obj.transform.SetParent(hor.transform);
+                    }
+                    StartCoroutine(RotateCubes(hor, Quaternion.Euler(0, 0, 90)));
+                    break;
+                case CubeState.CA:
+                    int a = 0;
+                    foreach (Cube item in LubiksCubeScript)
+                    {
+                        if (item.isCurPos)
+                        {
+                            a++;
+                        }
+                    }
+                    if (a >= 9)
+                    {
+                        
+                        Debug.Log("Clear");
+                    }
+                    break;
+                case CubeState.Ver:
+                    foreach (GameObject obj in VerticalLineCube)
+                    {
+                        obj.transform.SetParent(ver.transform);
+                    }
+                    StartCoroutine(RotateCubes(ver, Quaternion.Euler(90, 0, 0)));
+                    break;
             }
         }
         #endregion
@@ -275,7 +344,8 @@ namespace whale
         {
             None,
             Hor,
-            Ver
+            Ver,
+            CA
         }
     }
 }
