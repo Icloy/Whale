@@ -138,23 +138,14 @@ public class PickUp : MonoBehaviour
             switch (obj.name)
             {
                 #region Cube
-                case "Cube_HorizontalH":
+                case "Btn_LineChoose":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 0);
                     break;
-                case "Cube_VerticalH":
+                case "Btn_Rotate_CheckAnswer":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 1);
                     break;
-                case "Cube_Answer":
+                case "Btn_ChooseState":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 2);
-                    break;
-                case "Cube_HorizontalC":
-                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 3);
-                    break;
-                case "Cube_VerticalC":
-                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 4);
-                    break;
-                case "Cube_Random":
-                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 4);
                     break;
                 #endregion
                 #region Maze

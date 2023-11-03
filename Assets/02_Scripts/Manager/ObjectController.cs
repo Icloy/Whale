@@ -27,32 +27,21 @@ namespace whale
 
         //region 늘리면서 추가
         #region Puzzle_cube
-        public void Puzzle_Cube_RotateHor() // 큐브퍼즐 가로 축 회전
+        public void Puzzle_Cube_LineChoose()
         {
-            pCube.Click_RotateHorizontal();
+            pCube.BtnClick_LineChoose();
         }
 
-        public void Puzzle_Cube_RotateVer() // 큐브퍼즐 세로 축 회전
+        public void Puzzle_Cube_Rotate_CheckAnswer() 
         {
-            pCube.Click_RotateVertical();
+            pCube.BtnClick_Rotate_CheckAnswer();
         }
 
-        public void Puzzle_Cube_ChooseHor() //큐브퍼즐 가로 축 선택
+        public void Puzzle_Cube_ChooseState()
         {
-            pCube.Click_ChangeHorLine();
+            pCube.BtnClick_ChooseState();
         }
-        public void Puzzle_Cube_ChooseVer() //큐브퍼즐 세로 축 선택
-        {
-            pCube.Click_ChangeVerLine();
-        }
-        public void Puzzle_Cube_CheckAnswer() //큐브퍼즐 정답 확인
-        {
-           
-        }
-        public void Puzzle_Cube_Random() //큐브 랜덤 위치 생성
-        {
 
-        }
         #endregion
         #region Puzzle_Maze
         public void Puzzle_Maze_Red()

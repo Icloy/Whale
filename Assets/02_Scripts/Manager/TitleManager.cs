@@ -163,23 +163,16 @@ namespace whale
                         GameManager.gm.objController.boolCubeRotate = true;
                         switch (state)
                         {
-                            case 0://가로 축 회전
-                                GameManager.gm.objController.Puzzle_Cube_RotateHor();
+                            case 0://line
+                                GameManager.gm.objController.Puzzle_Cube_LineChoose();
+                                GameManager.gm.objController.boolCubeRotate = false;
                                 break;
-                            case 1://세로 축 회전
-                                GameManager.gm.objController.Puzzle_Cube_RotateVer();
+                            case 1://rotate
+                                GameManager.gm.objController.Puzzle_Cube_Rotate_CheckAnswer();
                                 break;
-                            case 2: //정답 체크
-                                GameManager.gm.objController.Puzzle_Cube_CheckAnswer();
-                                break;
-                            case 3: // 가로 선택
-                                GameManager.gm.objController.Puzzle_Cube_ChooseHor();
-                                break;
-                            case 4: // 세로 선택
-                                GameManager.gm.objController.Puzzle_Cube_ChooseVer();
-                                break;
-                            case 5: //큐브 랜덤 값 주기
-                                GameManager.gm.objController.Puzzle_Cube_Random();
+                            case 2: //state
+                                GameManager.gm.objController.Puzzle_Cube_ChooseState();
+                                GameManager.gm.objController.boolCubeRotate = false;
                                 break;
                         }
                         break;
