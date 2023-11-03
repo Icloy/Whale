@@ -94,6 +94,15 @@ namespace whale
             checkItem.ItemDel(2);
             checkItem.itemBool[2] = true;
         }
+        public void Puzzle_Room_04()
+        {
+            checkItem.ItemOk(new Vector3(checkItem.itemList[6].transform.position.x, checkItem.itemList[6].transform.position.y, checkItem.itemList[6].transform.position.z));
+            checkItem.ItemOk(new Vector3(checkItem.itemList[7].transform.position.x, checkItem.itemList[7].transform.position.y, checkItem.itemList[7].transform.position.z));
+            Debug.Log("!");
+            checkItem.ItemOk(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            checkItem.ItemDel(3);
+            checkItem.itemBool[3] = true;
+        }
         #endregion
     }
 }

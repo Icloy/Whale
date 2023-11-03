@@ -219,6 +219,9 @@ namespace whale
                             case 2:
                                 GameManager.gm.objController.Puzzle_Room_03();
                                 break;
+                            case 3:
+                                GameManager.gm.objController.Puzzle_Room_04();
+                                break;
 
                         }
                         //중복 감지 해제 코드 여기

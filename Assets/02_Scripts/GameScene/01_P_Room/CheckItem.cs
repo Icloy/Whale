@@ -38,12 +38,17 @@ namespace whale
                 itemList[4].SetActive(false);
                 itemList[5].SetActive(false);
             }
+            else if (num == 3)
+            {
+                itemList[6].SetActive(false);
+                itemList[7].SetActive(false);
+            }
         }
 
         IEnumerator ItemEnd()
         {
             yield return new WaitForSeconds(1f);
-            if (itemBool[0] && itemBool[1] && itemBool[2])
+            if (itemBool[0] && itemBool[1] && itemBool[2] && itemBool[3])
             {
                 Debug.Log("Å¬¸®¾î");
                 DoorL.SetActive(false);
