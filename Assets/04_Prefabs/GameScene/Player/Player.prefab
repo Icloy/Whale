@@ -309,7 +309,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 7308919896096641021}
   cam: {fileID: 0}
-  speed: 20
+  speed: 15
   jumpPower: 2
   gravity: -40
 --- !u!114 &8906376807277984237

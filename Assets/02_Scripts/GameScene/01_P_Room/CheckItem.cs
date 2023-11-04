@@ -12,6 +12,7 @@ namespace whale
 
         public GameObject DoorL;
         public GameObject DoorR;
+        private bool isP1 = false;
         public void ItemOk(Vector3 position)
         {
             Vector3 rotation = new Vector3(-90, 0, 0);
@@ -48,9 +49,10 @@ namespace whale
         IEnumerator ItemEnd()
         {
             yield return new WaitForSeconds(1f);
-            if (itemBool[0] && itemBool[1] && itemBool[2] && itemBool[3])
+            if (itemBool[0] && itemBool[1] && itemBool[2] && itemBool[3] && !isP1)
             {
                 Debug.Log("Å¬¸®¾î");
+                isP1 = true;
                 DoorL.SetActive(false);
                 DoorR.SetActive(false);
             }
