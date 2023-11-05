@@ -4,33 +4,15 @@ using UnityEngine;
 
 public class ResetPlayer : MonoBehaviour
 {
-    public Transform resetPos;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public Transform pos;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("!");
-            collision.gameObject.transform.position = resetPos.position;
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("@22");
-        } 
+            Debug.Log("!");
+            other.gameObject.transform.position = pos.position;
+        }
+
     }
 }
