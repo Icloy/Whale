@@ -148,10 +148,20 @@ public class PickUp : MonoBehaviour
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Cube", 2);
                     break;
                 #endregion
+                #region Maze
+                case "BlueBtn":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 0);
+                    break;
+                case "GreenBtn":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 1);
+                    break;
+                case "RedBtn":
+                    MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 2);
+                    break;
+                #endregion
                 #region Room
                 case "Ans_1_L":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 0);
-                    Debug.Log("1");
                     break;
                 case "Ans_1_R":
                     MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 0);
