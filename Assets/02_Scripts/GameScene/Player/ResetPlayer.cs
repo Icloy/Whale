@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class ResetPlayer : MonoBehaviour
 {
-    public Transform pos;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("!");
-            other.gameObject.transform.position = pos.position;
+            Debug.Log("Å¬¸®¾î");
         }
 
     }
