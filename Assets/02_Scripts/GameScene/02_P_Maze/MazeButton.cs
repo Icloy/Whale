@@ -60,15 +60,15 @@ namespace whale
                 {
                     case "Red":
                         maze.isRed = true;
-                        MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 0);
+                        MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 0);
                         break;
                     case "Green":
                         maze.isGreen = true;
-                        MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 1);
+                        MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 1);
                         break;
                     case "Blue":
                         maze.isBlue = true;
-                        MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Room", 2);
+                        MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Maze", 2);
                         break;
                 }
             }
