@@ -7,6 +7,7 @@ namespace whale
     {
         [SerializeField] private CharacterController controller;
         [SerializeField] private Transform cam;
+        public Animator anim;
 
         [Header("Move")]
         [SerializeField] private float speed;
@@ -70,16 +71,17 @@ namespace whale
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
-/*
+
             if (horizontal != 0 || vertical != 0)
             {
-                PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Walk);
+                anim.SetBool("Run", true);
             }
             else
             {
-                PlayerAnim.Instance.ChangeState(PlayerAnim.PlayerState.Idle);
+                anim.SetBool("Run", false);
+
             }
-*/
+
             prevTransform0 = new NetVector3(transform.position);
             prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
 

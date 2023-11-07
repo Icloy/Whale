@@ -6,6 +6,6 @@ namespace whale
 {
     public class AudioContainer : ScriptableObject
     {
-        public AudioClip a; //ex파일
+        public AudioClip Ghost; //ex파일
     }
 }

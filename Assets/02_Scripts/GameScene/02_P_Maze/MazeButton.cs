@@ -43,8 +43,14 @@ namespace whale
             }
         }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Stone, true);
+        }
+
         private void OnTriggerExit(Collider other)
         {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Stone, false);
             isMoving = false;
         }
 

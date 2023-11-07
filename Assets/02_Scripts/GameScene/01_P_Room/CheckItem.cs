@@ -15,6 +15,7 @@ namespace whale
         private bool isP1 = false;
         public void ItemOk(Vector3 position)
         {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Ghost, true);
             Vector3 rotation = new Vector3(-90, 0, 0);
             Quaternion desiredRotation = Quaternion.Euler(rotation);
             GameObject effectInstance = Instantiate(effect, position, desiredRotation);
@@ -55,8 +56,10 @@ namespace whale
                 isP1 = true;
                 DoorL.SetActive(false);
                 DoorR.SetActive(false);
+                GameManager.gm.soundManager.Play(SoundManager.AudioType.MetalDoor, true);
             }
         }
+
     }
 }
 

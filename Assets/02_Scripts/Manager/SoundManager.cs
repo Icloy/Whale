@@ -4,15 +4,46 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //GameManager.gm.soundManager.Play(SoundManager.AudioType.MetalDoor, true);
+
+    [SerializeField] AudioSource ghostSound = null;
+    [SerializeField] AudioSource metalDoorSound = null;
+    [SerializeField] AudioSource stoneSound = null;
+
+
+    public enum AudioType
     {
-        
+        Ghost, MetalDoor, Stone
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Play(AudioType audioType, bool playState)
     {
-        
+        AudioSource audioSource = null;
+        switch (audioType)
+        {
+            case AudioType.Ghost:
+                audioSource = ghostSound;
+                break;
+            case AudioType.MetalDoor:
+                audioSource = metalDoorSound;
+                break;
+            case AudioType.Stone:
+                audioSource = stoneSound;
+                break;
+        }
+        if (audioSource != null)
+        {
+            if (playState)
+            {
+                audioSource.Play();
+            }
+            else
+            {
+                audioSource.Stop();
+            }
+        }
     }
+
+
 }

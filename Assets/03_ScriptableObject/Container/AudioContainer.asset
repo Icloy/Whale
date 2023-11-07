@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9e82dfb19340ce47b9ce86752437723, type: 3}
   m_Name: AudioContainer
   m_EditorClassIdentifier: 
-  a: {fileID: 0}
+  Ghost: {fileID: 8300000, guid: 5572d278b3c0cfe4493e1d7438d942a8, type: 3}
