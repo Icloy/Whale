@@ -8,6 +8,7 @@ namespace whale
         [SerializeField] private CharacterController controller;
         [SerializeField] private Transform cam;
         public Animator anim;
+        public GameObject walk;
 
         [Header("Move")]
         [SerializeField] private float speed;
@@ -75,10 +76,13 @@ namespace whale
             if (horizontal != 0 || vertical != 0)
             {
                 anim.SetBool("Run", true);
+                walk.SetActive(true);
+
             }
             else
             {
                 anim.SetBool("Run", false);
+                walk.SetActive(false);
 
             }
 
