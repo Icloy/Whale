@@ -91,7 +91,7 @@ namespace whale
         {
             if (usResult == 0)
             {
-                MainManager.Instance.loadingManager.LoadScene("03_GameScene");
+                MainManager.Instance.loadingManager.LoadScene("VideoScene");
             }
 
             Debug.Log("UserLoginResult : " + usResult.ToString());
