@@ -220,7 +220,19 @@ namespace whale
                     {
                         h = 0;
                     }
-                    lText.text = (h+1) + " 번째 줄";
+
+                    switch (h)
+                    {
+                        case 0:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[4];
+                            break;
+                        case 1:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[3];
+                            break;
+                        case 2:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[5];
+                            break;
+                    }
                     SetCube();
                     SelHorizontal(h);
                     h++;
@@ -233,7 +245,18 @@ namespace whale
                     {
                         v = 0;
                     }
-                    lText.text = (v+1) + " 번째 줄";
+                    switch (v)
+                    {
+                        case 0:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[1];
+                            break;
+                        case 1:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[3];
+                            break;
+                        case 2:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[2];
+                            break;
+                    }
                     SetCube();
                     SelVertical(v);
                     v++;

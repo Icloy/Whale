@@ -8,5 +8,7 @@ namespace whale
     {
         [TextArea]
         public List<string> titleUIText = new List<string>();  //title UI
+        public List<string> CubeText = new List<string>();  
+
     }
 }
