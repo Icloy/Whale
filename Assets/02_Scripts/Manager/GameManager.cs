@@ -12,7 +12,6 @@ namespace whale
         public ObjectController objController;
         public ObjText objText;
         public SoundManager soundManager;
-        public Player player;
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;
@@ -45,7 +44,6 @@ namespace whale
                 aa.cfl.Follow = Player1.transform;
                 aa.cfl.LookAt = Player1.transform;
                 Player1.name = name;
-                player = Player1.GetComponent<Player>();
             }
             else
             {
@@ -54,7 +52,7 @@ namespace whale
                 Player2.name = name;
                 Destroy(Player2.GetComponent<Player>());
                 Destroy(Player2.GetComponent<PickUp>());
-                player = Player2.GetComponent<Player>();
+
             } 
         }
 

@@ -75,14 +75,13 @@ namespace whale
 
             if (horizontal != 0 || vertical != 0)
             {
-
-                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 0);
+                anim.SetBool("Run", true);
                 walk.SetActive(true);
 
             }
             else
             {
-                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 1);
+                anim.SetBool("Run", false);
                 walk.SetActive(false);
             }
 
@@ -90,25 +89,6 @@ namespace whale
             prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
 
         }
-
-        public void Run()
-        {
-            anim.SetBool("Run", true);
-        }
-        public void RunStop()
-        {
-            anim.SetBool("Run", false);
-            Debug.Log("Stop");
-        }
-        public void Jump()
-        {
-            anim.SetBool("Jump", true);
-        }
-        public void JumpStop()
-        {
-            anim.SetBool("Jump", false);
-        }
-
 
         void PlayerJump()
         {
@@ -118,14 +98,13 @@ namespace whale
             if (groundedPlayer && playerVelocity.y < 0)
             {
                 playerVelocity.y = 0f;
-                //stop
-                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 3);
+                anim.SetBool("Jump", false);
             }
 
             if (Input.GetButtonDown("Jump") && groundedPlayer)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravity);
-                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 2);
+                anim.SetBool("Jump", true);
             }
 
             playerVelocity.y += gravity * Time.deltaTime;
