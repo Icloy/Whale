@@ -148,7 +148,7 @@ namespace whale
             Debug.Log("RoomBroadcast : " + userID + " , " + dataID.ToString());
             if (dataID == 1) //게임시작
             {
-                InvokeRepeating("UserMove", 0, 0.01f);
+                InvokeRepeating("UserMove", 0, 0.05f);
             }
             else if (dataID == 2) //오브젝트 활성화
             {
