@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using MNF;
 
 namespace whale
 {
@@ -11,6 +12,8 @@ namespace whale
         public ObjectController objController;
         public ObjText objText;
         public SoundManager soundManager;
+        private GameObject playerPre;
+        public Player player;
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;
@@ -22,14 +25,17 @@ namespace whale
 
         [Header("StartPos")]
         bool isPlayer2 = false;
+
         private void Awake()
         {
             gm = this;
+
         }
 
         private void Start()
         {
             CreatePlayer(true, MainManager.Instance.statusContainer.userName);
+            returnPlayer();
         }
         public void CreatePlayer(bool islocal, string name)
         {
@@ -50,6 +56,13 @@ namespace whale
                 Destroy(Player2.GetComponent<Player>());
                 Destroy(Player2.GetComponent<PickUp>());
             } 
+        }
+
+        void returnPlayer()
+        {
+            playerPre = GameObject.Find("111");
+            player = playerPre.GetComponent<Player>();
+            
         }
     }
 }

@@ -225,6 +225,7 @@ namespace whale
                         switch (state)
                         {
                             case 0:
+                                GameManager.gm.player.PlayerMove2();
                                 break;
                         }
                         break;
