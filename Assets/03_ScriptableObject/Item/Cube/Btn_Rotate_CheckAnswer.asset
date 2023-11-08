@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7606256875950821570, guid: 917c92aaaafa6784c8668e381e9eeedf,
     type: 3}
-  itemName: Btn_Rotate_CheckAnswer
+  itemName: Press "E"

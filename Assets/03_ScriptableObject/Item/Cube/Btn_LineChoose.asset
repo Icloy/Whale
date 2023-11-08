@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 4203250646067937505, guid: e0a79763b9a682c4abf9563ccfd2e15d,
     type: 3}
-  itemName: Btn_LineChoose
+  itemName: Press "E"

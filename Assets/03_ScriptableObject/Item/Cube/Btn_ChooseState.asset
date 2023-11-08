@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 5825903646939823757, guid: fc1e6dc64a286514fbdf5b8bdf42247b,
     type: 3}
-  itemName: Btn_ChooseState
+  itemName: Press "E"
