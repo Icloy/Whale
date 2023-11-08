@@ -41,25 +41,22 @@ namespace whale
             PlayerMove();
             PlayerJump();
 
-            
+            if (gameObject.name != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
+                return;
 
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.W))
-            {
-                if (gameObject.name != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
-                    return;
+            UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
+                MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
+            if (userSession == null) return;
 
-                UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
-                    MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
-                if (userSession == null) return;
+            if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
+                return;
 
-                if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
-                    return;
+            userSession.m_userTransform[0] = prevTransform0;
+            userSession.m_userTransform[1] = prevTransform1;
 
-                userSession.m_userTransform[0] = prevTransform0;
-                userSession.m_userTransform[1] = prevTransform1;
+            MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
 
-                MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
-            }
+
         }
 
         void PlayerMove()
