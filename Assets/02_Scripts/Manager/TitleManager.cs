@@ -74,7 +74,6 @@ namespace whale
         //네트워크 호출 코드
         public void ObjectInteraction(int a , string b, int c) //c는 0 default 1 active 2 off
         {
-            Debug.Log("!@#");
             var data = new Object_Interaction
             {
                 USER = a,

@@ -117,6 +117,7 @@ namespace whale
 
         IEnumerator RotateCubes(GameObject vh)
         {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Cube, true);
             answer.text = "Rotating";
             float t = 0;
             Vector3 vec1 = vh.transform.localEulerAngles;
