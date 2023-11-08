@@ -61,8 +61,11 @@ namespace whale
         void returnPlayer()
         {
             playerPre = GameObject.Find("111");
-            player = playerPre.GetComponent<Player>();
-            
+            if(playerPre == null)
+            {
+                playerPre = GameObject.Find("222");
+            }
+            player = playerPre.GetComponent<Player>();  
         }
     }
 }
