@@ -272,6 +272,7 @@ namespace whale
                         anim = GameManager.gm.EndDoor.GetComponent<Animator>();
                         anim.SetBool("Clear", true);
                         Invoke("HideEffect", 3f);
+                        Invoke("StartOutro", 5f);
                     }
                     else
                     {
@@ -301,6 +302,11 @@ namespace whale
         void HideEffect()
         {
             GameManager.gm.EndEffect.SetActive(false);
+        }
+
+        void StartOutro()
+        {
+            MainManager.Instance.loadingManager.LoadSceneAsync("Outro");
         }
     }
 }
