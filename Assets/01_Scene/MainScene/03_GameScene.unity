@@ -89737,6 +89737,8 @@ MonoBehaviour:
   soundManager: {fileID: 1614015922}
   PlayerPref: {fileID: 6212170049299740094, guid: cca42528ee020ff479ba54b03e09050a,
     type: 3}
+  PlayerPref2: {fileID: 6212170049299740094, guid: 50facdf924d76d1448954575e592ecd9,
+    type: 3}
   p1StartPos: {fileID: 1149492742}
   p2StartPos: {fileID: 1235402452}
 --- !u!4 &1881869473

@@ -83,7 +83,6 @@ namespace whale
             {
                 anim.SetBool("Run", false);
                 walk.SetActive(false);
-
             }
 
             prevTransform0 = new NetVector3(transform.position);
@@ -99,11 +98,13 @@ namespace whale
             if (groundedPlayer && playerVelocity.y < 0)
             {
                 playerVelocity.y = 0f;
+                anim.SetBool("Jump", false);
             }
 
             if (Input.GetButtonDown("Jump") && groundedPlayer)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravity);
+                anim.SetBool("Jump", true);
             }
 
             playerVelocity.y += gravity * Time.deltaTime;

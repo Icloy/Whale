@@ -14,13 +14,14 @@ namespace whale
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;
+        [SerializeField] GameObject PlayerPref2;
 
         [Header("StartPos")]
         [SerializeField] Transform p1StartPos;
         [SerializeField] Transform p2StartPos;
 
         [Header("StartPos")]
-        bool isCreateP1;
+        bool isPlayer2 = false;
         private void Awake()
         {
             gm = this;
@@ -32,7 +33,7 @@ namespace whale
         }
         public void CreatePlayer(bool islocal, string name)
         {
-            if (islocal)
+            if (islocal && !isPlayer2)
             {
                 GameObject Player1 = Instantiate(PlayerPref, p1StartPos);
                 Player1.transform.SetParent(null, false);
@@ -40,10 +41,11 @@ namespace whale
                 aa.cfl.Follow = Player1.transform;
                 aa.cfl.LookAt = Player1.transform;
                 Player1.name = name;
+                isPlayer2 = true;
             }
-            else
+            else if(islocal && isPlayer2)
             {
-                GameObject Player2 = Instantiate(PlayerPref, p2StartPos);
+                GameObject Player2 = Instantiate(PlayerPref2, p2StartPos);
                 Player2.transform.SetParent(null, false);
                 Player2.name = name;
                 Destroy(Player2.GetComponent<Player>());
