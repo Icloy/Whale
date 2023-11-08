@@ -119,7 +119,7 @@ namespace whale
         IEnumerator RotateCubes(GameObject vh)
         {
             GameManager.gm.soundManager.Play(SoundManager.AudioType.Cube, true);
-            answer.text = "Rotating";
+            answer.text = MainManager.Instance.languageContainer.CubeText[8];
             float t = 0;
             Vector3 vec1 = vh.transform.localEulerAngles;
             Vector3 vec2 = new Vector3(vec1.x + 90, 0, 0);
@@ -196,15 +196,15 @@ namespace whale
             {
                 case CubeState.Hor:
                     cubeState = CubeState.CA;
-                    state.text = "Answer";
+                    state.text = MainManager.Instance.languageContainer.CubeText[7];
                     break;
                 case CubeState.CA:
                     cubeState = CubeState.Ver;
-                    state.text = "Vertical";
+                    state.text = MainManager.Instance.languageContainer.CubeText[6];
                     break;
                 case CubeState.Ver:
                     cubeState = CubeState.Hor;
-                    state.text = "Horizontal";
+                    state.text = MainManager.Instance.languageContainer.CubeText[5];
                     break;
             }
             lText.text = "";
@@ -224,13 +224,13 @@ namespace whale
                     switch (h)
                     {
                         case 0:
-                            lText.text = MainManager.Instance.languageContainer.CubeText[4];
-                            break;
-                        case 1:
                             lText.text = MainManager.Instance.languageContainer.CubeText[3];
                             break;
+                        case 1:
+                            lText.text = MainManager.Instance.languageContainer.CubeText[2];
+                            break;
                         case 2:
-                            lText.text = MainManager.Instance.languageContainer.CubeText[5];
+                            lText.text = MainManager.Instance.languageContainer.CubeText[4];
                             break;
                     }
                     SetCube();
@@ -248,13 +248,13 @@ namespace whale
                     switch (v)
                     {
                         case 0:
-                            lText.text = MainManager.Instance.languageContainer.CubeText[1];
+                            lText.text = MainManager.Instance.languageContainer.CubeText[0];
                             break;
                         case 1:
-                            lText.text = MainManager.Instance.languageContainer.CubeText[3];
+                            lText.text = MainManager.Instance.languageContainer.CubeText[2];
                             break;
                         case 2:
-                            lText.text = MainManager.Instance.languageContainer.CubeText[2];
+                            lText.text = MainManager.Instance.languageContainer.CubeText[1];
                             break;
                     }
                     SetCube();
