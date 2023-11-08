@@ -28,8 +28,9 @@ namespace whale
             }
             else
             {
-                MainManager.Instance.titleManager.OnClick_Start();
                 MainManager.Instance.titleManager.OnClick_Login(MainManager.Instance.statusContainer.userName);
+                MainManager.Instance.titleManager.OnClick_Start();
+
             }
         }
     }
