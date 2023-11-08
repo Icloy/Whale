@@ -109,7 +109,7 @@ namespace whale
             ListClear();
             foreach (RectTransform rt in LubiksCubeRect)
             {
-                if (Mathf.Round(rt.anchoredPosition3D.z) == val)
+                if (Mathf.Round(rt.anchoredPosition3D.y) == val)
                 {
                     HorizontalLineCube.Add(rt.gameObject);
                 }
@@ -123,7 +123,7 @@ namespace whale
             float t = 0;
             Vector3 vec1 = vh.transform.localEulerAngles;
             Vector3 vec2 = new Vector3(vec1.x + 90, 0, 0);
-            Vector3 vec3 = new Vector3(0, 0, vec1.z+90);
+            Vector3 vec3 = new Vector3(0, vec1.z + 90, 0);
 
             while (t<=1)
             {
