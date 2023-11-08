@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Video;
 
 namespace whale
 {
@@ -16,6 +17,9 @@ namespace whale
         [SerializeField] GameObject joinPopup;
         [SerializeField] GameObject gameRoom;
         [SerializeField] GameObject exceptionPopup;
+        [SerializeField] GameObject videoPlayer;
+        [SerializeField] GameObject title;
+
 
         [Header("Join")]
         [SerializeField] TMP_InputField userName;
@@ -72,8 +76,11 @@ namespace whale
                 return;
             }*/
             MainManager.Instance.statusContainer.userName = userName.text;
-            MainManager.Instance.titleManager.OnClick_Login(MainManager.Instance.statusContainer.userName);
-            MainManager.Instance.titleManager.OnClick_Start();
+            videoPlayer.SetActive(true);
+            ClearPanel();
+            title.SetActive(false);
+            /*MainManager.Instance.titleManager.OnClick_Login(MainManager.Instance.statusContainer.userName);
+            MainManager.Instance.titleManager.OnClick_Start();*/
             //MainManager.Instance.loadingManager.LoadScene("VideoScene");
 
         }

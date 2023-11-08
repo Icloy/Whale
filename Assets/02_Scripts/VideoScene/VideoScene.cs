@@ -30,7 +30,6 @@ namespace whale
             {
                 MainManager.Instance.titleManager.OnClick_Login(MainManager.Instance.statusContainer.userName);
                 MainManager.Instance.titleManager.OnClick_Start();
-
             }
         }
     }
