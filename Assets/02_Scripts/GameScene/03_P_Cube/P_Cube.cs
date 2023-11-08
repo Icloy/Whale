@@ -45,19 +45,6 @@ namespace whale
             //InitCubeProcess();
         }
 
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                GameManager.gm.soundManager.Play(SoundManager.AudioType.Wind, true);
-                GameManager.gm.soundManager.Play(SoundManager.AudioType.Stonefall, true);
-                answer.text = "Correct";
-                GameManager.gm.EndEffect.SetActive(true);
-                anim = GameManager.gm.EndDoor.GetComponent<Animator>();
-                anim.SetBool("Clear", true);
-                Invoke("HideEffect", 3f);
-            }
-        }
 
         void InitCubeProcess()
         {
