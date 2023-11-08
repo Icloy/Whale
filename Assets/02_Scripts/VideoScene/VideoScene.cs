@@ -25,7 +25,7 @@ namespace whale
                 MainManager.Instance.loadingManager.LoadScene("02_TitleScene");
                 return;
             }
-            MainManager.Instance.loadingManager.LoadSceneAsync("03_GameScene");
+            //MainManager.Instance.loadingManager.LoadScene("03_GameScene");
         }
     }
 }
