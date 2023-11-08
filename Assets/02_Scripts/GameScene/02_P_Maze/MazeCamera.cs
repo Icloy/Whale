@@ -24,7 +24,7 @@ namespace whale
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player"))
+            if (other.gameObject.CompareTag("Player") && MainManager.Instance.statusContainer.userNum.Equals(1))
             {
                 cam.cullingMask = ~(1 << 10);
             }
