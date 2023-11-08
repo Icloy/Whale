@@ -76,6 +76,7 @@ namespace whale
             if (horizontal != 0 || vertical != 0)
             {
                 anim.SetBool("Run", true);
+                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 0);
                 walk.SetActive(true);
 
             }
