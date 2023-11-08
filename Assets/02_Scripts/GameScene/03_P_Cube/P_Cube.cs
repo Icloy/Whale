@@ -35,6 +35,7 @@ namespace whale
         [SerializeField] TextMesh state;
         [SerializeField] TextMesh answer;
 
+        private Animator anim;
 
         private void Start()
         {
@@ -43,6 +44,7 @@ namespace whale
             //게임씬에서는 실행 x (랜덤 요소)
             //InitCubeProcess();
         }
+
 
         void InitCubeProcess()
         {
@@ -107,7 +109,7 @@ namespace whale
             ListClear();
             foreach (RectTransform rt in LubiksCubeRect)
             {
-                if (Mathf.Round(rt.anchoredPosition3D.z) == val)
+                if (Mathf.Round(rt.anchoredPosition3D.y) == val)
                 {
                     HorizontalLineCube.Add(rt.gameObject);
                 }
@@ -116,11 +118,12 @@ namespace whale
 
         IEnumerator RotateCubes(GameObject vh)
         {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Cube, true);
             answer.text = "Rotating";
             float t = 0;
             Vector3 vec1 = vh.transform.localEulerAngles;
             Vector3 vec2 = new Vector3(vec1.x + 90, 0, 0);
-            Vector3 vec3 = new Vector3(0, 0, vec1.z+90);
+            Vector3 vec3 = new Vector3(0, vec1.z + 90, 0);
 
             while (t<=1)
             {
@@ -262,8 +265,13 @@ namespace whale
                     {
                         //큐브 정답 처리
                         Debug.Log("Clear");
+                        GameManager.gm.soundManager.Play(SoundManager.AudioType.Wind, true);
+                        GameManager.gm.soundManager.Play(SoundManager.AudioType.Stonefall, true);
                         answer.text = "Correct";
-                        
+                        GameManager.gm.EndEffect.SetActive(true);
+                        anim = GameManager.gm.EndDoor.GetComponent<Animator>();
+                        anim.SetBool("Clear", true);
+                        Invoke("HideEffect", 3f);
                     }
                     else
                     {
@@ -288,6 +296,11 @@ namespace whale
             Hor,
             Ver,
             CA
+        }
+
+        void HideEffect()
+        {
+            GameManager.gm.EndEffect.SetActive(false);
         }
     }
 }

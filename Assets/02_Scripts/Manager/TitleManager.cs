@@ -17,7 +17,7 @@ namespace whale
         void Start()
         {
             MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
-             //MainManager.Instance.netGameManager.ConnectServer("192.168.246.193", 3650, true);
+            //MainManager.Instance.netGameManager.ConnectServer("192.168.1.143", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
@@ -148,7 +148,7 @@ namespace whale
             Debug.Log("RoomBroadcast : " + userID + " , " + dataID.ToString());
             if (dataID == 1) //게임시작
             {
-                InvokeRepeating("UserMove", 0, 0.01f);
+                InvokeRepeating("UserMove", 0, 0.5f);
             }
             else if (dataID == 2) //오브젝트 활성화
             {
@@ -205,6 +205,7 @@ namespace whale
                         {
                             case 0:
                                 GameManager.gm.objController.Puzzle_Room_01();
+                                Debug.Log("!");
                                 break;
                             case 1:
                                 GameManager.gm.objController.Puzzle_Room_02();

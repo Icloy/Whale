@@ -7,9 +7,9 @@ namespace whale
     public class Cube : MonoBehaviour
     {
         [Header("CubeKey")]
-        [HideInInspector] public int cubeKey;
-        [HideInInspector] public bool isCurPos;
-        [HideInInspector] public bool isKey;
+         public int cubeKey;
+         public bool isCurPos;
+         public bool isKey;
 
         [Header("Cube_Material")]
         [SerializeField] Material normal;

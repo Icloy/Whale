@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 6091047400170921447, guid: a65d438b98213cd4c921abe4b7301f31,
     type: 3}
-  itemName: Ans_2_R
-  key: 0
+  itemName: Candle

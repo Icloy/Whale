@@ -25,6 +25,8 @@ namespace whale
         private Vector3 playerVelocity;
         private bool groundedPlayer;
 
+        bool aa;
+
         void Start()
         {
             Lock();
@@ -38,23 +40,26 @@ namespace whale
 
         private void Update()
         {
-            if (gameObject.name != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
-                return;
-
             PlayerMove();
             PlayerJump();
+
+            if (gameObject.name != MainManager.Instance.netGameManager.m_userHandle.m_szUserID)
+                return;
 
             UserSession userSession = MainManager.Instance.netGameManager.GetRoomUserSession(
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
             if (userSession == null) return;
 
-            if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
-                return;
-
             userSession.m_userTransform[0] = prevTransform0;
             userSession.m_userTransform[1] = prevTransform1;
 
+            if (!aa) return;
+            if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
+                return;
+
             MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
+            aa = false;
+
         }
 
         void PlayerMove()
@@ -76,14 +81,15 @@ namespace whale
             if (horizontal != 0 || vertical != 0)
             {
                 anim.SetBool("Run", true);
+
                 walk.SetActive(true);
+                aa = true;
 
             }
             else
             {
                 anim.SetBool("Run", false);
                 walk.SetActive(false);
-
             }
 
             prevTransform0 = new NetVector3(transform.position);
@@ -99,11 +105,14 @@ namespace whale
             if (groundedPlayer && playerVelocity.y < 0)
             {
                 playerVelocity.y = 0f;
+                anim.SetBool("Jump", false);
             }
 
             if (Input.GetButtonDown("Jump") && groundedPlayer)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravity);
+                anim.SetBool("Jump", true);
+                aa = true;
             }
 
             playerVelocity.y += gravity * Time.deltaTime;

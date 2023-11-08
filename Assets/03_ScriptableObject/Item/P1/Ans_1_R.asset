@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 2901698985949185804, guid: ba1395139e9fb6b46817e9726974e013,
     type: 3}
-  itemName: Ans_1_R
+  itemName: Mirror

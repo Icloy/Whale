@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using MNF;
 
 namespace whale
 {
@@ -14,16 +15,22 @@ namespace whale
 
         [Header("Prefabs")]
         [SerializeField] GameObject PlayerPref;
+        [SerializeField] GameObject PlayerPref2;
 
         [Header("StartPos")]
         [SerializeField] Transform p1StartPos;
         [SerializeField] Transform p2StartPos;
 
         [Header("StartPos")]
-        bool isCreateP1;
+        bool isPlayer2 = false;
+        public GameObject EndEffect;
+        public GameObject EndDoor;
+
+
         private void Awake()
         {
             gm = this;
+
         }
 
         private void Start()
@@ -43,12 +50,14 @@ namespace whale
             }
             else
             {
-                GameObject Player2 = Instantiate(PlayerPref, p2StartPos);
+                GameObject Player2 = Instantiate(PlayerPref2, p2StartPos);
                 Player2.transform.SetParent(null, false);
                 Player2.name = name;
                 Destroy(Player2.GetComponent<Player>());
                 Destroy(Player2.GetComponent<PickUp>());
+
             } 
         }
+
     }
 }

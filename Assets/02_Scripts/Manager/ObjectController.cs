@@ -30,15 +30,18 @@ namespace whale
         public void Puzzle_Cube_LineChoose()
         {
             pCube.BtnClick_LineChoose();
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Click, true);
         }
 
         public void Puzzle_Cube_Rotate_CheckAnswer() 
         {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Click, true);
             pCube.BtnClick_Rotate_CheckAnswer();
         }
 
         public void Puzzle_Cube_ChooseState()
         {
+            GameManager.gm.soundManager.Play(SoundManager.AudioType.Click, true);
             pCube.BtnClick_ChooseState();
         }
 

@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 7079118152322622093, guid: e1b75b8660bb98f498c5bb7a65550de9,
     type: 3}
-  itemName: Ans_3_R
-  key: 0
+  itemName: Chair
