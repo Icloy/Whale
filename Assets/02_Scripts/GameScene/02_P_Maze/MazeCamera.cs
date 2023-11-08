@@ -6,11 +6,14 @@ namespace whale
 {
     public class MazeCamera : MonoBehaviour
     {
+        private GameObject c;
         [SerializeField] private Camera cam;
 
         // Start is called before the first frame update
         void Start()
         {
+            c = GameObject.Find("Main Camera");
+            cam = c.gameObject.GetComponent<Camera>();
         }
 
         // Update is called once per frame
