@@ -91,7 +91,6 @@ namespace whale
         {
             if (usResult == 0)
             {
-                MainManager.Instance.loadingManager.LoadSceneAsync("VideoScene");
                 MainManager.Instance.loadingManager.LoadSceneAsync("03_GameScene");
             }
 

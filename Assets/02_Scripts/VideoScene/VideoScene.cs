@@ -1,3 +1,4 @@
+using MNF;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,11 @@ namespace whale
                 MainManager.Instance.loadingManager.LoadScene("02_TitleScene");
                 return;
             }
-            //MainManager.Instance.loadingManager.LoadScene("03_GameScene");
+            else
+            {
+                MainManager.Instance.titleManager.OnClick_Start();
+                MainManager.Instance.titleManager.OnClick_Login(MainManager.Instance.statusContainer.userName);
+            }
         }
     }
 }
