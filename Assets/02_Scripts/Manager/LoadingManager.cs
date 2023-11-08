@@ -31,7 +31,6 @@ namespace whale
             {
                 yield return null;
                 timer += Time.deltaTime;
-                
             }
             op.allowSceneActivation = true;
         }
