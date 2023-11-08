@@ -50,12 +50,13 @@ namespace whale
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
             if (userSession == null) return;
 
-            userSession.m_userTransform[0] = prevTransform0;
-            userSession.m_userTransform[1] = prevTransform1;
 
             if (!aa) return;
             if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
                 return;
+
+            userSession.m_userTransform[0] = prevTransform0;
+            userSession.m_userTransform[1] = prevTransform1;
 
             MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
             aa = false;
