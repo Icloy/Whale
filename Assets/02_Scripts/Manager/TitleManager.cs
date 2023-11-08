@@ -222,13 +222,27 @@ namespace whale
                     #endregion
 
                     case "Player":
-                        switch (state)
+                        //중복 감지 코드는 여기
+
+                        switch (state) //각각의 실행코드 0:B 1:G 2:R
                         {
-                            case 0:
-                                GameManager.gm.player.PlayerMove2();
+                            case 0: //run
+                                GameManager.gm.player.Run();
                                 break;
+                            case 1: //runstop
+                                GameManager.gm.player.RunStop();
+                                break;
+                            case 2: //jump
+                                GameManager.gm.player.Jump();
+                                break;
+                            case 3: //jumpstop
+                                GameManager.gm.player.JumpStop();
+                                break;
+
                         }
+                        //중복 감지 해제 코드 여기
                         break;
+
 
                 }
             }

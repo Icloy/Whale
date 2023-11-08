@@ -61,42 +61,6 @@ namespace whale
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
             float vertical = Input.GetAxisRaw("Vertical");
-            //Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-            //if (direction.magnitude >= 0.1f)
-            //{
-            //    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            //    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            //    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            //    Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            //    controller.Move(moveDir.normalized * speed * Time.deltaTime);
-            //}
-
-            //prevTransform0 = new NetVector3(transform.position);
-            //prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
-
-            if (horizontal != 0 || vertical != 0)
-            {
-                anim.SetBool("Run", true);
-                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 0);
-                walk.SetActive(true);
-
-            }
-            else
-            {
-                anim.SetBool("Run", false);
-                walk.SetActive(false);
-            }
-
-
-
-        }
-
-        public void PlayerMove2()
-        {
-            float horizontal = Input.GetAxisRaw("Horizontal");
-            float vertical = Input.GetAxisRaw("Vertical");
             Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
             if (direction.magnitude >= 0.1f)
@@ -109,9 +73,42 @@ namespace whale
                 controller.Move(moveDir.normalized * speed * Time.deltaTime);
             }
 
+            if (horizontal != 0 || vertical != 0)
+            {
+
+                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 0);
+                walk.SetActive(true);
+
+            }
+            else
+            {
+                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 1);
+                walk.SetActive(false);
+            }
+
             prevTransform0 = new NetVector3(transform.position);
             prevTransform1 = new NetVector3(transform.rotation.eulerAngles);
+
         }
+
+        public void Run()
+        {
+            anim.SetBool("Run", true);
+        }
+        public void RunStop()
+        {
+            anim.SetBool("Run", false);
+            Debug.Log("Stop");
+        }
+        public void Jump()
+        {
+            anim.SetBool("Jump", true);
+        }
+        public void JumpStop()
+        {
+            anim.SetBool("Jump", false);
+        }
+
 
         void PlayerJump()
         {
@@ -121,13 +118,14 @@ namespace whale
             if (groundedPlayer && playerVelocity.y < 0)
             {
                 playerVelocity.y = 0f;
-                anim.SetBool("Jump", false);
+                //stop
+                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 3);
             }
 
             if (Input.GetButtonDown("Jump") && groundedPlayer)
             {
                 playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravity);
-                anim.SetBool("Jump", true);
+                MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 2);
             }
 
             playerVelocity.y += gravity * Time.deltaTime;

@@ -12,7 +12,6 @@ namespace whale
         public ObjectController objController;
         public ObjText objText;
         public SoundManager soundManager;
-        private GameObject playerPre;
         public Player player;
 
         [Header("Prefabs")]
@@ -35,7 +34,6 @@ namespace whale
         private void Start()
         {
             CreatePlayer(true, MainManager.Instance.statusContainer.userName);
-            returnPlayer();
         }
         public void CreatePlayer(bool islocal, string name)
         {
@@ -47,6 +45,7 @@ namespace whale
                 aa.cfl.Follow = Player1.transform;
                 aa.cfl.LookAt = Player1.transform;
                 Player1.name = name;
+                player = Player1.GetComponent<Player>();
             }
             else
             {
@@ -55,17 +54,9 @@ namespace whale
                 Player2.name = name;
                 Destroy(Player2.GetComponent<Player>());
                 Destroy(Player2.GetComponent<PickUp>());
+                player = Player2.GetComponent<Player>();
             } 
         }
 
-        void returnPlayer()
-        {
-            playerPre = GameObject.Find("111");
-            if(playerPre == null)
-            {
-                playerPre = GameObject.Find("222");
-            }
-            player = playerPre.GetComponent<Player>();  
-        }
     }
 }
