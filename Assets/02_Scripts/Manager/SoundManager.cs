@@ -10,11 +10,14 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource metalDoorSound = null;
     [SerializeField] AudioSource stoneSound = null;
     [SerializeField] AudioSource cubeSound = null;
+    [SerializeField] AudioSource clickSound = null;
+    [SerializeField] AudioSource windSound = null;
+    [SerializeField] AudioSource stonefallSound = null;
 
 
     public enum AudioType
     {
-        Ghost, MetalDoor, Stone, Cube
+        Ghost, MetalDoor, Stone, Cube, Click, Wind, Stonefall
     }
 
 
@@ -34,6 +37,15 @@ public class SoundManager : MonoBehaviour
                 break;
             case AudioType.Cube:
                 audioSource = cubeSound;
+                break;
+            case AudioType.Click:
+                audioSource = clickSound;
+                break;
+            case AudioType.Wind:
+                audioSource = clickSound;
+                break;
+            case AudioType.Stonefall:
+                audioSource = clickSound;
                 break;
         }
         if (audioSource != null)
