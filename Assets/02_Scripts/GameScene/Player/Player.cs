@@ -25,6 +25,8 @@ namespace whale
         private Vector3 playerVelocity;
         private bool groundedPlayer;
 
+        bool aa;
+
         void Start()
         {
             Lock();
@@ -48,6 +50,7 @@ namespace whale
                 MainManager.Instance.netGameManager.m_userHandle.m_szUserID);
             if (userSession == null) return;
 
+            if (!aa) return;
             if (prevTransform0.Equals(userSession.m_userTransform[0]) && prevTransform1.Equals(userSession.m_userTransform[1]))
                 return;
 
@@ -55,7 +58,7 @@ namespace whale
             userSession.m_userTransform[1] = prevTransform1;
 
             MainManager.Instance.networkManager.Send_ROOM_USER_MOVE_DIRECT(userSession);
-
+            aa = false;
 
         }
 
@@ -80,6 +83,7 @@ namespace whale
                 anim.SetBool("Run", true);
                 MainManager.Instance.titleManager.ObjectInteraction(MainManager.Instance.statusContainer.userNum, "Player", 0);
                 walk.SetActive(true);
+                aa = true;
 
             }
             else
@@ -108,6 +112,7 @@ namespace whale
             {
                 playerVelocity.y += Mathf.Sqrt(jumpPower * -3.0f * gravity);
                 anim.SetBool("Jump", true);
+                aa = true;
             }
 
             playerVelocity.y += gravity * Time.deltaTime;
