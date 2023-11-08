@@ -9,6 +9,7 @@ namespace whale
     public class VideoScene : MonoBehaviour
     {
         public VideoPlayer videoPlayer;
+        [SerializeField] bool outro;
 
         private void Start()
         {
@@ -19,6 +20,10 @@ namespace whale
         void OnVideoEnd(VideoPlayer vp)
         {
             SceneManager.UnloadSceneAsync(gameObject.scene);
+            if (outro)
+            {
+                MainManager.Instance.loadingManager.LoadScene("02_TitleScene");
+            }
             MainManager.Instance.loadingManager.LoadSceneAsync("03_GameScene");
         }
     }
