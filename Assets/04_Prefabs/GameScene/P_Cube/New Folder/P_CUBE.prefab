@@ -1328,7 +1328,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -710910164944623929, guid: 06cf79212c3f99641951cf93ae706b94, type: 3}
+  - {fileID: -710910164944623929, guid: 7f4a386dce640b244b34ae9d6620fc47, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1383,9 +1383,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe4978cb4f9c62479b278564507624b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeKey: 3
+  cubeKey: 0
   isCurPos: 0
-  isKey: 1
+  isKey: 0
   normal: {fileID: 2100000, guid: e382cb701724e7a41b651bc7a12d43e9, type: 2}
   answer: {fileID: 2100000, guid: b84c88fef8a0dc344abbd7afcb70dd46, type: 2}
   Meshrenderer: {fileID: 0}
@@ -1925,7 +1925,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -710910164944623929, guid: 06cf79212c3f99641951cf93ae706b94, type: 3}
+  - {fileID: -710910164944623929, guid: 7f4a386dce640b244b34ae9d6620fc47, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1980,9 +1980,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbe4978cb4f9c62479b278564507624b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cubeKey: 6
-  isCurPos: 1
-  isKey: 1
+  cubeKey: 0
+  isCurPos: 0
+  isKey: 0
   normal: {fileID: 2100000, guid: e382cb701724e7a41b651bc7a12d43e9, type: 2}
   answer: {fileID: 2100000, guid: b84c88fef8a0dc344abbd7afcb70dd46, type: 2}
   Meshrenderer: {fileID: 6735507097600297557}
@@ -3016,7 +3016,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -710910164944623929, guid: 7f4a386dce640b244b34ae9d6620fc47, type: 3}
+  - {fileID: -710910164944623929, guid: 06cf79212c3f99641951cf93ae706b94, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3072,8 +3072,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeKey: 8
-  isCurPos: 0
-  isKey: 0
+  isCurPos: 1
+  isKey: 1
   normal: {fileID: 2100000, guid: e382cb701724e7a41b651bc7a12d43e9, type: 2}
   answer: {fileID: 2100000, guid: b84c88fef8a0dc344abbd7afcb70dd46, type: 2}
   Meshrenderer: {fileID: 0}
@@ -4029,7 +4029,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -710910164944623929, guid: 7f4a386dce640b244b34ae9d6620fc47, type: 3}
+  - {fileID: -710910164944623929, guid: 06cf79212c3f99641951cf93ae706b94, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4085,8 +4085,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeKey: 9
-  isCurPos: 0
-  isKey: 0
+  isCurPos: 1
+  isKey: 1
   normal: {fileID: 2100000, guid: e382cb701724e7a41b651bc7a12d43e9, type: 2}
   answer: {fileID: 2100000, guid: b84c88fef8a0dc344abbd7afcb70dd46, type: 2}
   Meshrenderer: {fileID: 0}
