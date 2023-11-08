@@ -72,7 +72,9 @@ namespace whale
                 return;
             }*/
             MainManager.Instance.statusContainer.userName = userName.text;
-            MainManager.Instance.loadingManager.LoadScene("VideoScene");
+            MainManager.Instance.titleManager.OnClick_Login(MainManager.Instance.statusContainer.userName);
+            MainManager.Instance.titleManager.OnClick_Start();
+            //MainManager.Instance.loadingManager.LoadScene("VideoScene");
 
         }
 
