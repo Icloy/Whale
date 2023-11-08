@@ -42,10 +42,10 @@ public class SoundManager : MonoBehaviour
                 audioSource = clickSound;
                 break;
             case AudioType.Wind:
-                audioSource = clickSound;
+                audioSource = windSound;
                 break;
             case AudioType.Stonefall:
-                audioSource = clickSound;
+                audioSource = stonefallSound;
                 break;
         }
         if (audioSource != null)
