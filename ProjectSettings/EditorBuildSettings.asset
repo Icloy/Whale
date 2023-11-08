@@ -15,8 +15,8 @@ EditorBuildSettings:
     path: Assets/01_Scene/MainScene/03_GameScene.unity
     guid: fa66541399093e447aba7874600701ca
   - enabled: 1
-    path: Assets/01_Scene/MainScene/VideoScene.unity
-    guid: 4296730d67e60d04e9eadaca311ecdc3
+    path: Assets/01_Scene/MainScene/04_Ending.unity
+    guid: db214bee5f3223f4c83f05c0e1ebbd48
   - enabled: 1
     path: Assets/01_Scene/MainScene/Outro.unity
     guid: 656b064e1114b7641a625a52da972d9f

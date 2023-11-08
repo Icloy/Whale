@@ -23,7 +23,7 @@ namespace whale
             SceneManager.UnloadSceneAsync(gameObject.scene);
             if (outro)
             {
-                MainManager.Instance.loadingManager.LoadScene("02_TitleScene");
+                MainManager.Instance.loadingManager.LoadScene("04_Ending");
                 return;
             }
             else
