@@ -53651,12 +53651,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6036ec1ee121eb2448ccf22b86822f40, type: 3}
---- !u!20 &1102112973 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 3138252542069921044, guid: 6036ec1ee121eb2448ccf22b86822f40,
-    type: 3}
-  m_PrefabInstance: {fileID: 1102112972}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1103514677
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68906,7 +68900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0221cf2ab81a06b468e9b7a696d45ec2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 1102112973}
+  cam: {fileID: 0}
 --- !u!65 &1434738799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92418,6 +92412,8 @@ MonoBehaviour:
     type: 3}
   p1StartPos: {fileID: 1149492742}
   p2StartPos: {fileID: 1235402452}
+  EndEffect: {fileID: 842961646}
+  EndDoor: {fileID: 1938745093}
 --- !u!4 &1881869473
 Transform:
   m_ObjectHideFlags: 0

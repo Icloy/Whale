@@ -23,6 +23,9 @@ namespace whale
 
         [Header("StartPos")]
         bool isPlayer2 = false;
+        public GameObject EndEffect;
+        public GameObject EndDoor;
+
 
         private void Awake()
         {

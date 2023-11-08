@@ -35,6 +35,7 @@ namespace whale
         [SerializeField] TextMesh state;
         [SerializeField] TextMesh answer;
 
+        private Animator anim;
 
         private void Start()
         {
@@ -263,7 +264,10 @@ namespace whale
                         //큐브 정답 처리
                         Debug.Log("Clear");
                         answer.text = "Correct";
-                        
+                        GameManager.gm.EndEffect.SetActive(true);
+                        anim = GameManager.gm.EndDoor.GetComponent<Animator>();
+                        anim.SetBool("Clear", true);
+                        Invoke("HideEffect", 3f);
                     }
                     else
                     {
@@ -288,6 +292,11 @@ namespace whale
             Hor,
             Ver,
             CA
+        }
+
+        void HideEffect()
+        {
+            GameManager.gm.EndEffect.SetActive(false);
         }
     }
 }

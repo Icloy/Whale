@@ -16,8 +16,8 @@ namespace whale
         */
         void Start()
         {
-            //MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
-            MainManager.Instance.netGameManager.ConnectServer("192.168.1.143", 3650, true);
+            MainManager.Instance.netGameManager.ConnectServer("3.34.116.91", 3650, true); 
+            //MainManager.Instance.netGameManager.ConnectServer("192.168.1.143", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("172.16.115.87", 3650, true);
             //MainManager.Instance.netGameManager.ConnectServer("127.0.0.1", 3650, true);
         }
@@ -74,6 +74,7 @@ namespace whale
         //네트워크 호출 코드
         public void ObjectInteraction(int a , string b, int c) //c는 0 default 1 active 2 off
         {
+            Debug.Log("!@#");
             var data = new Object_Interaction
             {
                 USER = a,
@@ -205,6 +206,7 @@ namespace whale
                         {
                             case 0:
                                 GameManager.gm.objController.Puzzle_Room_01();
+                                Debug.Log("!");
                                 break;
                             case 1:
                                 GameManager.gm.objController.Puzzle_Room_02();

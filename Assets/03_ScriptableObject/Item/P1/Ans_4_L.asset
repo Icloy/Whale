@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 5713573218195542379, guid: 7767281a4c661174cbe6f983ddf41be8,
     type: 3}
-  itemName: Ans_4_L
+  itemName: Photo
