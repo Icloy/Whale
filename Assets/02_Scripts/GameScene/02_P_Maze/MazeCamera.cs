@@ -16,18 +16,18 @@ namespace whale
             cam = c.gameObject.GetComponent<Camera>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("Player") && MainManager.Instance.statusContainer.userNum.Equals(1))
-            {
-                cam.cullingMask = ~(1 << 10);
+            if (other.gameObject.CompareTag("Player")){
+
+            Player player = other.GetComponent<Player>();
+
+                if (player != null)
+                {
+                    cam.cullingMask = ~(1 << 10);
+                }
             }
+
         }
     }
 }
