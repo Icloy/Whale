@@ -74,7 +74,6 @@ namespace whale
             MainManager.Instance.statusContainer.userName = userName.text;
             MainManager.Instance.titleManager.OnClick_Login(userName.text);
             MainManager.Instance.titleManager.OnClick_Start();
-
         }
 
         public void Join_Cancel() //RoomCancel도 이거 사용
@@ -99,6 +98,11 @@ namespace whale
         public void Exception_Ok()
         {
             exceptionPopup.SetActive(false);
+        }
+
+        public void test()
+        {
+            MainManager.Instance.loadingManager.LoadSceneAsync("VideoScene");
         }
         #endregion
     }

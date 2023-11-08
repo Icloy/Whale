@@ -16,6 +16,11 @@ namespace whale
             StartCoroutine(LoadScene());*/
         }
 
+        public void LoadSceneAsync(string sceneName)
+        {
+            SceneManager.LoadSceneAsync(sceneName);
+        }
+
         IEnumerator LoadScene()
         {
             yield return null;
