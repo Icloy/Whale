@@ -26,10 +26,11 @@ public class PlayerAnim : MonoBehaviour
         while (curTime <= maxTime)
         {
             curTime += Time.deltaTime;
-            anim.SetBool("Run", false);
             Debug.Log("AnimRun");
+            anim.SetBool("Run", true);
             yield return null;
         }
+        anim.SetBool("Run", false);
         isCoroutineRunning = false;
     }
 }

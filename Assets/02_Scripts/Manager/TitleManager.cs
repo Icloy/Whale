@@ -259,7 +259,6 @@ namespace whale
                         playerObj.transform.position =
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3();
                         PlayerAnim aa = playerObj.GetComponent<PlayerAnim>();
-                        aa.anim.SetBool("Run", true);
                         aa.AnimRun();
                         Debug.Log("Run");
 
