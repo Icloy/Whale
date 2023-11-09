@@ -20,6 +20,7 @@ public class PlayerAnim : MonoBehaviour
         {
             curTime += Time.deltaTime;
             anim.SetBool("Run", false);
+            Debug.Log("AnimRun");
             yield return null;
         }
     }
