@@ -258,12 +258,12 @@ namespace whale
                         playerObj.transform.rotation = Quaternion.Euler(roomSession.m_userList[i].m_userTransform[1].GetVector3());
                         playerObj.transform.position =
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3();
-                        playerObj.GetComponent<Player>().anim.SetBool("Run", true);
+                        playerObj.GetComponent<PlayerAnim>().anim.SetBool("Run", true);
 
                         if (playerObj.transform.position ==
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3())
                         {
-                            playerObj.GetComponent<Player>().anim.SetBool("Run", false);
+                            playerObj.GetComponent<PlayerAnim>().anim.SetBool("Run", false);
                         }
 
                     }
