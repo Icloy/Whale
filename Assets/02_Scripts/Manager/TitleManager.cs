@@ -259,11 +259,13 @@ namespace whale
                         playerObj.transform.position =
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3();
                         playerObj.GetComponent<PlayerAnim>().anim.SetBool("Run", true);
-
+                        Debug.Log("Run");
                         if (playerObj.transform.position ==
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3())
                         {
                             playerObj.GetComponent<PlayerAnim>().anim.SetBool("Run", false);
+                            Debug.Log("Runstop");
+
                         }
 
                     }
