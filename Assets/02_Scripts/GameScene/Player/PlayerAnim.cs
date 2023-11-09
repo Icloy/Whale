@@ -8,25 +8,28 @@ public class PlayerAnim : MonoBehaviour
 
     float maxTime = 0.5f;
     public float curTime = 0f;
-
-    private void Start()
-    {
-    }
+    private bool isCoroutineRunning = false;
 
     public void AnimRun()
     {
         curTime = 0f;
+        if (isCoroutineRunning)
+        {
+            return; 
+        }
         StartCoroutine(Run());
     }
 
     IEnumerator Run()
     {
-        while(curTime <= maxTime)
+        isCoroutineRunning = true;
+        while (curTime <= maxTime)
         {
             curTime += Time.deltaTime;
             anim.SetBool("Run", false);
             Debug.Log("AnimRun");
             yield return null;
         }
+        isCoroutineRunning = false;
     }
 }
