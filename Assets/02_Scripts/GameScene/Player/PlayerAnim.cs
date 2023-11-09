@@ -7,8 +7,12 @@ public class PlayerAnim : MonoBehaviour
     public Animator anim;
 
     float maxTime = 0.5f;
-    public float curTime = 0f; 
+    public float curTime = 0f;
 
+    private void Start()
+    {
+        StartCoroutine(Run());
+    }
 
     IEnumerator Run()
     {
