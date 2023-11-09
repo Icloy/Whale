@@ -11,6 +11,11 @@ public class PlayerAnim : MonoBehaviour
 
     private void Start()
     {
+    }
+
+    public void AnimRun()
+    {
+        curTime = 0f;
         StartCoroutine(Run());
     }
 

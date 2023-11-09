@@ -260,7 +260,7 @@ namespace whale
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3();
                         PlayerAnim aa = playerObj.GetComponent<PlayerAnim>();
                         aa.anim.SetBool("Run", true);
-                        aa.curTime = 0f;
+                        aa.AnimRun();
                         Debug.Log("Run");
 
                     }
