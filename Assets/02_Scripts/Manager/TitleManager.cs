@@ -258,7 +258,9 @@ namespace whale
                         playerObj.transform.rotation = Quaternion.Euler(roomSession.m_userList[i].m_userTransform[1].GetVector3());
                         playerObj.transform.position =
                                     roomSession.m_userList[i].m_userTransform[0].GetVector3();
-                        playerObj.GetComponent<PlayerAnim>().anim.SetBool("Run", true);
+                        PlayerAnim aa = playerObj.GetComponent<PlayerAnim>();
+                        aa.anim.SetBool("Run", true);
+                        aa.curTime = 0f;
                         Debug.Log("Run");
 
                     }
