@@ -6,7 +6,7 @@ public class PlayerAnim : MonoBehaviour
 {
     public Animator anim;
 
-    float maxTime = 0.5f;
+    float maxTime = 0.25f;
     public float curTime = 0f;
     private bool isCoroutineRunning = false;
 
